@@ -1,6 +1,3 @@
-import zipfile
-import shutil
-import os
 import paramiko
 from paramiko.client import AutoAddPolicy
 
