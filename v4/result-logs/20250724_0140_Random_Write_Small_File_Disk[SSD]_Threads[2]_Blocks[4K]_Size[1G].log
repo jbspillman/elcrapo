@@ -1,0 +1,14 @@
+ISO DATE: 2025-07-24T01:43:48-0400
+LABEL: Random_Write_Small_File_Disk[SSD]_Threads[2]_Blocks[4K]_Size[1G]
+COMMAND LINE: "/usr/bin/elbencho" "--hosts" "centos01.beastmode.local.net,centos02.beastmode.local.net,centos03.beastmode.local.net,centos04.beastmode.local.net,centos05.beastmode.local.net,centos06.beastmode.local.net" "--label" "Random_Write_Small_File_Disk[SSD]_Threads[2]_Blocks[4K]_Size[1G]" "--write" "--rand" "--iodepth=1" "--threads=2" "--block=4K" "--size=1G" "--timelimit" "600" "--live1" "--livecsv" "/home/spillman/elcrapo/result-logs/20250724_0140_Random_Write_Small_File_Disk[SSD]_Threads[2]_Blocks[4K]_Size[1G]-live.csv" "--csvfile" "/home/spillman/elcrapo/result-logs/20250724_0140_Random_Write_Small_File_Disk[SSD]_Threads[2]_Blocks[4K]_Size[1G].csv" "--resfile" "/home/spillman/elcrapo/result-logs/20250724_0140_Random_Write_Small_File_Disk[SSD]_Threads[2]_Blocks[4K]_Size[1G].log" "--log" "0" "--cpu" "--lat" "--direct" "/mnt/elcrapo_ssd/ran_20250724014348_0002_4K_1G.bin" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :    1m6.655s   1m26.258s
+            IOPS             :        3449        3039
+            Throughput MiB/s :          13          11
+            Total MiB        :         898        1023
+            CPU util %       :          10          10
+            IO latency       : [ min=1.22ms avg=3.39ms max=11.4ms ]
+---
+

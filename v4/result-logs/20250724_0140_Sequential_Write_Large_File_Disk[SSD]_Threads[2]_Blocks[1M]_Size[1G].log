@@ -1,0 +1,14 @@
+ISO DATE: 2025-07-24T01:43:17-0400
+LABEL: Sequential_Write_Large_File_Disk[SSD]_Threads[2]_Blocks[1M]_Size[1G]
+COMMAND LINE: "/usr/bin/elbencho" "--hosts" "centos01.beastmode.local.net,centos02.beastmode.local.net,centos03.beastmode.local.net,centos04.beastmode.local.net,centos05.beastmode.local.net,centos06.beastmode.local.net" "--label" "Sequential_Write_Large_File_Disk[SSD]_Threads[2]_Blocks[1M]_Size[1G]" "--write" "--iodepth=1" "--threads=2" "--block=1M" "--size=1G" "--timelimit" "600" "--live1" "--livecsv" "/home/spillman/elcrapo/result-logs/20250724_0140_Sequential_Write_Large_File_Disk[SSD]_Threads[2]_Blocks[1M]_Size[1G]-live.csv" "--csvfile" "/home/spillman/elcrapo/result-logs/20250724_0140_Sequential_Write_Large_File_Disk[SSD]_Threads[2]_Blocks[1M]_Size[1G].csv" "--resfile" "/home/spillman/elcrapo/result-logs/20250724_0140_Sequential_Write_Large_File_Disk[SSD]_Threads[2]_Blocks[1M]_Size[1G].log" "--log" "0" "--cpu" "--lat" "--direct" "/mnt/elcrapo_ssd/seq_20250724014317_0002_1M_1G.bin" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       964ms     14.655s
+            IOPS             :         333          69
+            Throughput MiB/s :         333          69
+            Total MiB        :         322        1024
+            CPU util %       :          25          25
+            IO latency       : [ min=6.41ms avg=99.2ms max=435ms ]
+---
+

@@ -1,0 +1,14 @@
+ISO DATE: 2025-07-24T02:07:26-0400
+LABEL: Random_Read_Small_File_Disk[HDD]_Threads[2]_Blocks[4K]_Size[1G]
+COMMAND LINE: "/usr/bin/elbencho" "--hosts" "centos01.beastmode.local.net,centos02.beastmode.local.net,centos03.beastmode.local.net,centos04.beastmode.local.net,centos05.beastmode.local.net,centos06.beastmode.local.net" "--label" "Random_Read_Small_File_Disk[HDD]_Threads[2]_Blocks[4K]_Size[1G]" "--read" "--rand" "--iodepth=1" "--threads=2" "--block=4K" "--size=1G" "--timelimit" "600" "--live1" "--livecsv" "/home/spillman/elcrapo/result-logs/20250724_0140_Random_Read_Small_File_Disk[HDD]_Threads[2]_Blocks[4K]_Size[1G]-live.csv" "--csvfile" "/home/spillman/elcrapo/result-logs/20250724_0140_Random_Read_Small_File_Disk[HDD]_Threads[2]_Blocks[4K]_Size[1G].csv" "--resfile" "/home/spillman/elcrapo/result-logs/20250724_0140_Random_Read_Small_File_Disk[HDD]_Threads[2]_Blocks[4K]_Size[1G].log" "--log" "0" "--cpu" "--lat" "--direct" "/mnt/elcrapo_hdd/ran_20250724015726_0002_4K_1G.bin" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+READ        Elapsed time     :      6.172s     15.144s
+            IOPS             :       22102       17309
+            Throughput MiB/s :          86          67
+            Total MiB        :         532        1023
+            CPU util %       :          24          24
+            IO latency       : [ min=76us avg=598us max=71.3ms ]
+---
+
