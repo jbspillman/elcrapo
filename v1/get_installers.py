@@ -85,3 +85,5 @@ def get_releases():
     else:
         file_array = [rpm_release, rpm_release, zip_release]
         return file_array
+
+get_releases()
