@@ -78,6 +78,6 @@ list_columns = f'{elbencho_chart} -c {csv_out}'
          -Y "IOPS [last]:READ" elbencho-results.csv
 """
 
-chart_read_throuput = f'{elbencho_chart} -x "block size" -y "MiB/s [last]:READ" -Y "IOPS [last]:READ" {csv_out}'
-print(chart_read_throuput)
-os.system(chart_read_throuput)
+chart_read_throughput = f'{elbencho_chart} -x "block size" -y "MiB/s [last]:READ" -Y "IOPS [last]:READ" {csv_out}'
+print(chart_read_throughput)
+os.system(chart_read_throughput)
