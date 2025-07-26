@@ -1,4 +1,6 @@
 /.idea/
 /.venv/
+/*/elbencho-windows/
 *.iml
 *.xml
+
