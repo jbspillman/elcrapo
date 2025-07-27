@@ -1,0 +1,440 @@
+ISO DATE: 2025-07-26T20:21:20-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=1" "--block=4K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202120763642_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        50ms        50ms
+            IOPS             :      163294      163294
+            Throughput MiB/s :         637         637
+            Total MiB        :          32          32
+            CPU util %       :           5           5
+            IO latency       : [ min=4us avg=5us max=197us ]
+---
+
+READ        Elapsed time     :        27ms        27ms
+            IOPS             :      297706      297706
+            Throughput MiB/s :        1162        1162
+            Total MiB        :          32          32
+            CPU util %       :           4           4
+            IO latency       : [ min=1us avg=2us max=139us ]
+---
+
+ISO DATE: 2025-07-26T20:21:29-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=4" "--block=4K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202129070174_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        83ms        85ms
+            IOPS             :       96105       96234
+            Throughput MiB/s :         375         375
+            Total MiB        :          31          32
+            CPU util %       :          13          13
+            IO latency       : [ min=4us avg=40us max=1.26ms ]
+---
+
+READ        Elapsed time     :        28ms        46ms
+            IOPS             :      166787      177020
+            Throughput MiB/s :         651         691
+            Total MiB        :          18          32
+            CPU util %       :           9          10
+            IO latency       : [ min=1us avg=17us max=1.98ms ]
+---
+
+ISO DATE: 2025-07-26T20:21:37-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=8" "--block=4K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202137793644_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        78ms        79ms
+            IOPS             :      103283      103208
+            Throughput MiB/s :         403         403
+            Total MiB        :          31          32
+            CPU util %       :           6           6
+            IO latency       : [ min=5us avg=76us max=269us ]
+---
+
+READ        Elapsed time     :        26ms        42ms
+            IOPS             :      186909      190520
+            Throughput MiB/s :         730         744
+            Total MiB        :          19          32
+            CPU util %       :           6           6
+            IO latency       : [ min=1us avg=35us max=4.08ms ]
+---
+
+ISO DATE: 2025-07-26T20:21:54-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=16" "--block=4K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202154742829_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        78ms        79ms
+            IOPS             :      103006      102888
+            Throughput MiB/s :         402         401
+            Total MiB        :          31          32
+            CPU util %       :           6           6
+            IO latency       : [ min=6us avg=154us max=367us ]
+---
+
+READ        Elapsed time     :        14ms        41ms
+            IOPS             :      196785      197840
+            Throughput MiB/s :         768         772
+            Total MiB        :          11          32
+            CPU util %       :           6           6
+            IO latency       : [ min=1us avg=60us max=8.87ms ]
+---
+
+ISO DATE: 2025-07-26T20:22:00-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=1" "--block=32K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202200473834_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        21ms        21ms
+            IOPS             :       47579       47579
+            Throughput MiB/s :        1486        1486
+            Total MiB        :          32          32
+            CPU util %       :           4           4
+            IO latency       : [ min=17us avg=20us max=82us ]
+---
+
+READ        Elapsed time     :         6ms         6ms
+            IOPS             :      160879      160879
+            Throughput MiB/s :        5027        5027
+            Total MiB        :          32          32
+            CPU util %       :          11          11
+            IO latency       : [ min=1us avg=5us max=24us ]
+---
+
+ISO DATE: 2025-07-26T20:22:06-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=4" "--block=32K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202205998341_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        17ms        17ms
+            IOPS             :       58920       58901
+            Throughput MiB/s :        1841        1840
+            Total MiB        :          31          32
+            CPU util %       :          18          19
+            IO latency       : [ min=22us avg=66us max=187us ]
+---
+
+READ        Elapsed time     :         3ms         7ms
+            IOPS             :      123759      135701
+            Throughput MiB/s :        3867        4240
+            Total MiB        :          11          32
+            CPU util %       :           0           0
+            IO latency       : [ min=1us avg=19us max=2.65ms ]
+---
+
+ISO DATE: 2025-07-26T20:22:20-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=8" "--block=32K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202220155507_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        17ms        17ms
+            IOPS             :       57170       57136
+            Throughput MiB/s :        1786        1785
+            Total MiB        :          30          32
+            CPU util %       :          14           9
+            IO latency       : [ min=19us avg=137us max=362us ]
+---
+
+READ        Elapsed time     :         1ms         7ms
+            IOPS             :      126642      132385
+            Throughput MiB/s :        3957        4137
+            Total MiB        :           6          32
+            CPU util %       :           0           0
+            IO latency       : [ min=1us avg=38us max=2.84ms ]
+---
+
+ISO DATE: 2025-07-26T20:22:25-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=16" "--block=32K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202225726404_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        17ms        18ms
+            IOPS             :       56384       55627
+            Throughput MiB/s :        1762        1738
+            Total MiB        :          30          32
+            CPU util %       :           6           6
+            IO latency       : [ min=22us avg=277us max=563us ]
+---
+
+READ        Elapsed time     :         0ms         7ms
+            IOPS             :      117726      128578
+            Throughput MiB/s :        3678        4018
+            Total MiB        :           2          32
+            CPU util %       :           0           6
+            IO latency       : [ min=3us avg=71us max=3.34ms ]
+---
+
+ISO DATE: 2025-07-26T20:22:31-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=1" "--block=64K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202231255699_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        19ms        19ms
+            IOPS             :       26252       26252
+            Throughput MiB/s :        1640        1640
+            Total MiB        :          32          32
+            CPU util %       :          29          29
+            IO latency       : [ min=33us avg=37us max=103us ]
+---
+
+READ        Elapsed time     :         4ms         4ms
+            IOPS             :      107135      107135
+            Throughput MiB/s :        6695        6695
+            Total MiB        :          32          32
+            CPU util %       :           0           0
+            IO latency       : [ min=2us avg=8us max=37us ]
+---
+
+ISO DATE: 2025-07-26T20:22:45-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=4" "--block=64K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202245170673_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        13ms        13ms
+            IOPS             :       37963       37705
+            Throughput MiB/s :        2372        2356
+            Total MiB        :          31          32
+            CPU util %       :          12          12
+            IO latency       : [ min=37us avg=103us max=359us ]
+---
+
+READ        Elapsed time     :         1ms         6ms
+            IOPS             :       82669       83824
+            Throughput MiB/s :        5166        5239
+            Total MiB        :           8          32
+            CPU util %       :           0          40
+            IO latency       : [ min=2us avg=32us max=2.65ms ]
+---
+
+ISO DATE: 2025-07-26T20:22:50-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=8" "--block=64K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202250508003_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        11ms        12ms
+            IOPS             :       40068       39887
+            Throughput MiB/s :        2504        2492
+            Total MiB        :          27          32
+            CPU util %       :          24          11
+            IO latency       : [ min=34us avg=186us max=806us ]
+---
+
+READ        Elapsed time     :         1ms         5ms
+            IOPS             :       87659       90699
+            Throughput MiB/s :        5478        5668
+            Total MiB        :           6          32
+            CPU util %       :           0           0
+            IO latency       : [ min=2us avg=55us max=925us ]
+---
+
+ISO DATE: 2025-07-26T20:22:56-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=16" "--block=64K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202256380976_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :         9ms        12ms
+            IOPS             :       40818       39558
+            Throughput MiB/s :        2551        2472
+            Total MiB        :          24          32
+            CPU util %       :          19           6
+            IO latency       : [ min=36us avg=371us max=2.39ms ]
+---
+
+READ        Elapsed time     :         0ms         5ms
+            IOPS             :       88235       92235
+            Throughput MiB/s :        5514        5764
+            Total MiB        :           3          32
+            CPU util %       :           0           0
+            IO latency       : [ min=4us avg=99us max=2.89ms ]
+---
+
+ISO DATE: 2025-07-26T20:23:09-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=1" "--block=128K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202309878339_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        18ms        18ms
+            IOPS             :       14096       14096
+            Throughput MiB/s :        1762        1762
+            Total MiB        :          32          32
+            CPU util %       :           7           7
+            IO latency       : [ min=64us avg=70us max=129us ]
+---
+
+READ        Elapsed time     :         3ms         3ms
+            IOPS             :       64128       64128
+            Throughput MiB/s :        8016        8016
+            Total MiB        :          32          32
+            CPU util %       :           0           0
+            IO latency       : [ min=3us avg=14us max=41us ]
+---
+
+ISO DATE: 2025-07-26T20:23:15-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=4" "--block=128K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202315154301_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :         9ms        10ms
+            IOPS             :       24375       24514
+            Throughput MiB/s :        3046        3064
+            Total MiB        :          29          32
+            CPU util %       :          17          17
+            IO latency       : [ min=64us avg=157us max=894us ]
+---
+
+READ        Elapsed time     :         1ms         4ms
+            IOPS             :       57993       62120
+            Throughput MiB/s :        7249        7765
+            Total MiB        :           9          32
+            CPU util %       :           0           0
+            IO latency       : [ min=4us avg=41us max=978us ]
+---
+
+ISO DATE: 2025-07-26T20:23:20-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=8" "--block=128K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202320947177_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :         6ms        10ms
+            IOPS             :       26494       24965
+            Throughput MiB/s :        3311        3120
+            Total MiB        :          22          32
+            CPU util %       :          39          13
+            IO latency       : [ min=68us avg=281us max=1.87ms ]
+---
+
+READ        Elapsed time     :         1ms         4ms
+            IOPS             :       59339       56375
+            Throughput MiB/s :        7417        7046
+            Total MiB        :          11          32
+            CPU util %       :           0           0
+            IO latency       : [ min=4us avg=100us max=1.35ms ]
+---
+
+ISO DATE: 2025-07-26T20:23:34-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=16" "--block=128K" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202334727365_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :         5ms        10ms
+            IOPS             :       25255       24427
+            Throughput MiB/s :        3156        3053
+            Total MiB        :          18          32
+            CPU util %       :           0          12
+            IO latency       : [ min=67us avg=556us max=2.62ms ]
+---
+
+READ        Elapsed time     :         0ms         4ms
+            IOPS             :       55555       51550
+            Throughput MiB/s :        6944        6443
+            Total MiB        :           5          32
+            CPU util %       :           0           0
+            IO latency       : [ min=6us avg=233us max=941us ]
+---
+
+ISO DATE: 2025-07-26T20:23:40-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=1" "--block=1M" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202340262523_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        20ms        20ms
+            IOPS             :        1578        1578
+            Throughput MiB/s :        1578        1578
+            Total MiB        :          32          32
+            CPU util %       :          18          16
+            IO latency       : [ min=548us avg=631us max=777us ]
+---
+
+READ        Elapsed time     :         3ms         3ms
+            IOPS             :        8595        8595
+            Throughput MiB/s :        8595        8595
+            Total MiB        :          32          32
+            CPU util %       :           0           0
+            IO latency       : [ min=35us avg=114us max=176us ]
+---
+
+ISO DATE: 2025-07-26T20:23:45-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=4" "--block=1M" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202345954984_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :         8ms         9ms
+            IOPS             :        3480        3516
+            Throughput MiB/s :        3480        3516
+            Total MiB        :          29          32
+            CPU util %       :           0           0
+            IO latency       : [ min=731us avg=1.08ms max=1.37ms ]
+---
+
+READ        Elapsed time     :         3ms         3ms
+            IOPS             :        8280        8247
+            Throughput MiB/s :        8280        8247
+            Total MiB        :          29          32
+            CPU util %       :          32          10
+            IO latency       : [ min=132us avg=452us max=592us ]
+---
+
+ISO DATE: 2025-07-26T20:23:59-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=8" "--block=1M" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202359726558_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :         3ms         8ms
+            IOPS             :        4517        3993
+            Throughput MiB/s :        4517        3993
+            Total MiB        :          16          32
+            CPU util %       :           0           6
+            IO latency       : [ min=565us avg=1.63ms max=3.27ms ]
+---
+
+READ        Elapsed time     :         2ms         3ms
+            IOPS             :        8830        9124
+            Throughput MiB/s :        8830        9124
+            Total MiB        :          25          32
+            CPU util %       :           0           0
+            IO latency       : [ min=110us avg=771us max=965us ]
+---
+
+ISO DATE: 2025-07-26T20:24:05-0400
+LABEL: Random_Small_File
+COMMAND LINE: "/elbencho/elbencho" "--label" "Random_Small_File" "--write" "--read" "--rand" "--iodepth=1" "--threads=16" "--block=1M" "--size=32M" "--timelimit" "1200" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v6\result-logs\20250726_2021\20250726_2021_RSF.txt" "--log" "0" "--cpu" "--lat" "D:\\data_testing\RAN_20250726202405586639_RSF.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :         3ms         6ms
+            IOPS             :        5395        4784
+            Throughput MiB/s :        5395        4784
+            Total MiB        :          17          32
+            CPU util %       :           0           6
+            IO latency       : [ min=970us avg=2.33ms max=3.47ms ]
+---
+
+READ        Elapsed time     :         1ms         4ms
+            IOPS             :        8356        7916
+            Throughput MiB/s :        8356        7916
+            Total MiB        :           9          32
+            CPU util %       :           0           0
+            IO latency       : [ min=122us avg=1.45ms max=2.04ms ]
+---
+
