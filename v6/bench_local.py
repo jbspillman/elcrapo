@@ -11,7 +11,7 @@ script_folder = os.path.dirname(os.path.abspath(__file__))
 
 # ----- installed elbencho client -----
 elbencho_exe = r'C:\\Users\\spillman\\Documents\\elbencho\\elbencho.exe'
-local_disk_target = r'\\beastserver.beastmode.local.net\benchmark_tests_hdd'
+local_disk_target = r'\\beastserver.beastmode.local.net\benchmark_tests_hdd '
 local_disk_folder = 'data_testing'
 target_folder = os.path.join(local_disk_target, local_disk_folder)
 os.makedirs(target_folder, exist_ok=True)
