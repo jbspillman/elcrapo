@@ -1,0 +1,422 @@
+[
+    {
+        "test_number": "test_number-001",
+        "file_size": "1GB",
+        "block_size": "4K",
+        "threads": "1",
+        "io_depth": "1",
+        "Sequential Write": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "163171",
+                "mibs": "637",
+                "lat": "5"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "170460",
+                "mibs": "665",
+                "lat": "5"
+            }
+        ],
+        "Sequential Read": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "318043",
+                "mibs": "1242",
+                "lat": "2"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "320977",
+                "mibs": "1253",
+                "lat": "2"
+            }
+        ]
+    },
+    {
+        "test_number": "test_number-002",
+        "file_size": "64MB",
+        "block_size": "4K",
+        "threads": "1",
+        "io_depth": "1",
+        "Random Write": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "26791",
+                "mibs": "104",
+                "lat": "36"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "23885",
+                "mibs": "93",
+                "lat": "41"
+            }
+        ],
+        "Random Read": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "202424",
+                "mibs": "790",
+                "lat": "4"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "209862",
+                "mibs": "819",
+                "lat": "4"
+            }
+        ]
+    },
+    {
+        "test_number": "test_number-003",
+        "file_size": "1GB",
+        "block_size": "4K",
+        "threads": "16",
+        "io_depth": "1",
+        "Sequential Write": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "20409",
+                "mibs": "79",
+                "lat": "782"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "20191",
+                "mibs": "78",
+                "lat": "789"
+            }
+        ],
+        "Sequential Read": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "120078",
+                "mibs": "469",
+                "lat": "120"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "116089",
+                "mibs": "453",
+                "lat": "121"
+            }
+        ]
+    },
+    {
+        "test_number": "test_number-004",
+        "file_size": "64MB",
+        "block_size": "4K",
+        "threads": "16",
+        "io_depth": "1",
+        "Random Write": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "21680",
+                "mibs": "84",
+                "lat": "733"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "21831",
+                "mibs": "85",
+                "lat": "731"
+            }
+        ],
+        "Random Read": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "144044",
+                "mibs": "562",
+                "lat": "83"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "159926",
+                "mibs": "624",
+                "lat": "74"
+            }
+        ]
+    },
+    {
+        "test_number": "test_number-005",
+        "file_size": "1GB",
+        "block_size": "64K",
+        "threads": "1",
+        "io_depth": "1",
+        "Sequential Write": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "19949",
+                "mibs": "1246",
+                "lat": "49"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "21029",
+                "mibs": "1314",
+                "lat": "47"
+            }
+        ],
+        "Sequential Read": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "100961",
+                "mibs": "6310",
+                "lat": "9"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "83871",
+                "mibs": "5241",
+                "lat": "11"
+            }
+        ]
+    },
+    {
+        "test_number": "test_number-006",
+        "file_size": "64MB",
+        "block_size": "64K",
+        "threads": "1",
+        "io_depth": "1",
+        "Random Write": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "1780",
+                "mibs": "111",
+                "lat": "560"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "1512",
+                "mibs": "94",
+                "lat": "660"
+            }
+        ],
+        "Random Read": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "102389",
+                "mibs": "6399",
+                "lat": "9"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "98253",
+                "mibs": "6140",
+                "lat": "9"
+            }
+        ]
+    },
+    {
+        "test_number": "test_number-007",
+        "file_size": "1GB",
+        "block_size": "64K",
+        "threads": "16",
+        "io_depth": "1",
+        "Sequential Write": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "1612",
+                "mibs": "100",
+                "lat": "9901"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "1543",
+                "mibs": "96",
+                "lat": "10336"
+            }
+        ],
+        "Sequential Read": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "63564",
+                "mibs": "3972",
+                "lat": "204"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "76057",
+                "mibs": "4753",
+                "lat": "169"
+            }
+        ]
+    },
+    {
+        "test_number": "test_number-008",
+        "file_size": "64MB",
+        "block_size": "64K",
+        "threads": "16",
+        "io_depth": "1",
+        "Random Write": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "1647",
+                "mibs": "102",
+                "lat": "9686"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "1766",
+                "mibs": "110",
+                "lat": "9039"
+            }
+        ],
+        "Random Read": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "80585",
+                "mibs": "5036",
+                "lat": "117"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "81347",
+                "mibs": "5084",
+                "lat": "132"
+            }
+        ]
+    },
+    {
+        "test_number": "test_number-009",
+        "file_size": "1GB",
+        "block_size": "1MB",
+        "threads": "1",
+        "io_depth": "1",
+        "Sequential Write": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "1508",
+                "mibs": "1508",
+                "lat": "662"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "1529",
+                "mibs": "1529",
+                "lat": "652"
+            }
+        ],
+        "Sequential Read": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "8235",
+                "mibs": "8235",
+                "lat": "120"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "8229",
+                "mibs": "8229",
+                "lat": "120"
+            }
+        ]
+    },
+    {
+        "test_number": "test_number-010",
+        "file_size": "64MB",
+        "block_size": "1MB",
+        "threads": "1",
+        "io_depth": "1",
+        "Random Write": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "108",
+                "mibs": "108",
+                "lat": "9225"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "102",
+                "mibs": "102",
+                "lat": "9718"
+            }
+        ],
+        "Random Read": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "6787",
+                "mibs": "6787",
+                "lat": "146"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "9529",
+                "mibs": "9529",
+                "lat": "103"
+            }
+        ]
+    },
+    {
+        "test_number": "test_number-011",
+        "file_size": "1GB",
+        "block_size": "1MB",
+        "threads": "16",
+        "io_depth": "1",
+        "Sequential Write": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "106",
+                "mibs": "106",
+                "lat": "149301"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "101",
+                "mibs": "101",
+                "lat": "157208"
+            }
+        ],
+        "Sequential Read": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "5907",
+                "mibs": "5907",
+                "lat": "2680"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "6021",
+                "mibs": "6021",
+                "lat": "2630"
+            }
+        ]
+    },
+    {
+        "test_number": "test_number-012",
+        "file_size": "64MB",
+        "block_size": "1MB",
+        "threads": "16",
+        "io_depth": "1",
+        "Random Write": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "111",
+                "mibs": "111",
+                "lat": "142976"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "126",
+                "mibs": "126",
+                "lat": "125927"
+            }
+        ],
+        "Random Read": [
+            {
+                "device": "beastserver_smb_hdd",
+                "iops": "6547",
+                "mibs": "6547",
+                "lat": "2111"
+            },
+            {
+                "device": "beastserver_smb_nvme",
+                "iops": "6723",
+                "mibs": "6723",
+                "lat": "2044"
+            }
+        ]
+    }
+]

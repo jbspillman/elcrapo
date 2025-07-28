@@ -10,6 +10,8 @@ Whether this be Windows Shares or NFS Mounts.
 Also assumes the elbencho client has been installed or extracted to the given path.
 """
 
+test_id = 'beastserver_smb_nvme'  # string of text to denote what version or model we are testing.
+
 # ----- general configuration of folder and file paths, command server, and nodes. -----
 script_folder = os.path.dirname(os.path.abspath(__file__))
 
@@ -21,9 +23,7 @@ if os.name == 'nt':
         exit(1)
     target_paths = [
         r'\\beastserver.beastmode.local.net\benchmark_tests_ssd',
-        r'\\beastserver.beastmode.local.net\benchmark_tests_hdd',
     ]
-
 else:
     # ----- do the unix version tests -----
     elbencho_exe = '/usr/bin/elbencho'
@@ -32,7 +32,6 @@ else:
         exit(1)
     target_paths = [
         "/mnt/elcrapo_ssd",
-        "/mnt/elcrapo_hdd"
     ]
 
 # ----- create new list of target folders  -----
@@ -46,7 +45,9 @@ for target_path in target_paths:
 # ----- ensure log directory exists -----
 log_folder = os.path.join(script_folder, "result-logs")
 os.makedirs(log_folder, exist_ok=True)
-log_stamp = datetime.now().strftime("%Y%m%d_%H%M")
+time_log_stamp = datetime.now().strftime("%Y%m%d_%H%M")
+date_log_stamp = datetime.now().strftime("%Y%m%d")
+log_stamp = f'{date_log_stamp}_{test_id}'.upper()
 test_folder = os.path.join(log_folder, log_stamp)
 os.makedirs(test_folder, exist_ok=True)
 
@@ -54,16 +55,16 @@ os.makedirs(test_folder, exist_ok=True)
 four_corners_tests = [
     {
         "label": "Sequential_Large_File",
-        "label_code": "SLF",
+        "label_code": "SEQ_LF",
         "mode": "--write --read",
         "size": "1G",
         "extras": "--cpu --lat",
     },
     {
         "label": "Random_Small_File",
-        "label_code": "RSF",
+        "label_code": "RAN_SF",
         "mode": "--write --read --rand",
-        "size": "32M",
+        "size": "64M",
         "extras": "--cpu --lat",
     }
 ]
@@ -74,8 +75,9 @@ log_level = "1"
 target_file_path = 'f.bin'  # important to leave as bin file, cleanup job is looking for this!
 
 # ----- threads ramp, iodepth ramp, block size ramp -----
-blocks_ramp = ["4K", "32K", "64K", "128K", "1M"]
-threads_list = ["8"]
+# blocks_ramp = ["4K", "32K", "64K", "128K", "1M"]
+blocks_ramp = ["4K", "64K", "1M"]
+threads_list = ["1", "16"]
 io_deeps = ["1"]
 
 # ----- compute test counts -----
@@ -90,8 +92,7 @@ total_tests = sum(
 )
 
 # ----- cleanup the created files -----
-def cleanup_files(files_list):
-    remove = 4
+def cleanup_files(files_list, remove=6):
     y = 0
     for f_path_ddf in files_list:
         if os.path.exists(f_path_ddf):
@@ -109,18 +110,12 @@ def cleanup_files(files_list):
 all_tests_list = []
 created_files = []
 test_int = 0
-for test_path in target_test_folders:            #  ----- loop for each folder path option -----
-    for block_size in blocks_ramp:                 # ----- loop for each block size option -----
-        for threads in threads_list:                 # ----- loop for each threads size option -----
-            for iodepth in io_deeps:                   # ----- loop for each iodepth option -----
-                for test in four_corners_tests:          # ----- loop for each test case option -----
-                    if 'hdd' in test_path:
-                            test_id = 'HDD'
-                    elif 'ssd' in test_path:
-                        test_id = 'SSD'
-                    else:
-                        test_id = 'UNK'
 
+for block_size in blocks_ramp:                 # ----- loop for each block size option -----
+    for threads in threads_list:                 # ----- loop for each threads size option -----
+        for iodepth in io_deeps:                   # ----- loop for each iodepth option -----
+            for test_path in target_test_folders:    #  ----- loop for each folder path option -----
+                for test in four_corners_tests:        # ----- loop for each test case option -----
                     t_label = test["label"]
                     code = test["label_code"]
                     mode = test["mode"]
@@ -130,7 +125,7 @@ for test_path in target_test_folders:            #  ----- loop for each folder p
                     label = f"{code}_{test_id}"
 
                     # ----- create a randomized file name -----
-                    time.sleep(.113)
+                    time.sleep(.1313)
                     file_stamp = datetime.now().strftime("%Y%m%d%H%M%S%f")
                     random_uuid = uuid.uuid4()  # Generate a random UUID object
                     guid_string = str(random_uuid)  # Convert the UUID object to a string
@@ -150,9 +145,11 @@ for test_path in target_test_folders:            #  ----- loop for each folder p
                     pct_float = str(pct).zfill(3).rjust(5)
                     test_num = str(test_int).zfill(3)
                     test_total = str(total_tests).zfill(3)
-                    res_file = os.path.join(test_folder, f"{log_stamp}_Results.txt")
-                    csv_file = os.path.join(test_folder, f"{log_stamp}.csv")
-                    csv_live = os.path.join(test_folder, f"{log_stamp}-live.csv")
+
+                    test_file_name = f'test_number-{test_num}'
+                    res_file = os.path.join(test_folder, f"{test_file_name}_results.txt")
+                    csv_file = os.path.join(test_folder, f"{test_file_name}.csv")
+                    csv_live = os.path.join(test_folder, f"{test_file_name}-live.csv")
 
                     print()
                     print('Percent Complete:'.ljust(30), f'{pct}%', f'[{test_num} of {test_total}]')
@@ -172,7 +169,7 @@ for test_path in target_test_folders:            #  ----- loop for each folder p
                     print('how many files:'.ljust(30), len(created_files))
 
                     test_all_params = {
-                        "label": label,
+                        "label": test_id,
                         "code": code,
                         "mode": mode,
                         "block_size": block_size,
@@ -189,7 +186,7 @@ for test_path in target_test_folders:            #  ----- loop for each folder p
                         exit(1)
 
                     full_cmd = (f'{elbencho_exe} '
-                    f'--label {label} '
+                    f'--label {test_id} '
                     f'{mode} '
                     f'--iodepth={iodepth} '
                     f'--threads={threads} '
@@ -204,20 +201,16 @@ for test_path in target_test_folders:            #  ----- loop for each folder p
                     f'{test_file_path} '
                     )
                     os.system(full_cmd)
-                    time.sleep(2)
+                    # time.sleep(1)
                     if len(created_files) >= 6:
                         created_files = cleanup_files(created_files)
 
-print('how many files:'.ljust(30), len(created_files))
-if len(created_files) > 0:
-    created_files = cleanup_files(created_files)
 
-for file_name in created_files:
-    print(file_name)
-    # for remaining_file in os.listdir(test_path):
-    #     if remaining_file.lower().endswith('.bin'):
-    #         remainder = os.path.join(test_path, remaining_file)
-    #         print('Removing File:'.ljust(30), remainder)
-    #         os.remove(remainder)
+if len(created_files) > 0:
+    created_files = cleanup_files(created_files, 99)
+if len(created_files) > 0:
+    created_files = cleanup_files(created_files, 99)
+
+
 
 exit(0)
