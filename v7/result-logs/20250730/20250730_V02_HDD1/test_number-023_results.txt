@@ -1,0 +1,20 @@
+ISO DATE: 2025-07-30T04:16:10-0400
+LABEL: V02_HDD1
+COMMAND LINE: "/usr/bin/elbencho" "--hosts" "centos01.beastmode.local.net,centos02.beastmode.local.net,centos03.beastmode.local.net,centos04.beastmode.local.net" "--label" "V02_HDD1" "--timelimit" "300" "--write" "--cpu" "--lat" "--threads=2" "--size=0" "--files" "10000" "--mkdirs" "--delfiles" "--deldirs" "--dirsharing" "--live1" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250730/20250730_V02_HDD1/test_number-023-live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250730/20250730_V02_HDD1/test_number-023.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250730/20250730_V02_HDD1/test_number-023_results.txt" "--jsonfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250730/20250730_V02_HDD1/test_number-023.json" "--log" "1" "/mnt/benchmark_tests/hdd1/" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+MKDIRS      Elapsed time     :         1ms         1ms
+            Dirs/s           :        1912        4592
+            Dirs total       :           2           8
+            CPU util %       :           0           0
+            Dirs latency     : [ min=317us avg=560us max=856us ]
+---
+
+WRITE       Elapsed time     :      5.987s    5m7.830s
+            Files/s          :        1729          89
+            Files total      :       10358       27408
+            CPU util %       :           3           0
+            Files latency    : [ min=159us avg=78.8ms max=409ms ]
+---
+

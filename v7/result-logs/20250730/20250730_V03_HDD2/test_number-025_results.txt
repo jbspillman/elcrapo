@@ -1,0 +1,34 @@
+ISO DATE: 2025-07-30T04:24:34-0400
+LABEL: V03_HDD2
+COMMAND LINE: "/usr/bin/elbencho" "--hosts" "centos01.beastmode.local.net,centos02.beastmode.local.net,centos03.beastmode.local.net,centos04.beastmode.local.net" "--label" "V03_HDD2" "--timelimit" "300" "--write" "--cpu" "--lat" "--threads=1" "--size=0" "--files" "10000" "--mkdirs" "--delfiles" "--deldirs" "--live1" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250730/20250730_V03_HDD2/test_number-025-live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250730/20250730_V03_HDD2/test_number-025.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250730/20250730_V03_HDD2/test_number-025_results.txt" "--jsonfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250730/20250730_V03_HDD2/test_number-025.json" "--log" "1" "/mnt/benchmark_tests/hdd2/" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+MKDIRS      Elapsed time     :        11ms        16ms
+            Dirs/s           :          86         235
+            Dirs total       :           1           4
+            CPU util %       :           0           0
+            Dirs latency     : [ min=2.12ms avg=2.66ms max=3.22ms ]
+---
+
+WRITE       Elapsed time     :     24.391s     24.396s
+            Files/s          :        1631        1639
+            Files total      :       39795       40000
+            CPU util %       :           2           2
+            Files latency    : [ min=1.25ms avg=2.44ms max=53.3ms ]
+---
+
+RMFILES     Elapsed time     :     24.134s     24.138s
+            Files/s          :        1635        1657
+            Files total      :       39463       40000
+            CPU util %       :           2           2
+            Files latency    : [ min=1.23ms avg=2.41ms max=28.1ms ]
+---
+
+RMDIRS      Elapsed time     :        19ms        20ms
+            Dirs/s           :          51         193
+            Dirs total       :           1           4
+            CPU util %       :           6           6
+            Dirs latency     : [ min=15.8ms avg=16.7ms max=17.7ms ]
+---
+

@@ -77,8 +77,8 @@ target_file_path = 'f.bin'  # important to leave as bin file, cleanup job is loo
 # ----- threads ramp, iodepth ramp, block size ramp -----
 # blocks_ramp = ["4K", "32K", "64K", "128K", "1M"]
 blocks_ramp = ["4K", "64K", "1M"]
-threads_list = ["1", "16"]
-io_deeps = ["1"]
+threads_list = ["1", "4"]
+io_deeps = ["1", "2"]
 
 # ----- compute test counts -----
 total_tests = sum(

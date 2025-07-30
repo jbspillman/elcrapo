@@ -1,0 +1,24 @@
+ISO DATE: 2025-07-30T03:42:31-0400
+LABEL: V01_NVME
+COMMAND LINE: "/usr/bin/elbencho" "--hosts" "centos01.beastmode.local.net,centos02.beastmode.local.net,centos03.beastmode.local.net,centos04.beastmode.local.net" "--label" "V01_NVME" "--write" "--read" "--iodepth=2" "--threads=1" "--block=4K" "--size=1G" "--timelimit" "300" "--live1" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250730/20250730_V01_NVME/test_number-003-live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250730/20250730_V01_NVME/test_number-003.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250730/20250730_V01_NVME/test_number-003_results.txt" "--jsonfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250730/20250730_V01_NVME/test_number-003.json" "--log" "1" "--cpu" "--lat" "/mnt/benchmark_tests/nvme/data_testing/20250730034231198817_V01_NVME.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       921ms     11.668s
+            IOPS             :      145535       22466
+            Throughput MiB/s :         568          87
+            Total MiB        :         523        1024
+            IOs total        :      134070      262144
+            CPU util %       :          24          24
+            IO latency       : [ min=5us avg=261us max=29.1ms ]
+---
+
+READ        Elapsed time     :       109ms      2.310s
+            IOPS             :      598070      113477
+            Throughput MiB/s :        2336         443
+            Total MiB        :         256        1024
+            IOs total        :       65536      262144
+            CPU util %       :          20          20
+            IO latency       : [ min=1us avg=35us max=400ms ]
+---
+

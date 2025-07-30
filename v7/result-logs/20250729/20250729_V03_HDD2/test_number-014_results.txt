@@ -1,0 +1,24 @@
+ISO DATE: 2025-07-29T23:54:23-0400
+LABEL: V03_HDD2
+COMMAND LINE: "/usr/bin/elbencho" "--hosts" "centos01.beastmode.local.net,centos02.beastmode.local.net,centos03.beastmode.local.net,centos04.beastmode.local.net" "--label" "V03_HDD2" "--write" "--read" "--rand" "--iodepth=1" "--threads=2" "--block=1M" "--size=32M" "--timelimit" "300" "--live1" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250729/20250729_V03_HDD2/test_number-014-live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250729/20250729_V03_HDD2/test_number-014.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250729/20250729_V03_HDD2/test_number-014_results.txt" "--jsonfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250729/20250729_V03_HDD2/test_number-014.json" "--log" "1" "--cpu" "--lat" "/mnt/benchmark_tests/hdd2/data_testing/20250729235423257202_V03_HDD2.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :         2ms         5ms
+            IOPS             :        3034        5982
+            Throughput MiB/s :        3034        5982
+            Total MiB        :           8          32
+            IOs total        :           8          32
+            CPU util %       :          75          75
+            IO latency       : [ min=397us avg=983us max=3.32ms ]
+---
+
+READ        Elapsed time     :         1ms         1ms
+            IOPS             :        5983       18140
+            Throughput MiB/s :        5983       18140
+            Total MiB        :           8          32
+            IOs total        :           8          32
+            CPU util %       :           0           0
+            IO latency       : [ min=90us avg=358us max=934us ]
+---
+
