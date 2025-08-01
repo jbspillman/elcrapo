@@ -1,6 +1,0 @@
-ISO DATE: 2025-07-29T23:42:34-0400
-LABEL: V02_HDD1
-COMMAND LINE: "/usr/bin/elbencho" "--hosts" "centos01.beastmode.local.net,centos02.beastmode.local.net,centos03.beastmode.local.net,centos04.beastmode.local.net" "--label" "V02_HDD1" "--write" "--read" "--iodepth=2" "--threads=2" "--block=1M" "--size=1G" "--timelimit" "300" "--live1" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250729/20250729_V02_HDD1/test_number-015-live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250729/20250729_V02_HDD1/test_number-015.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250729/20250729_V02_HDD1/test_number-015_results.txt" "--jsonfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250729/20250729_V02_HDD1/test_number-015.json" "--log" "1" "--cpu" "--lat" "/mnt/benchmark_tests/hdd1/data_testing/20250729234234172013_V02_HDD1.BIN" 
-
-OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
-=========== ================    ==========   =========
