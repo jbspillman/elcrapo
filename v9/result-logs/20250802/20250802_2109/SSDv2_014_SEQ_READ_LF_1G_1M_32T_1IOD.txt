@@ -1,0 +1,14 @@
+ISO DATE: 2025-08-02T21:13:39-0400
+LABEL: 014_SEQ_READ_LF_1G_1M_32T_1IOD
+COMMAND LINE: "/elbencho/elbencho" "--label" "014_SEQ_READ_LF_1G_1M_32T_1IOD" "--read" "--trunctosize" "--iodepth=1" "--threads=32" "--block=1M" "--size=1G" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2109\SSDv2_014_SEQ_READ_LF_1G_1M_32T_1IOD-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2109\SSDv2_014_SEQ_READ_LF_1G_1M_32T_1IOD.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2109\SSDv2_014_SEQ_READ_LF_1G_1M_32T_1IOD.txt" "--jsonfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2109\SSDv2_014_SEQ_READ_LF_1G_1M_32T_1IOD.json" "--cpu" "--lat" "--log" "0" "--timelimit" "300" "--no0usecerr" "\\mediaserver.beastmode.local.net\spillman\benchmark_tests\data_testing\SSDv2\20250802211314216792_SEQ_WRITE_LF_1G_1M_32T_1IOD.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+READ        Elapsed time     :      9.960s     10.759s
+            IOPS             :          94          95
+            Throughput MiB/s :          94          95
+            Total MiB        :         946        1024
+            CPU util %       :          20          20
+            IO latency       : [ min=10.0ms avg=329ms max=712ms ]
+---
+

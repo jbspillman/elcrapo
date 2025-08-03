@@ -1,0 +1,14 @@
+ISO DATE: 2025-08-02T21:17:44-0400
+LABEL: 012_RAN_READ_SF_256M_4K_16T_1IOD
+COMMAND LINE: "/elbencho/elbencho" "--label" "012_RAN_READ_SF_256M_4K_16T_1IOD" "--read" "--rand" "--trunctosize" "--iodepth=1" "--threads=16" "--block=4K" "--size=256M" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2109\HDDv1_012_RAN_READ_SF_256M_4K_16T_1IOD-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2109\HDDv1_012_RAN_READ_SF_256M_4K_16T_1IOD.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2109\HDDv1_012_RAN_READ_SF_256M_4K_16T_1IOD.txt" "--jsonfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2109\HDDv1_012_RAN_READ_SF_256M_4K_16T_1IOD.json" "--cpu" "--lat" "--log" "0" "--timelimit" "300" "--no0usecerr" "\\mediaserver.beastmode.local.net\02000a\benchmark_tests\data_testing\HDDv1\20250802211732682046_RAN_WRITE_SF_256M_4K_16T_1IOD.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+READ        Elapsed time     :     18.545s     18.913s
+            IOPS             :        3425        3465
+            Throughput MiB/s :          13          13
+            Total MiB        :         248         256
+            CPU util %       :           3           3
+            IO latency       : [ min=5us avg=4.59ms max=33.1ms ]
+---
+
