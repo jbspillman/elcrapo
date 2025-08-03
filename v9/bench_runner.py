@@ -53,7 +53,7 @@ small_file_size = "256M"
 small_block_size = "4K"
 large_file_size = "1G"
 large_block_size = "1M"
-threads_list = ["1", "2", "16", "32"]
+threads_list = ["1", "32"]
 iodepth_list = ["1"]
 
 
@@ -169,7 +169,7 @@ def run_bench_marks():
                     res_file = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}.txt")
                     csv_file = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}.csv")
                     csv_live = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}-live.csv")
-                    json_out = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}.json")
+                    # json_out = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}.json")
 
                     ''' create random file name for test '''
                     if 'WRITE' in test_code:  # writes must come before reads to create the file.
@@ -210,7 +210,7 @@ def run_bench_marks():
                         f'--live1 --livecsvex --livecsv {csv_live} '
                         f'--csvfile {csv_file} '
                         f'--resfile {res_file} '
-                        f'--jsonfile {json_out} '
+                        # f'--jsonfile {json_out} '
                         f'{extras_options} '
                         f'{test_file_path} '
                         )

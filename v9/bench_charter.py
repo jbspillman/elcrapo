@@ -63,7 +63,10 @@ def parse_test_data_files(folder_path):
 
     the_tests_data = []
     for file_name in os.listdir(folder_path):
-        if file_name.endswith('.json'):
+        if file_name.endswith('-live.json'):
+            os.remove(os.path.join(folder_path, file_name))
+
+        elif file_name.endswith('.json'):
             target_name = file_name.split('_')[0]
             test_number = file_name.split('_')[1]
             test_mode = file_name.split('_')[2]
@@ -95,21 +98,23 @@ def parse_test_data_files(folder_path):
             with open(file_to_parse, 'r', encoding="utf-8") as file:
                 the_data = json.load(file)
 
-            # print(the_data)
             try:
                 ilat = the_data[0]["IO lat us [avg]"]
             except IndexError:
-                print(the_data[0])
+                print(the_data)
+                print(file_to_parse)
                 exit(0)
             try:
                 imib = the_data[0]["MiB/s [last]"]
             except IndexError:
-                print(the_data[0])
+                print(the_data)
+                print(file_to_parse)
                 exit(0)
             try:
                 iops = the_data[0]["IOPS [last]"]
             except IndexError:
-                print(the_data[0])
+                print(the_data)
+                print(file_to_parse)
                 exit(0)
 
             k = {
@@ -131,7 +136,6 @@ def parse_test_data_files(folder_path):
                 the_tests_data.append(k)
                 pretty_k = json.dumps(k, indent=4)
                 print(pretty_k)
-
 
     pretty_test_data = json.dumps(the_tests_data, indent=4)
     with open(parsed_json_path, 'w', encoding="utf-8") as f:
