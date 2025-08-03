@@ -1,0 +1,14 @@
+ISO DATE: 2025-08-03T15:45:56-0400
+LABEL: 001_SEQ_WRITE_LF_1G_4K_1T_1IOD
+COMMAND LINE: "/elbencho/elbencho" "--label" "001_SEQ_WRITE_LF_1G_4K_1T_1IOD" "--write" "--iodepth=1" "--threads=1" "--block=4K" "--size=1G" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250803\20250803_1543\onp-9.1.43_001_SEQ_WRITE_LF_1G_4K_1T_1IOD.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250803\20250803_1543\onp-9.1.43_001_SEQ_WRITE_LF_1G_4K_1T_1IOD.txt" "--cpu" "--lat" "--log" "0" "--timelimit" "300" "--no0usecerr" "\\beastserver.beastmode.local.net\spillman\benchmark_tests\data_testing\onp-9.1.43\20250803154556257143_SEQ_WRITE_LF_1G_4K_1T_1IOD.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      1.553s      1.553s
+            IOPS             :      168778      168778
+            Throughput MiB/s :         659         659
+            Total MiB        :        1024        1024
+            CPU util %       :           9           9
+            IO latency       : [ min=4us avg=5us max=4.20ms ]
+---
+
