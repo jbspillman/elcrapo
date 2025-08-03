@@ -6,21 +6,21 @@ import json
 import time
 
 ''' the storage targets for tests.
-    > the targets are local to the server running the script.
-    > Simple A vs B test environment here.
+    > the targets are local to the server running the script or remote nodes.
+    > i.e. Command Server needs to be able to access either "target_path_nfs" or "target_path_smb"
 '''
 storage_targets = [
     {
-        "target_name": "SSDv2",
-        "target_host": "mediaserver.beastmode.local.net",
-        "target_path_nfs": "/mnt/benchmark_tests/ssd",
-        "target_path_smb": r"\\mediaserver.beastmode.local.net\spillman"
+        "target_name": "onp-9.1.33",
+        "target_host": "beastserver.beastmode.local.net",
+        "target_path_nfs": "/mnt/benchmark_tests/hdd",
+        "target_path_smb": r"\\beastserver.beastmode.local.net\02000c"
     },
     {
-        "target_name": "HDDv1",
-        "target_host": "mediaserver.beastmode.local.net",
-        "target_path_nfs": "/mnt/benchmark_tests/hdd",
-        "target_path_smb": r"\\mediaserver.beastmode.local.net\02000a"
+        "target_name": "onp-9.1.43",
+        "target_host": "beastserver.beastmode.local.net",
+        "target_path_nfs": "/mnt/benchmark_tests/ssd",
+        "target_path_smb": r"\\beastserver.beastmode.local.net\spillman"
     }
 ]
 
@@ -49,15 +49,15 @@ basic_four_corners_tests = [
 ]
 
 extras_options = "--cpu --lat --log 0 --timelimit 300 --no0usecerr"
-small_file_size = "256M"
-small_block_size = "4K"
+small_file_size = "128M"
 large_file_size = "1G"
-large_block_size = "1M"
-threads_list = ["1", "32"]
+blocks_list = ["4K", "64K", "128K"]  # "32K",  "256K", "512K", "1024K"
+threads_list = ["1"]
 iodepth_list = ["1"]
 
 
-total_tests = len(storage_targets) * len(threads_list) * len(iodepth_list) * len(basic_four_corners_tests)
+total_tests = (len(storage_targets) * len(blocks_list) * len(threads_list) *
+               len(iodepth_list) * len(basic_four_corners_tests))
 tests_per_target = round(total_tests / len(storage_targets))
 tests_per_target = str(tests_per_target).zfill(3)
 total_tests = str(total_tests).zfill(3)
@@ -140,92 +140,95 @@ def run_bench_marks():
         os.makedirs(target_test_directory, exist_ok=True)
 
         ''' create test commands '''
-        for test_threads in threads_list:
-            for test_iodepth in iodepth_list:
-                for test_item in basic_four_corners_tests:
+        for block_size in blocks_list:
+            test_block = block_size
+            for test_threads in threads_list:
+                for test_iodepth in iodepth_list:
+                    for test_item in basic_four_corners_tests:
 
-                    test_number += 1
-                    test_pad = str(test_number).zfill(3)
+                        test_number += 1
+                        test_pad = str(test_number).zfill(3)
 
-                    ''' get the test parameters '''
-                    test_label = test_item["label"]
-                    test_code =  test_item["label_code"]
-                    test_mode = test_item["mode"]
+                        ''' get the test parameters '''
+                        test_label = test_item["label"]
+                        test_code =  test_item["label_code"]
+                        test_mode = test_item["mode"]
 
-                    if 'Large_File' in test_label:
-                        file_id_name = "Sequential_Large_File"
-                        test_size = large_file_size
-                        test_block = large_block_size
-                    else:
-                        file_id_name = "Random_Small_File"
-                        test_size = small_file_size
-                        test_block = small_block_size
-
-                    test_code = f'{test_code}_{test_size}_{test_block}_{test_threads}T_{test_iodepth}IOD'
-                    file_label = f'{test_pad}_{test_code}'
+                        if 'Large_File' in test_label:
+                            file_id_name = "Sequential_Large_File"
+                            test_size = large_file_size
+                        else:
+                            file_id_name = "Random_Small_File"
+                            test_size = small_file_size
 
 
+                        test_code = f'{test_code}_{test_size}_{test_block}_{test_threads}T_{test_iodepth}IOD'
+                        file_label = f'{test_pad}_{test_code}'
 
-                    res_file = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}.txt")
-                    csv_file = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}.csv")
-                    # csv_live = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}-live.csv")
-                    # json_out = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}.json")
+                        res_file = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}.txt")
+                        csv_file = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}.csv")
+                        # csv_live = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}-live.csv")
+                        # json_out = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}.json")
 
-                    ''' create random file name for test '''
-                    if 'WRITE' in test_code:  # writes must come before reads to create the file.
-                        file_stamp = datetime.now().strftime("%Y%m%d%H%M%S%f")
-                        data_file_name = f'{file_stamp}_{test_code}.BIN'.upper()
-                        test_file_path = os.path.join(target_test_directory, data_file_name)
-                        cleanup_files_list.append(test_file_path)
+                        ''' create random file name for test '''
+                        if 'WRITE' in test_code:  # writes must come before reads to create the file.
+                            file_stamp = datetime.now().strftime("%Y%m%d%H%M%S%f")
+                            data_file_name = f'{file_stamp}_{test_code}.BIN'.upper()
+                            test_file_path = os.path.join(target_test_directory, data_file_name)
+                            cleanup_files_list.append(test_file_path)
 
-                    if 'benchmark_tests' not in target_test_directory:
-                        print('output files are not going where you think they are.')
-                        print("test_file_path:", test_file_path)
-                        exit(1)
+                        if 'benchmark_tests' not in target_test_directory:
+                            print('output files are not going where you think they are.')
+                            print("test_file_path:", test_file_path)
+                            exit(1)
 
-                    test_time = 0
-                    test_time += 0
-                    start_it = timeit.default_timer()
-                    print()
-                    print('======================================================================================= ')
-                    print('test_number                  : ', test_pad, f'of {tests_per_target} Total: {total_tests}')
-                    print('target_name                  : ', target_name)
-                    print('test_label                   : ', file_label)
-                    print('test_code                    : ', test_code)
-                    print('test_mode                    : ', test_mode)
-                    print('test_block                   : ', test_block)
-                    print('test_size                    : ', test_size)
-                    print('test_threads                 : ', test_threads)
-                    print('test_iodepth                 : ', test_iodepth)
-                    print('target_test_directory        : ', target_test_directory)
-                    print('data_file_name               : ', data_file_name)
+                        test_time = 0
+                        test_time += 0
+                        start_it = timeit.default_timer()
+                        print()
+                        print('======================================================================================= ')
+                        print('test_number                  : ', test_pad, f'of {tests_per_target} Total: {total_tests}')
+                        print('target_name                  : ', target_name)
+                        print('test_label                   : ', file_label)
+                        print('test_code                    : ', test_code)
+                        print('test_mode                    : ', test_mode)
+                        print('test_block                   : ', test_block)
+                        print('test_size                    : ', test_size)
+                        print('test_threads                 : ', test_threads)
+                        print('test_iodepth                 : ', test_iodepth)
+                        print('target_test_directory        : ', target_test_directory)
+                        print('data_file_name               : ', data_file_name)
 
-                    full_cmd = (f'{elbencho_exe} '
-                        f'--label {file_label} '
-                        f'{test_mode} '
-                        f'--iodepth={test_iodepth} '
-                        f'--threads={test_threads} '
-                        f'--block={test_block} '
-                        f'--size={test_size} '
-                        f'--csvfile {csv_file} '
-                        f'--resfile {res_file} '
-                        # f'--live1 --livecsvex --livecsv {csv_live} '
-                        # f'--jsonfile {json_out} '
-                        f'{extras_options} '
-                        f'{test_file_path} '
-                        )
-                    os.system(full_cmd)
-                    finish_it = timeit.default_timer()
-                    test_time = finish_it - start_it
-                    print('test_time                    : ', test_time)
-                    print()
-                    time.sleep(5)
+                        full_cmd = (f'{elbencho_exe} '
+                            f'--label {file_label} '
+                            f'{test_mode} '
+                            f'--iodepth={test_iodepth} '
+                            f'--threads={test_threads} '
+                            f'--block={test_block} '
+                            f'--size={test_size} '
+                            f'--csvfile {csv_file} '
+                            f'--resfile {res_file} '
+                            # f'--live1 --livecsvex --livecsv {csv_live} '
+                            # f'--jsonfile {json_out} '
+                            f'{extras_options} '
+                            f'{test_file_path} '
+                            )
+                        os.system(full_cmd)
+                        finish_it = timeit.default_timer()
+                        test_time = finish_it - start_it
+                        print('test_time                    : ', test_time)
+                        print()
+                        time.sleep(5)
 
-        for file_to_delete in cleanup_files_list:
-            if os.path.exists(file_to_delete):
-                print('removing test files:', file_to_delete)
-                os.remove(file_to_delete)
-        time.sleep(3)
+            for file_to_delete in cleanup_files_list:
+                if os.path.exists(file_to_delete):
+                    print('removing test files:', file_to_delete)
+                    try:
+                        os.remove(file_to_delete)
+                    except FileNotFoundError:
+                        pass
+
+            time.sleep(3)
     return target_names
 
 
