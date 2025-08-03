@@ -168,7 +168,7 @@ def run_bench_marks():
 
                     res_file = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}.txt")
                     csv_file = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}.csv")
-                    csv_live = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}-live.csv")
+                    # csv_live = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}-live.csv")
                     # json_out = os.path.join(test_folder, f"{target_name}_{test_pad}_{test_code}.json")
 
                     ''' create random file name for test '''
@@ -207,9 +207,9 @@ def run_bench_marks():
                         f'--threads={test_threads} '
                         f'--block={test_block} '
                         f'--size={test_size} '
-                        f'--live1 --livecsvex --livecsv {csv_live} '
                         f'--csvfile {csv_file} '
                         f'--resfile {res_file} '
+                        # f'--live1 --livecsvex --livecsv {csv_live} '
                         # f'--jsonfile {json_out} '
                         f'{extras_options} '
                         f'{test_file_path} '

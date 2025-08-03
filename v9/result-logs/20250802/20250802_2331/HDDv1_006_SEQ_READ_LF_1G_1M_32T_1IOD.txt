@@ -1,0 +1,14 @@
+ISO DATE: 2025-08-02T23:35:18-0400
+LABEL: 006_SEQ_READ_LF_1G_1M_32T_1IOD
+COMMAND LINE: "/elbencho/elbencho" "--label" "006_SEQ_READ_LF_1G_1M_32T_1IOD" "--read" "--trunctosize" "--iodepth=1" "--threads=32" "--block=1M" "--size=1G" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2331\HDDv1_006_SEQ_READ_LF_1G_1M_32T_1IOD-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2331\HDDv1_006_SEQ_READ_LF_1G_1M_32T_1IOD.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2331\HDDv1_006_SEQ_READ_LF_1G_1M_32T_1IOD.txt" "--cpu" "--lat" "--log" "0" "--timelimit" "300" "--no0usecerr" "\\mediaserver.beastmode.local.net\02000a\benchmark_tests\data_testing\HDDv1\20250802233453057655_SEQ_WRITE_LF_1G_1M_32T_1IOD.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+READ        Elapsed time     :      9.812s     10.512s
+            IOPS             :          97          97
+            Throughput MiB/s :          97          97
+            Total MiB        :         956        1024
+            CPU util %       :           5           5
+            IO latency       : [ min=10.2ms avg=321ms max=656ms ]
+---
+

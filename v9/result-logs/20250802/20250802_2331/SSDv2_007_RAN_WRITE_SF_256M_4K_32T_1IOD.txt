@@ -1,0 +1,14 @@
+ISO DATE: 2025-08-02T23:33:09-0400
+LABEL: 007_RAN_WRITE_SF_256M_4K_32T_1IOD
+COMMAND LINE: "/elbencho/elbencho" "--label" "007_RAN_WRITE_SF_256M_4K_32T_1IOD" "--write" "--rand" "--iodepth=1" "--threads=32" "--block=4K" "--size=256M" "--live1" "--livecsvex" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2331\SSDv2_007_RAN_WRITE_SF_256M_4K_32T_1IOD-live.csv" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2331\SSDv2_007_RAN_WRITE_SF_256M_4K_32T_1IOD.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250802\20250802_2331\SSDv2_007_RAN_WRITE_SF_256M_4K_32T_1IOD.txt" "--cpu" "--lat" "--log" "0" "--timelimit" "300" "--no0usecerr" "\\mediaserver.beastmode.local.net\spillman\benchmark_tests\data_testing\SSDv2\20250802233309243429_RAN_WRITE_SF_256M_4K_32T_1IOD.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      3.354s      3.391s
+            IOPS             :       18617       19325
+            Throughput MiB/s :          72          75
+            Total MiB        :         243         256
+            CPU util %       :           6           6
+            IO latency       : [ min=5us avg=1.65ms max=2.72s ]
+---
+
