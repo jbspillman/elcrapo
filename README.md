@@ -40,6 +40,9 @@ Coding at it's worst.... don't judge me...
 <hr>
 
 <table>
+  <tr>
+    <th>THREADS:</th><th>1</th><th>2</th><th>16</th><th>32</th>
+  </tr>
 <tr>
   <th>
     IOP'S    
