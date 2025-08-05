@@ -1,7 +1,0 @@
-centos01.beastmode.local.net
-centos02.beastmode.local.net
-centos03.beastmode.local.net
-centos04.beastmode.local.net
-centos05.beastmode.local.net
-centos06.beastmode.local.net
-
