@@ -75,11 +75,11 @@ def run_bench_marks():
             "test_block": "4K"
         },
     ]
-    threads_and_sizes_list = ["16;1", "8;2", "4;4", "2;8", "1;16"] # "Threads;GB"
+    threads_and_sizes_list = ["8;1", "4;2", "2;4", "1;8"] # "Threads;GB"
     iodepth = 1
 
-    extras_00 = "--cpu --lat --log 0 --direct --timelimit 600 --no0usecerr --dirsharing --files 1 --dirs 1 --mkdirs --deldirs --delfiles"
-    extras_01 = "--live1 --livecsvex --liveint 1000" # --dryrun
+    extras_00 = "--cpu --lat --log 0 --timelimit 900 --no0usecerr --dirsharing --files 1 --dirs 1 --mkdirs --deldirs --delfiles"
+    extras_01 = "--live1 --livecsvex --liveint 1000" # --dryrun --direct 
     full_cmd = ""
     cleanup_files_list = []
     target_names = []
@@ -198,25 +198,25 @@ def run_bench_marks():
                 test_time = finish_it - start_it
                 print('test_time                    : ', test_time)
                 print()
-                if 'dryrun' not in full_cmd:
-                    for file_to_delete in cleanup_files_list:
-                        if os.path.exists(file_to_delete):
-                            print('removing test files:', file_to_delete)
-                            try:
-                                os.remove(file_to_delete)
-                            except FileNotFoundError:
-                                pass
-                    time.sleep(5)
+                # if 'dryrun' not in full_cmd:
+                    # for file_to_delete in cleanup_files_list:
+                        # if os.path.exists(file_to_delete):
+                            # print('removing test files:', file_to_delete)
+                            # try:
+                                # os.remove(file_to_delete)
+                            # except FileNotFoundError:
+                                # pass
+                    # time.sleep(5)
 
-    if 'dryrun' in full_cmd:
-        os.rmdir(test_folder)
-        for file_to_delete in cleanup_files_list:
-            if os.path.exists(file_to_delete):
-                print('removing test files:', file_to_delete)
-                try:
-                    os.remove(file_to_delete)
-                except FileNotFoundError:
-                    pass
+    # if 'dryrun' in full_cmd:
+        # os.rmdir(test_folder)
+        # for file_to_delete in cleanup_files_list:
+            # if os.path.exists(file_to_delete):
+                # print('removing test files:', file_to_delete)
+                # try:
+                    # os.remove(file_to_delete)
+                # except FileNotFoundError:
+                    # pass
 
     return target_names
 

@@ -1,0 +1,49 @@
+ISO DATE: 2025-08-05T02:27:58-0400
+LABEL: 005_RANDOM__1G_4K_8T_1D__WCX11.2.19
+COMMAND LINE: "/usr/bin/elbencho" "--label" "005_RANDOM__1G_4K_8T_1D__WCX11.2.19" "--write" "--read" "--rand" "--randalgo" "fast" "--trunctosize" "--cpu" "--lat" "--log" "0" "--timelimit" "900" "--no0usecerr" "--dirsharing" "--files" "1" "--dirs" "1" "--mkdirs" "--deldirs" "--delfiles" "--live1" "--livecsvex" "--liveint" "1000" "--iodepth=1" "--threads=8" "--block=4K" "--size=1G" "--csvfile" "/home/spillman/pyprojects/elcrapo/result-logs/20250805/20250805_0225/wcx11.2.19_005_RANDOM__1G_4K_8T_1D__WCX11.2.19.csv" "--resfile" "/home/spillman/pyprojects/elcrapo/result-logs/20250805/20250805_0225/wcx11.2.19_005_RANDOM__1G_4K_8T_1D__WCX11.2.19.txt" "--livecsv" "/home/spillman/pyprojects/elcrapo/result-logs/20250805/20250805_0225/wcx11.2.19_005_RANDOM__1G_4K_8T_1D__WCX11.2.19.live" "/mnt/Drives/04000b/benchmark_tests/data_testing/wcx11.2.19" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+MKDIRS      Elapsed time     :         0ms         0ms
+            Dirs/s           :       59259       58823
+            Dirs total       :           8           8
+            CPU util %       :           0           0
+            Dirs latency     : [ min=24us avg=39us max=44us ]
+---
+
+WRITE       Elapsed time     :      1.237s      1.419s
+            Files/s          :           0           5
+            IOPS             :     1520877     1476946
+            Throughput MiB/s :        5940        5769
+            Total MiB        :        7351        8192
+            Files total      :           1           8
+            CPU util %       :          72          67
+            Files latency    : [ min=1.24s avg=1.34s max=1.42s ]
+            IO latency       : [ min=1us avg=4us max=1.96ms ]
+---
+
+READ        Elapsed time     :       661ms       718ms
+            Files/s          :           1          11
+            IOPS             :     2952806     2919238
+            Throughput MiB/s :       11534       11403
+            Total MiB        :        7626        8192
+            Files total      :           1           8
+            CPU util %       :          74          72
+            Files latency    : [ min=661ms avg=691ms max=718ms ]
+            IO latency       : [ min=0us avg=2us max=363us ]
+---
+
+RMFILES     Elapsed time     :       321ms       360ms
+            Files/s          :           3          22
+            Files total      :           1           8
+            CPU util %       :          75          71
+            Files latency    : [ min=322ms avg=344ms max=361ms ]
+---
+
+RMDIRS      Elapsed time     :         0ms         0ms
+            Dirs/s           :       77669       76190
+            Dirs total       :           8           8
+            CPU util %       :         100         100
+            Dirs latency     : [ min=3us avg=25us max=50us ]
+---
+
