@@ -1,0 +1,422 @@
+[
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 1,
+        "iops": 106.0,
+        "mibs": 106.0,
+        "lat": 401.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 2,
+        "iops": 108.0,
+        "mibs": 108.0,
+        "lat": 412.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 4,
+        "iops": 109.0,
+        "mibs": 109.0,
+        "lat": 434.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 8,
+        "iops": 110.0,
+        "mibs": 110.0,
+        "lat": 654.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 16,
+        "iops": 110.0,
+        "mibs": 110.0,
+        "lat": 1329.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 1,
+        "iops": 106.0,
+        "mibs": 106.0,
+        "lat": 404.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 2,
+        "iops": 108.0,
+        "mibs": 108.0,
+        "lat": 409.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 4,
+        "iops": 109.0,
+        "mibs": 109.0,
+        "lat": 435.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 8,
+        "iops": 110.0,
+        "mibs": 110.0,
+        "lat": 757.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 16,
+        "iops": 110.0,
+        "mibs": 110.0,
+        "lat": 1292.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 1,
+        "iops": 106.0,
+        "mibs": 106.0,
+        "lat": 402.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 2,
+        "iops": 108.0,
+        "mibs": 108.0,
+        "lat": 407.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 4,
+        "iops": 109.0,
+        "mibs": 109.0,
+        "lat": 437.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 8,
+        "iops": 109.0,
+        "mibs": 109.0,
+        "lat": 746.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 16,
+        "iops": 110.0,
+        "mibs": 110.0,
+        "lat": 1228.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 1,
+        "iops": 3423.0,
+        "mibs": 3423.0,
+        "lat": 287.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 2,
+        "iops": 7985.0,
+        "mibs": 7985.0,
+        "lat": 242.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 4,
+        "iops": 219.0,
+        "mibs": 219.0,
+        "lat": 14822.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 8,
+        "iops": 19149.0,
+        "mibs": 19149.0,
+        "lat": 347.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 16,
+        "iops": 873.0,
+        "mibs": 873.0,
+        "lat": 13891.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 1,
+        "iops": 3667.0,
+        "mibs": 3667.0,
+        "lat": 267.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 2,
+        "iops": 211.0,
+        "mibs": 211.0,
+        "lat": 7791.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 4,
+        "iops": 148.0,
+        "mibs": 148.0,
+        "lat": 25507.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 8,
+        "iops": 821.0,
+        "mibs": 821.0,
+        "lat": 6266.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 16,
+        "iops": 443.0,
+        "mibs": 443.0,
+        "lat": 29567.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 1,
+        "iops": 3507.0,
+        "mibs": 3507.0,
+        "lat": 279.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 2,
+        "iops": 211.0,
+        "mibs": 211.0,
+        "lat": 7792.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 4,
+        "iops": 219.0,
+        "mibs": 219.0,
+        "lat": 15038.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 8,
+        "iops": 435.0,
+        "mibs": 435.0,
+        "lat": 13990.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 16,
+        "iops": 442.0,
+        "mibs": 442.0,
+        "lat": 30994.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 1,
+        "iops": 25534.0,
+        "mibs": 99.0,
+        "lat": 3.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 2,
+        "iops": 26887.0,
+        "mibs": 105.0,
+        "lat": 3.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 4,
+        "iops": 27602.0,
+        "mibs": 107.0,
+        "lat": 3.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 8,
+        "iops": 27972.0,
+        "mibs": 109.0,
+        "lat": 3.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 16,
+        "iops": 28134.0,
+        "mibs": 109.0,
+        "lat": 5.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 1,
+        "iops": 25508.0,
+        "mibs": 99.0,
+        "lat": 3.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 2,
+        "iops": 26872.0,
+        "mibs": 104.0,
+        "lat": 3.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 4,
+        "iops": 27595.0,
+        "mibs": 107.0,
+        "lat": 3.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 8,
+        "iops": 27961.0,
+        "mibs": 109.0,
+        "lat": 3.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 16,
+        "iops": 28144.0,
+        "mibs": 109.0,
+        "lat": 5.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 1,
+        "iops": 25514.0,
+        "mibs": 99.0,
+        "lat": 3.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 2,
+        "iops": 26895.0,
+        "mibs": 105.0,
+        "lat": 3.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 4,
+        "iops": 27629.0,
+        "mibs": 107.0,
+        "lat": 3.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 8,
+        "iops": 27967.0,
+        "mibs": 109.0,
+        "lat": 3.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 16,
+        "iops": 28154.0,
+        "mibs": 109.0,
+        "lat": 5.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 1,
+        "iops": 5306.0,
+        "mibs": 20.0,
+        "lat": 187.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 2,
+        "iops": 13882.0,
+        "mibs": 54.0,
+        "lat": 143.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 4,
+        "iops": 24562.0,
+        "mibs": 95.0,
+        "lat": 161.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 8,
+        "iops": 46214.0,
+        "mibs": 180.0,
+        "lat": 172.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "threads": 16,
+        "iops": 74297.0,
+        "mibs": 290.0,
+        "lat": 213.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 1,
+        "iops": 5156.0,
+        "mibs": 20.0,
+        "lat": 193.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 2,
+        "iops": 13336.0,
+        "mibs": 52.0,
+        "lat": 149.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 4,
+        "iops": 26915.0,
+        "mibs": 105.0,
+        "lat": 147.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 8,
+        "iops": 46493.0,
+        "mibs": 181.0,
+        "lat": 171.0
+    },
+    {
+        "target_name": "FNAS-1.3",
+        "threads": 16,
+        "iops": 81275.0,
+        "mibs": 317.0,
+        "lat": 195.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 1,
+        "iops": 5065.0,
+        "mibs": 19.0,
+        "lat": 196.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 2,
+        "iops": 12746.0,
+        "mibs": 49.0,
+        "lat": 156.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 4,
+        "iops": 26071.0,
+        "mibs": 101.0,
+        "lat": 152.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 8,
+        "iops": 47342.0,
+        "mibs": 184.0,
+        "lat": 167.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "threads": 16,
+        "iops": 73133.0,
+        "mibs": 285.0,
+        "lat": 217.0
+    }
+]

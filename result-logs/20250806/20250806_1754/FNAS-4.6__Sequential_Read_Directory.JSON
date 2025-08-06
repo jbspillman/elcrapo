@@ -1,0 +1,67 @@
+[
+    {
+        "target_name": "FNAS-4.6",
+        "test_mode": "Sequential",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 1,
+        "file_size": 536870912,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 3564.0,
+        "mibs": 3564.0,
+        "lat": 275.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "test_mode": "Sequential",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 2,
+        "file_size": 268435456,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 7451.0,
+        "mibs": 7451.0,
+        "lat": 257.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "test_mode": "Sequential",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 4,
+        "file_size": 134217728,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 11908.0,
+        "mibs": 11908.0,
+        "lat": 314.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "test_mode": "Sequential",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 8,
+        "file_size": 67108864,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 819.0,
+        "mibs": 819.0,
+        "lat": 6404.0
+    },
+    {
+        "target_name": "FNAS-4.6",
+        "test_mode": "Sequential",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 16,
+        "file_size": 33554432,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 442.0,
+        "mibs": 442.0,
+        "lat": 29729.0
+    }
+]

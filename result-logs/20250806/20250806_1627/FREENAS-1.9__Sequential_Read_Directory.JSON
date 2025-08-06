@@ -1,0 +1,67 @@
+[
+    {
+        "target_name": "FREENAS-1.9",
+        "test_mode": "Sequential",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 1,
+        "file_size": 1073741824,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 3879.0,
+        "mibs": 3879.0,
+        "lat": 255.0
+    },
+    {
+        "target_name": "FREENAS-1.9",
+        "test_mode": "Sequential",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 2,
+        "file_size": 536870912,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 9673.0,
+        "mibs": 9673.0,
+        "lat": 203.0
+    },
+    {
+        "target_name": "FREENAS-1.9",
+        "test_mode": "Sequential",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 4,
+        "file_size": 268435456,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 419.0,
+        "mibs": 419.0,
+        "lat": 6964.0
+    },
+    {
+        "target_name": "FREENAS-1.9",
+        "test_mode": "Sequential",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 8,
+        "file_size": 134217728,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 441.0,
+        "mibs": 441.0,
+        "lat": 14235.0
+    },
+    {
+        "target_name": "FREENAS-1.9",
+        "test_mode": "Sequential",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 16,
+        "file_size": 67108864,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 148.0,
+        "mibs": 148.0,
+        "lat": 102431.0
+    }
+]

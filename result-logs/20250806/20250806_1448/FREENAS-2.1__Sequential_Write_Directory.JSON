@@ -1,0 +1,67 @@
+[
+    {
+        "target_name": "FREENAS-2.1",
+        "test_mode": "Sequential",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 1,
+        "file_size": 1073741824,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 1208.0,
+        "mibs": 1208.0,
+        "lat": 826.0
+    },
+    {
+        "target_name": "FREENAS-2.1",
+        "test_mode": "Sequential",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 2,
+        "file_size": 536870912,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 2390.0,
+        "mibs": 2390.0,
+        "lat": 829.0
+    },
+    {
+        "target_name": "FREENAS-2.1",
+        "test_mode": "Sequential",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 4,
+        "file_size": 268435456,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 4636.0,
+        "mibs": 4636.0,
+        "lat": 849.0
+    },
+    {
+        "target_name": "FREENAS-2.1",
+        "test_mode": "Sequential",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 8,
+        "file_size": 134217728,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 7312.0,
+        "mibs": 7312.0,
+        "lat": 1040.0
+    },
+    {
+        "target_name": "FREENAS-2.1",
+        "test_mode": "Sequential",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 16,
+        "file_size": 67108864,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 8005.0,
+        "mibs": 8005.0,
+        "lat": 1669.0
+    }
+]

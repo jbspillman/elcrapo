@@ -1,0 +1,67 @@
+[
+    {
+        "target_name": "FREENAS-1.9",
+        "test_mode": "Random",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 1,
+        "file_size": 1073741824,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 3477.0,
+        "mibs": 13.0,
+        "lat": 286.0
+    },
+    {
+        "target_name": "FREENAS-1.9",
+        "test_mode": "Random",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 2,
+        "file_size": 536870912,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 7737.0,
+        "mibs": 30.0,
+        "lat": 257.0
+    },
+    {
+        "target_name": "FREENAS-1.9",
+        "test_mode": "Random",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 4,
+        "file_size": 268435456,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 10564.0,
+        "mibs": 41.0,
+        "lat": 377.0
+    },
+    {
+        "target_name": "FREENAS-1.9",
+        "test_mode": "Random",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 8,
+        "file_size": 134217728,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 14447.0,
+        "mibs": 56.0,
+        "lat": 552.0
+    },
+    {
+        "target_name": "FREENAS-1.9",
+        "test_mode": "Random",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 16,
+        "file_size": 67108864,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 26565.0,
+        "mibs": 103.0,
+        "lat": 600.0
+    }
+]
