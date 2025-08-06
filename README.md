@@ -30,7 +30,8 @@ Coding at it's worst.... don't judge me...
 
 <hr>
 
-<img width="1287" height="771" alt="screnshot_combo_html" src="https://github.com/user-attachments/assets/357ee321-643c-4bb6-bacb-1efa04dfde9a" />
+
+<img width="1273" height="1022" alt="new_chart" src="https://github.com/user-attachments/assets/5012df40-17eb-4b35-a510-b5a36cd24053" />
 
 
 
