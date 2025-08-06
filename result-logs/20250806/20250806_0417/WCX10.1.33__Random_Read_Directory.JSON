@@ -1,0 +1,67 @@
+[
+    {
+        "target_name": "WCX10.1.33",
+        "test_mode": "Random",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 1,
+        "file_size": 21474836480,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 545015.0,
+        "mibs": 2128.0,
+        "lat": 1.0
+    },
+    {
+        "target_name": "WCX10.1.33",
+        "test_mode": "Random",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 2,
+        "file_size": 10737418240,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 1078073.0,
+        "mibs": 4211.0,
+        "lat": 1.0
+    },
+    {
+        "target_name": "WCX10.1.33",
+        "test_mode": "Random",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 4,
+        "file_size": 5368709120,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 2049244.0,
+        "mibs": 8004.0,
+        "lat": 1.0
+    },
+    {
+        "target_name": "WCX10.1.33",
+        "test_mode": "Random",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 8,
+        "file_size": 2684354560,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 2970246.0,
+        "mibs": 11602.0,
+        "lat": 1.0
+    },
+    {
+        "target_name": "WCX10.1.33",
+        "test_mode": "Random",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 16,
+        "file_size": 1342177280,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 2997436.0,
+        "mibs": 11708.0,
+        "lat": 3.0
+    }
+]
