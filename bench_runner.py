@@ -10,16 +10,29 @@ import time
 '''
 storage_targets = [
     {
-        "target_name": "wcx10.1.33",
-        "target_host": "beastserver.beastmode.local.net",
-        "target_path_nfs": "/mnt/Drives/12000b"
+        "target_name": "fNAS-1.3",
+        "target_host": "mediaserver.beastmode.local.net",
+        "target_path_nfs": "/mnt/Drives/ms_00240a"
     },
     {
-        "target_name": "wcx11.2.19",
-        "target_host": "beastserver.beastmode.local.net",
-        "target_path_nfs": "/mnt/Drives/04000b"
-    }
+        "target_name": "fNAS-2.4",
+        "target_host": "mediaserver.beastmode.local.net",
+        "target_path_nfs": "/mnt/Drives/ms_spillman"
+    }    
 ]
+'''
+    {
+        "target_name": "fNAS-4.6",
+        "target_host": "mediaserver.beastmode.local.net",
+        "target_path_nfs": "/mnt/Drives/ms_spillman"
+    },    
+    {
+        "target_name": "FreeNAS-2.4",
+        "target_host": "beastserver.beastmode.local.net",
+        "target_path_nfs": "/mnt/Local/nvme0"
+    }
+'''
+
 
 def show_the_text():
     print()
@@ -83,6 +96,8 @@ def run_bench_marks():
 
     ''' default top level folder '''
     script_folder = os.path.dirname(os.path.abspath(__file__))
+    with open('pid.lock', 'w') as pi:
+         pi.write(' ')
 
     elbencho_exe = r'/usr/bin/elbencho'
 
@@ -91,31 +106,33 @@ def run_bench_marks():
         {
             "test_name": "Sequential",
             "test_code": "SEQ",
-            "test_mode": "--write --read --trunctosize",
+            "test_mode": "--write --read --trunctosize",  # 
             "test_block": "1M"
         },
         {
             "test_name": "Random",
             "test_code": "RAN",
-            "test_mode": "--write --read --rand --randalgo fast --trunctosize",
+            "test_mode": "--write --read --rand --trunctosize",   # --trunctosize --randalgo fast
             "test_block": "4K"
         },
     ]
     test_target_types = ["directory_based"]  # "directory_based", "file_based"
-    threads_and_sizes_list = ["1;20", "2;10", "4;5", "8;2.5", "16;1.25"] # "Threads;GB"
     iodepth = 1
+    
+    threads_list = [1, 2, 4, 8, 16]
+    sizes_list = [2048, 1024, 512, 256, 128]  # MB
 
-    directory_extras = "--cpu --lat --log 1 --timelimit 900 --no0usecerr --dirsharing --files 1 --dirs 1 --mkdirs --deldirs --delfiles"
-    file_extras = "--cpu --lat --log 1 --timelimit 900 --no0usecerr"
-    extra_options = "--live1 --livecsvex --liveint 1000" # --dryrun --direct
+    directory_extras = "--cpu --lat --dirsharing --files 1 --dirs 1 --mkdirs "  # --deldirs --delfiles
+    file_extras = "--cpu --lat"
+    extra_options = "--no0usecerr --live1 --livecsvex --liveint 1000 --log 0 --timelimit 1500" # --dryrun --direct
     full_cmd = ""
     cleanup_list = []
     target_names = []
     all_labels = []
 
     ''' Threads and File Sizes are same length of a list. '''
-    threads_sizes = len(threads_and_sizes_list)
-    types_of_jobs = len(two_corners_x_write_read)  # RANDOM 4K and SEQUENTIAL 1M
+    threads_sizes = len(threads_list)
+    types_of_jobs = len(two_corners_x_write_read)  # RANDOM 4KB and SEQUENTIAL 1MB
     total_tests = len(storage_targets) * threads_sizes * types_of_jobs * len(test_target_types)
     tests_per_target = round(total_tests / len(storage_targets))
     
@@ -155,9 +172,8 @@ def run_bench_marks():
         os.makedirs(target_test_directory, exist_ok=True)
 
         ''' Easier to ramp up the thread count per test then move on, for parsing later. '''
-        for threads_n_size in threads_and_sizes_list:
-            threads = threads_n_size.split(';')[0]
-            file_size = threads_n_size.split(';')[1]
+        for thread_size, file_size in zip(threads_list, sizes_list):
+
             for test_target_type in  test_target_types:
                 ''' create test commands '''
                 for test_item in two_corners_x_write_read:
@@ -168,7 +184,7 @@ def run_bench_marks():
                     block_size = test_item["test_block"]
                     test_number += 1
                     test_pad = str(test_number).zfill(3)
-                    test_label = f'{test_pad}_{test_name}_{target_name}_{file_size}G_{block_size}_{threads}T_{iodepth}D'.upper()
+                    test_label = f'{test_pad}_{test_name}_{target_name}_{file_size}M_{block_size}_{thread_size}T_{iodepth}D'.upper()
                     file_label = f'{target_name}_{test_name}_{test_target_type}'.upper()
                     res_file = os.path.join(test_folder, f"{file_label}.txt")
                     csv_file = os.path.join(test_folder, f"{file_label}.csv")
@@ -181,7 +197,7 @@ def run_bench_marks():
                     if test_target_type == "directory_based":
                         data_file_name = None
                         extras = directory_extras
-                        test_target_path = f'{target_test_directory}/'
+                        test_target_path = f'{target_test_directory}'
                         cleanup_list.append(str(target_test_directory))
                     else:
                         extras = file_extras
@@ -196,8 +212,8 @@ def run_bench_marks():
                     print('test_code                    : ', test_code)
                     print('test_label                   : ', test_label)
                     print('test_mode                    : ', test_mode)
-                    print('file_size                    : ', f'{file_size}G')
-                    print('threads                      : ', threads)
+                    print('file_size                    : ', f'{file_size}M')
+                    print('thread_size                  : ', thread_size)
                     print('block_size                   : ', block_size)
                     print('iodepth                      : ', iodepth)
                     print('file_label                   : ', file_label)
@@ -220,17 +236,15 @@ def run_bench_marks():
                         print('#################################')
                         time.sleep(5)
                     
-                    file_size_mb = round(float(file_size) * 1024)
-                    
                     full_cmd = (f'{elbencho_exe} '
                                 f'--label {test_label} '
                                 f'{test_mode} '
                                 f'{extras} '
                                 f'{extra_options} '
                                 f'--iodepth={iodepth} '
-                                f'--threads={threads} '
+                                f'--threads={thread_size} '
                                 f'--block={block_size} '
-                                f'--size={file_size_mb}M '
+                                f'--size={file_size}M '
                                 f'--csvfile {csv_file} '
                                 f'--resfile {res_file} '
                                 f'--livecsv {csv_live} '
@@ -243,10 +257,13 @@ def run_bench_marks():
                     print('test_time                    : ', test_time)
                     print()
 
+                    ''' use find command to clean folders and files. '''
+                    find_cmd_files = f'find {test_target_path}/ -type f -delete ;'
+                    os.system(find_cmd_files)
+                    
+                    find_cmd_dirs = f'find {test_target_path}/ -mindepth 1 -type d -delete ;'
+                    os.system(find_cmd_dirs)
 
-    cleanup_list = list(set(cleanup_list))
-    the_cleaner(cleanup_list)
-    time.sleep(3)
 
     if 'dryrun' in full_cmd:
         os.rmdir(test_folder)
@@ -257,7 +274,6 @@ def run_bench_marks():
 def main():
     results_folder = run_bench_marks()
     
-    print(f'use: {results_folder}')
     time.sleep(3)
     
     create_reports(results_folder)

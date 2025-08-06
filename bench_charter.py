@@ -59,68 +59,69 @@ def parse_test_data_files(folder_path):
     
     for file_name in os.listdir(folder_path):
         if file_name.endswith('.json'):
-            file_path = os.path.join(folder_path, file_name)
-            
-            target_name = file_name.split('_')[0]
-            if 'RANDOM' in file_name:
-                test_mode = "Random"
-            else:
-                test_mode = "Sequential"
-            if 'FILE_BASED' in file_name:
-                test_type = "File"
-            else:
-                test_type = "Directory"
-
-            writes_list = []
-            reads_list = []
-
-            with open(file_path, 'r', encoding="utf-8") as file:
-                the_data = json.load(file)
+            if not 'all_directory_tests' in file_name:
+                file_path = os.path.join(folder_path, file_name)
                 
-            for item in the_data:
-                threads = item["threads"]
-                file_size = item["file size"]
-                block_size = item["block size"]
-                io_depth = item["IO depth"]
-                operation = item["operation"]
-                iops = item["IOPS [last]"]
-                mibs = item["MiB/s [last]"]
-                lat = item["IO lat us [avg]"]
-                if operation == "READ":
-                    operation = "Read"
-                elif operation == "WRITE":
-                    operation = "Write"
-                k = {
-                    "target_name": target_name,
-                    "test_mode": test_mode,
-                    "operation": operation,
-                    "test_type": test_type,
-                    "threads": threads,
-                    "file_size": file_size,
-                    "block_size": block_size,
-                    "io_depth": io_depth,
-                    "iops": iops,
-                    "mibs": mibs,
-                    "lat": lat
-                }
-                if operation == "Read":
-                    reads_list.append(k)
+                target_name = file_name.split('_')[0]
+                if 'RANDOM' in file_name:
+                    test_mode = "Random"
+                else:
+                    test_mode = "Sequential"
+                if 'FILE_BASED' in file_name:
+                    test_type = "File"
+                else:
+                    test_type = "Directory"
 
-                if operation == "Write":
-                    writes_list.append(k)
+                writes_list = []
+                reads_list = []
 
-            pretty_reads = json.dumps(reads_list, indent=4)
-            new_reads_json_file = f'{target_name}__{test_mode}_Read_{test_type}.JSON'
-            new_reads_path = os.path.join(folder_path, new_reads_json_file)
-            with open(new_reads_path, 'w', encoding="utf-8") as f:
-                f.write(pretty_reads)
+                with open(file_path, 'r', encoding="utf-8") as file:
+                    the_data = json.load(file)
+                    
+                for item in the_data:
+                    threads = item["threads"]
+                    file_size = item["file size"]
+                    block_size = item["block size"]
+                    io_depth = item["IO depth"]
+                    operation = item["operation"]
+                    iops = item["IOPS [last]"]
+                    mibs = item["MiB/s [last]"]
+                    lat = item["IO lat us [avg]"]
+                    if operation == "READ":
+                        operation = "Read"
+                    elif operation == "WRITE":
+                        operation = "Write"
+                    k = {
+                        "target_name": target_name,
+                        "test_mode": test_mode,
+                        "operation": operation,
+                        "test_type": test_type,
+                        "threads": threads,
+                        "file_size": file_size,
+                        "block_size": block_size,
+                        "io_depth": io_depth,
+                        "iops": iops,
+                        "mibs": mibs,
+                        "lat": lat
+                    }
+                    if operation == "Read":
+                        reads_list.append(k)
 
-            pretty_writes = json.dumps(writes_list, indent=4)
-            new_writes_json_file = f'{target_name}__{test_mode}_Write_{test_type}.JSON'
-            new_writes_path = os.path.join(folder_path, new_writes_json_file)
-            with open(new_writes_path, 'w', encoding="utf-8") as f:
-                f.write(pretty_writes)          
-            os.remove(file_path)
+                    if operation == "Write":
+                        writes_list.append(k)
+
+                pretty_reads = json.dumps(reads_list, indent=4)
+                new_reads_json_file = f'{target_name}__{test_mode}_Read_{test_type}.JSON'
+                new_reads_path = os.path.join(folder_path, new_reads_json_file)
+                with open(new_reads_path, 'w', encoding="utf-8") as f:
+                    f.write(pretty_reads)
+
+                pretty_writes = json.dumps(writes_list, indent=4)
+                new_writes_json_file = f'{target_name}__{test_mode}_Write_{test_type}.JSON'
+                new_writes_path = os.path.join(folder_path, new_writes_json_file)
+                with open(new_writes_path, 'w', encoding="utf-8") as f:
+                    f.write(pretty_writes)          
+                os.remove(file_path)
 
 
 
@@ -143,20 +144,25 @@ def create_report_data(folder_path):
     
     directory_tests = []
     file_tests = []
-    tmp_names_list = []
+    tmp_names_list = ""
+    
     for file_name in os.listdir(folder_path):
         file_path_name = os.path.join(folder_path, file_name)
         if file_name.endswith(".JSON"):
             tgt_name = file_name.split('_')[0]
             if tgt_name not in tmp_names_list:
-                tmp_names_list.append(tgt_name)
+                tmp_names_list += f'"{tgt_name}", '
           
             if '_Directory.' in file_name:
                 directory_tests.append(file_path_name)
                 
             elif '_File.' in file_name:
                 file_tests.append(file_path_name)
-
+        else:
+            skip = True
+    tmp_names_list = str(tmp_names_list).rstrip(', ')
+   
+    all_directory_test_results = []
     print('Process Directory Tests:')
     for test_type in test_types_ordered:
         if test_type == "Sequential_Write":
@@ -178,6 +184,7 @@ def create_report_data(folder_path):
                 target_name = file_name.split('_')[0]
                 for result in result_data:
                     k = {
+                        "test_type": test_type,
                         "target_name": target_name,
                         "threads": result["threads"],
                         "iops": result["iops"],
@@ -185,8 +192,15 @@ def create_report_data(folder_path):
                         "lat": result["lat"],
                     }
                     list_to_use.append(k)
-                    
-                    
+                    all_directory_test_results.append(k)
+    
+    pretty_all_directory = json.dumps(all_directory_test_results, indent=4)
+    all_directory_json_file = f'all_directory_tests.json'
+    all_directory_json_path = os.path.join(folder_path, all_directory_json_file)
+    with open(all_directory_json_path, 'w', encoding="utf-8") as f:
+        f.write(pretty_all_directory)          
+
+    print('test_results_directory_all:', len(all_directory_test_results))
     print('test_results_directory_sw:', len(test_results_directory_sw))
     print('test_results_directory_sr:', len(test_results_directory_sr))
     print('test_results_directory_rw:', len(test_results_directory_rw))
@@ -239,7 +253,6 @@ def create_report_data(folder_path):
     with open(template_file_for_charts, "r", encoding="utf-8") as html_template:
         html_content = html_template.read()
 
-
     str_grouped_dsw = str(dict(grouped_dsw))
     str_grouped_dsr = str(dict(grouped_dsr))
     str_grouped_drw = str(dict(grouped_drw))
@@ -251,16 +264,20 @@ def create_report_data(folder_path):
     new_content = new_content.replace('GROUPED_RAN_WRITE_DICTIONARY', str_grouped_drw)
     new_content = new_content.replace('GROUPED_RAN_READ_DICTIONARY', str_grouped_drr)
 
-    ver_name_x = tmp_names_list[0]
-    ver_name_y = tmp_names_list[1]
     
-    new_content = new_content.replace("XXXXX_VERSION_XXXXX", ver_name_x)
-    new_content = new_content.replace("YYYYY_VERSION_YYYYY", ver_name_y)
+    new_content = new_content.replace("XXXXX_VERSIONS_LIST_XXXXX", tmp_names_list)
 
     new_website_charts_file = os.path.join(folder_path, 'charted_results.html')
     with open(new_website_charts_file, "w", encoding="utf-8") as html_chart:
         html_chart.write(new_content)
+        
+    log_date_time_stamp = os.path.basename(folder_path)               
+    web_charts_file_path = os.path.join("/var/www/html/charts", f"{log_date_time_stamp}.html")
+    with open(web_charts_file_path, "w", encoding="utf-8") as html_chart:
+        html_chart.write(new_content)
+
     print('created:', new_website_charts_file)
+    print('created:', web_charts_file_path)
     print('')
     
 
@@ -270,6 +287,10 @@ def create_reports(results_folder_path):
     convert_csv_data(results_folder_path)    
     parse_test_data_files(results_folder_path)
     create_report_data(results_folder_path)
+    
+    if os.path.exists('pid.lock'):
+        os.remove('pid.lock')
    
 
 
+# create_reports('/home/spillman/pyprojects/elcrapo/result-logs/20250806/20250806_1817')
