@@ -42,11 +42,11 @@ def show_the_text():
     print(r'                                        (///|\\\)                                         ')
     print(r'                                     (//////|\\\\\\\)                                     ')
     print(r'                                 (//////////|\\\\\\\\\\\)                                 ')
-    print(r'                             (//////////////|\\\\\\\\\\\\\\\)                             ')
+    print(r'                           (////////////////|\\\\\\\\\\\\\\\\\)                           ')
+    print(r'                         (//////////////////|\\\\\\\\\\\\\\\\\\\)                         ')
     print(r'                         (//////////////////|\\\\\\\\\\\\\\\\\\\)                         ')
     print(r'                     (//////////////////////|\\\\\\\\\\\\\\\\\\\\\\\)                     ')
     print(r'                 (//////////////////////////|\\\\\\\\\\\\\\\\\\\\\\\\\\\)                 ')
-    print(r'             (//////////////////////////////|\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\)             ')
     print(r'         (//////////////////////////////////|\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\)         ')
     print(r'     (//////////////////////////////////////|\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\)     ')
     print(r'    (||                    ________    __________  ___    ____  ____               ||)    ')
@@ -56,6 +56,8 @@ def show_the_text():
     print(r'   ((||                /_____/_____/\____/_/ |_/_/  |_/_/    \____/                ||))   ')
     print(r'  (((||                                                                            ||)))  ')
     print(r'  ((((\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|////////////////////////////////////////)))) ')
+    print(r' (((((\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|////////////////////////////////////////)))))')
+    print(r' (((((\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|////////////////////////////////////////)))))')
     print(r' (((((\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|////////////////////////////////////////)))))')
 
     time.sleep(3)
@@ -119,12 +121,12 @@ def run_bench_marks():
     test_target_types = ["directory_based"]  # "directory_based", "file_based"
     iodepth = 1
     
-    threads_list = [1, 2, 4, 8, 16]
-    sizes_list = [2048, 1024, 512, 256, 128]  # MB
+    threads_list = [1, 4, 16]      # number
+    sizes_list = [2048, 512, 128]  # MB
 
-    directory_extras = "--cpu --lat --dirsharing --files 1 --dirs 1 --mkdirs "  # --deldirs --delfiles
+    directory_extras = "--cpu --lat --dirsharing --files 2 --dirs 4 --mkdirs "  # --deldirs --delfiles
     file_extras = "--cpu --lat"
-    extra_options = "--no0usecerr --live1 --livecsvex --liveint 1000 --log 0 --timelimit 1500" # --dryrun --direct
+    extra_options = "--no0usecerr --live1 --livecsvex --liveint 1000 --log 0 --direct --timelimit 1500" # --dryrun --direct
     full_cmd = ""
     cleanup_list = []
     target_names = []

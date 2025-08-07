@@ -1,4 +1,4 @@
-<h1> ELCRAPO !!!! </h1>
+<h1> ELCRAPO ! </h1>
 <pre>                                        
                                                 |                                                   
                                                /|\                                                  
