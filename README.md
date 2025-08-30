@@ -31,7 +31,7 @@ Coding at it's worst.... don't judge me...
 <hr>
 
 
-<img width="1273" height="1022" alt="new_chart" src="https://github.com/user-attachments/assets/5012df40-17eb-4b35-a510-b5a36cd24053" />
+<img width="1273" height="1022" alt="old_chart" src="https://github.com/user-attachments/assets/5012df40-17eb-4b35-a510-b5a36cd24053" />
 
 
 
