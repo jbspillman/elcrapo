@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Benchmark Analysis</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #808080 0%, ##D3D3D3 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #718096;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 15px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .file-input-wrapper input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-input-label {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .file-input-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        select, button {
+            padding: 12px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            background: white;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        select:focus, button:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            border: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(72, 187, 120, 0.4);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        @media (min-width: 1200px) {
+            .charts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .chart-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .chart-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .chart-canvas {
+            height: 400px !important;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #718096;
+            font-weight: 500;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .error {
+            background: #fed7d7;
+            border: 1px solid #feb2b2;
+            color: #c53030;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>File Storage Benchmark Performance Analysis</h1>
+        <h2>#PRODUCT_NAME# #PRODUCT_VERSION#</h2>
+        <div class="subtitle">Interactive visualization of IOPS, Throughput, and Latency metrics</div>
+        <div class="subtitle">Tested: #TEST_DATE# #TEST_TIME#</div>
+    </div>
+
+    <div class="controls">
+        <!--
+        <div class="file-input-wrapper">
+            <input type="file" id="jsonFile" accept=".json" multiple>
+            <label for="jsonFile" class="file-input-label">📁 Load JSON Files</label>
+        </div>
+        -->
+
+        <select id="testTypeFilter">
+            <option value="all">All Test Types</option>
+        </select>
+
+        <select id="operationFilter">
+            <option value="all">All Operations</option>
+            <option value="WRITE">Write Operations</option>
+            <option value="READ">Read Operations</option>
+        </select>
+
+        <select id="blockSizeFilter">
+            <option value="all">All Block Sizes</option>
+        </select>
+
+        <button onclick="generateCharts()">🚀 Generate Charts</button>
+    </div>
+
+    <div class="error" id="errorMessage"></div>
+    <div class="loading" id="loadingMessage">📊 Generating charts...</div>
+
+    <div class="stats" id="statsContainer"></div>
+
+    <div class="charts-grid" id="chartsContainer">
+        <div class="chart-container">
+            <h3 class="chart-title">IOPS vs Thread Count</h3>
+            <canvas id="iopsChart" class="chart-canvas"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h3 class="chart-title">Throughput (MiB/s) vs Thread Count</h3>
+            <canvas id="throughputChart" class="chart-canvas"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h3 class="chart-title">Average Latency (µs) vs Thread Count</h3>
+            <canvas id="latencyChart" class="chart-canvas"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h3 class="chart-title">Performance Efficiency</h3>
+            <canvas id="efficiencyChart" class="chart-canvas"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    let allData = [];
+    let charts = {};
+
+    // Color palette for different datasets
+    const colors = [
+        '#667eea', '#764ba2', '#f093fb', '#f5576c',
+        '#4facfe', '#00f2fe', '#43e97b', '#38f9d7',
+        '#ffecd2', '#fcb69f', '#a8edea', '#fed6e3'
+    ];
+
+    // Create Data
+    const test_Data = [
+        TEXT_JSON_DICTS
+    ];
+
+    // Initialize with sample data
+    allData = test_Data;
+
+    // Load when page is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page loaded, Chart available:', typeof Chart !== 'undefined');
+        updateFilters();
+        generateCharts();
+    });
+
+    // File upload handler
+    document.getElementById('jsonFile').addEventListener('change', function(e) {
+        const files = e.target.files;
+        if (files.length === 0) return;
+
+        allData = [];
+        let filesProcessed = 0;
+
+        for (let file of files) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const jsonData = JSON.parse(e.target.result);
+                    if (Array.isArray(jsonData)) {
+                        allData = allData.concat(jsonData);
+                    } else {
+                        allData.push(jsonData);
+                    }
+
+                    filesProcessed++;
+                    if (filesProcessed === files.length) {
+                        updateFilters();
+                        generateCharts();
+                    }
+                } catch (error) {
+                    showError('Error parsing JSON file: ' + file.name);
+                }
+            };
+            reader.readAsText(file);
+        }
+    });
+
+    function showError(message) {
+        const errorDiv = document.getElementById('errorMessage');
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        setTimeout(() => {
+            errorDiv.style.display = 'none';
+        }, 5000);
+    }
+
+    function updateFilters() {
+        const testTypes = [...new Set(allData.map(d => d.mode))];
+        const blockSizes = [...new Set(allData.map(d => d.block_size))];
+
+        const testTypeFilter = document.getElementById('testTypeFilter');
+        const blockSizeFilter = document.getElementById('blockSizeFilter');
+
+        testTypeFilter.innerHTML = '<option value="all">All Test Types</option>';
+        blockSizeFilter.innerHTML = '<option value="all">All Block Sizes</option>';
+
+        testTypes.forEach(type => {
+            const option = document.createElement('option');
+            option.value = type;
+            option.textContent = type;
+            testTypeFilter.appendChild(option);
+        });
+
+        blockSizes.forEach(size => {
+            const option = document.createElement('option');
+            option.value = size;
+            option.textContent = formatBytes(size);
+            blockSizeFilter.appendChild(option);
+        });
+    }
+
+    function formatBytes(bytes) {
+        if (bytes === 0) return '0 B';
+        const k = 1024;
+        const sizes = ['B', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+    }
+
+    function filterData() {
+        const testType = document.getElementById('testTypeFilter').value;
+        const operation = document.getElementById('operationFilter').value;
+        const blockSize = document.getElementById('blockSizeFilter').value;
+
+        return allData.filter(d => {
+            return (testType === 'all' || d.mode === testType) &&
+                   (operation === 'all' || d.operation === operation) &&
+                   (blockSize === 'all' || d.block_size == blockSize);
+        });
+    }
+
+    function generateCharts() {
+        if (typeof Chart === 'undefined') {
+            showError('Chart.js library is not loaded. Please refresh the page.');
+            return;
+        }
+
+        document.getElementById('loadingMessage').style.display = 'block';
+
+        setTimeout(() => {
+            const filteredData = filterData();
+
+            if (filteredData.length === 0) {
+                showError('No data matches the current filters');
+                document.getElementById('loadingMessage').style.display = 'none';
+                return;
+            }
+
+            const groupedData = groupDataByConfiguration(filteredData);
+
+            // Destroy existing charts
+            Object.values(charts).forEach(chart => {
+                if (chart && typeof chart.destroy === 'function') {
+                    chart.destroy();
+                }
+            });
+            charts = {};
+
+            createIOPSChart(groupedData);
+            createThroughputChart(groupedData);
+            createLatencyChart(groupedData);
+            createEfficiencyChart(groupedData);
+
+            updateStatistics(filteredData);
+
+            document.getElementById('loadingMessage').style.display = 'none';
+        }, 100);
+    }
+
+    function groupDataByConfiguration(data) {
+        const grouped = {};
+
+        data.forEach(d => {
+            const key = `${d.mode}_${d.operation}_${formatBytes(d.block_size)}`;
+            if (!grouped[key]) {
+                grouped[key] = [];
+            }
+            grouped[key].push(d);
+        });
+
+        Object.keys(grouped).forEach(key => {
+            grouped[key].sort((a, b) => a.threads - b.threads);
+        });
+
+        return grouped;
+    }
+
+    function createChart(canvasId, groupedData, yField, label) {
+        const ctx = document.getElementById(canvasId).getContext('2d');
+
+        const datasets = Object.keys(groupedData).map((key, index) => {
+            let yData;
+            if (yField === 'efficiency') {
+                yData = groupedData[key].map(d => ({ x: d.threads, y: parseFloat((d.iops_last / d.threads).toFixed(2)) }));
+            } else {
+                yData = groupedData[key].map(d => ({ x: d.threads, y: d[yField] }));
+            }
+
+            return {
+                label: key.replace(/_/g, ' '),
+                data: yData,
+                borderColor: colors[index % colors.length],
+                backgroundColor: colors[index % colors.length] + '30',
+                borderWidth: 3,
+                fill: false,
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                tension: 0.4
+            };
+        });
+
+        charts[canvasId] = new Chart(ctx, {
+            type: 'line',
+            data: { datasets },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    position: 'top',
+                    labels: {
+                        usePointStyle: true,
+                        padding: 15,
+                        fontSize: 11
+                    }
+                },
+                tooltips: {
+                    mode: 'nearest',
+                    intersect: false,
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    titleFontColor: 'white',
+                    bodyFontColor: 'white',
+                    borderColor: 'rgba(255,255,255,0.2)',
+                    borderWidth: 1
+                },
+                scales: {
+                    xAxes: [{
+                        type: 'linear',
+                        position: 'bottom',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Thread Count',
+                            fontSize: 13,
+                            fontStyle: 'bold'
+                        },
+                        gridLines: { color: 'rgba(0,0,0,0.1)' }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: label,
+                            fontSize: 13,
+                            fontStyle: 'bold'
+                        },
+                        gridLines: { color: 'rgba(0,0,0,0.1)' }
+                    }]
+                }
+            }
+        });
+    }
+
+    function createIOPSChart(groupedData) {
+        createChart('iopsChart', groupedData, 'iops_last', 'IOPS');
+    }
+
+    function createThroughputChart(groupedData) {
+        createChart('throughputChart', groupedData, 'mibs_last', 'Throughput (MiB/s)');
+    }
+
+    function createLatencyChart(groupedData) {
+        createChart('latencyChart', groupedData, 'io_lat_avg_us', 'Average Latency (µs)');
+    }
+
+    function createEfficiencyChart(groupedData) {
+        createChart('efficiencyChart', groupedData, 'efficiency', 'IOPS per Thread');
+    }
+
+    function updateStatistics(data) {
+        const stats = calculateStatistics(data);
+        const statsContainer = document.getElementById('statsContainer');
+
+        statsContainer.innerHTML = `
+            <div class="stat-card">
+                <div class="stat-value">${stats.maxIOPS.toLocaleString()}</div>
+                <div class="stat-label">Peak IOPS</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">${stats.maxThroughput.toLocaleString()}</div>
+                <div class="stat-label">Peak Throughput (MiB/s)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">${stats.minLatency}</div>
+                <div class="stat-label">Min Latency (µs)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">${stats.avgLatency}</div>
+                <div class="stat-label">Avg Latency (µs)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">${stats.totalTests}</div>
+                <div class="stat-label">Total Tests</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">${stats.optimalThreads}</div>
+                <div class="stat-label">Optimal Thread Count</div>
+            </div>
+        `;
+    }
+
+    function calculateStatistics(data) {
+        if (data.length === 0) return {};
+
+        const maxIOPS = Math.max(...data.map(d => d.iops_last));
+        const maxThroughput = Math.max(...data.map(d => d.mibs_last));
+        const minLatency = Math.min(...data.map(d => d.io_lat_avg_us));
+        const avgLatency = Math.round(data.reduce((sum, d) => sum + d.io_lat_avg_us, 0) / data.length);
+
+        // Find optimal thread count (highest IOPS per thread ratio)
+        let bestRatio = 0;
+        let optimalThreads = 1;
+        data.forEach(d => {
+            const ratio = d.iops_last / d.threads;
+            if (ratio > bestRatio) {
+                bestRatio = ratio;
+                optimalThreads = d.threads;
+            }
+        });
+
+        return {
+            maxIOPS: Math.round(maxIOPS),
+            maxThroughput: Math.round(maxThroughput),
+            minLatency: Math.round(minLatency),
+            avgLatency,
+            totalTests: data.length,
+            optimalThreads
+        };
+    }
+</script>
+</body>
+</html>
