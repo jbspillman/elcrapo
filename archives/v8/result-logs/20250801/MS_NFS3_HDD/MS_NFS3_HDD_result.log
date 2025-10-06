@@ -1,0 +1,864 @@
+ISO DATE: 2025-07-31T21:18:20-0400
+LABEL: 0001_SEQ_[10G]Size_[1M]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0001_SEQ_[10G]Size_[1M]Block_[32]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=1M" "--size=10G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0001_SEQ_20250731211820313135.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       930ms      1.323s
+            IOPS             :        7704        7739
+            Throughput MiB/s :        7704        7739
+            Total MiB        :        7170       10240
+            IOs total        :        7170       10240
+            CPU util %       :          85          83
+            IO latency       : [ min=361us avg=3.90ms max=32.7ms ]
+---
+
+READ        Elapsed time     :       632ms       645ms
+            IOPS             :       15860       15856
+            Throughput MiB/s :       15860       15856
+            Total MiB        :       10034       10240
+            IOs total        :       10034       10240
+            CPU util %       :          88          87
+            IO latency       : [ min=266us avg=2.00ms max=7.03ms ]
+---
+
+ISO DATE: 2025-07-31T21:19:55-0400
+LABEL: 0002_RAN_[10G]Size_[1M]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0002_RAN_[10G]Size_[1M]Block_[32]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=1M" "--size=10G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0002_RAN_20250731211955247751.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       929ms      1.110s
+            IOPS             :        8977        9219
+            Throughput MiB/s :        8977        9219
+            Total MiB        :        8345       10240
+            IOs total        :        8345       10240
+            CPU util %       :          84          83
+            IO latency       : [ min=344us avg=3.31ms max=32.4ms ]
+---
+
+READ        Elapsed time     :     20.113s     21.680s
+            IOPS             :         451         472
+            Throughput MiB/s :         451         472
+            Total MiB        :        9079       10240
+            IOs total        :        9079       10240
+            CPU util %       :           6           6
+            IO latency       : [ min=253us avg=66.2ms max=276ms ]
+---
+
+ISO DATE: 2025-07-31T21:21:17-0400
+LABEL: 0003_SEQ_[10G]Size_[1M]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0003_SEQ_[10G]Size_[1M]Block_[1]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=1M" "--size=10G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0003_SEQ_20250731212117226176.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      4.096s      4.096s
+            IOPS             :        2499        2499
+            Throughput MiB/s :        2499        2499
+            Total MiB        :       10240       10240
+            IOs total        :       10240       10240
+            CPU util %       :          13          13
+            IO latency       : [ min=355us avg=399us max=585us ]
+---
+
+READ        Elapsed time     :   1m34.215s   1m34.215s
+            IOPS             :         108         108
+            Throughput MiB/s :         108         108
+            Total MiB        :       10240       10240
+            IOs total        :       10240       10240
+            CPU util %       :           8           8
+            IO latency       : [ min=184us avg=9.20ms max=107ms ]
+---
+
+ISO DATE: 2025-07-31T21:22:55-0400
+LABEL: 0004_RAN_[10G]Size_[1M]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0004_RAN_[10G]Size_[1M]Block_[1]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=1M" "--size=10G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0004_RAN_20250731212255923651.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      3.909s      3.909s
+            IOPS             :        2619        2619
+            Throughput MiB/s :        2619        2619
+            Total MiB        :       10240       10240
+            IOs total        :       10240       10240
+            CPU util %       :          13          13
+            IO latency       : [ min=329us avg=381us max=597us ]
+---
+
+READ        Elapsed time     :     27.625s     27.625s
+            IOPS             :         370         370
+            Throughput MiB/s :         370         370
+            Total MiB        :       10240       10240
+            IOs total        :       10240       10240
+            CPU util %       :           5           5
+            IO latency       : [ min=168us avg=2.70ms max=19.2ms ]
+---
+
+ISO DATE: 2025-07-31T21:24:26-0400
+LABEL: 0005_SEQ_[10G]Size_[64K]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0005_SEQ_[10G]Size_[64K]Block_[32]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=64K" "--size=10G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0005_SEQ_20250731212426165776.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      1.158s      1.420s
+            IOPS             :      115915      115357
+            Throughput MiB/s :        7244        7209
+            Total MiB        :        8396       10240
+            IOs total        :      134345      163840
+            CPU util %       :          83          82
+            IO latency       : [ min=25us avg=263us max=23.0ms ]
+---
+
+READ        Elapsed time     :      1.547s      1.551s
+            IOPS             :      105673      105585
+            Throughput MiB/s :        6604        6599
+            Total MiB        :       10223       10240
+            IOs total        :      163579      163840
+            CPU util %       :          30          30
+            IO latency       : [ min=112us avg=302us max=3.86ms ]
+---
+
+ISO DATE: 2025-07-31T21:26:01-0400
+LABEL: 0006_RAN_[10G]Size_[64K]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0006_RAN_[10G]Size_[64K]Block_[32]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=64K" "--size=10G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0006_RAN_20250731212601905555.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      1.109s      1.320s
+            IOPS             :      122380      124082
+            Throughput MiB/s :        7648        7755
+            Total MiB        :        8489       10240
+            IOs total        :      135824      163840
+            CPU util %       :          84          83
+            IO latency       : [ min=20us avg=246us max=24.8ms ]
+---
+
+READ        Elapsed time     :     23.546s     23.654s
+            IOPS             :        6907        6926
+            Throughput MiB/s :         431         432
+            Total MiB        :       10165       10240
+            IOs total        :      162653      163840
+            CPU util %       :           7           7
+            IO latency       : [ min=187us avg=4.61ms max=18.7ms ]
+---
+
+ISO DATE: 2025-07-31T21:27:25-0400
+LABEL: 0007_SEQ_[10G]Size_[64K]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0007_SEQ_[10G]Size_[64K]Block_[1]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=64K" "--size=10G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0007_SEQ_20250731212725832169.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      4.335s      4.335s
+            IOPS             :       37793       37793
+            Throughput MiB/s :        2362        2362
+            Total MiB        :       10240       10240
+            IOs total        :      163840      163840
+            CPU util %       :          12          12
+            IO latency       : [ min=24us avg=25us max=123us ]
+---
+
+READ        Elapsed time     :    2m5.957s    2m5.957s
+            IOPS             :        1300        1300
+            Throughput MiB/s :          81          81
+            Total MiB        :       10240       10240
+            IOs total        :      163840      163840
+            CPU util %       :           7           7
+            IO latency       : [ min=108us avg=768us max=79.9ms ]
+---
+
+ISO DATE: 2025-07-31T21:29:37-0400
+LABEL: 0008_RAN_[10G]Size_[64K]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0008_RAN_[10G]Size_[64K]Block_[1]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=64K" "--size=10G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0008_RAN_20250731212937679312.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      4.295s      4.295s
+            IOPS             :       38138       38138
+            Throughput MiB/s :        2383        2383
+            Total MiB        :       10240       10240
+            IOs total        :      163840      163840
+            CPU util %       :          11          11
+            IO latency       : [ min=20us avg=25us max=93us ]
+---
+
+READ        Elapsed time     :   2m28.866s   2m28.866s
+            IOPS             :        1100        1100
+            Throughput MiB/s :          68          68
+            Total MiB        :       10240       10240
+            IOs total        :      163840      163840
+            CPU util %       :           5           5
+            IO latency       : [ min=106us avg=907us max=75.4ms ]
+---
+
+ISO DATE: 2025-07-31T21:32:11-0400
+LABEL: 0009_SEQ_[10G]Size_[4K]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0009_SEQ_[10G]Size_[4K]Block_[32]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=4K" "--size=10G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0009_SEQ_20250731213211496632.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      5.705s      6.181s
+            IOPS             :      427368      424047
+            Throughput MiB/s :        1669        1656
+            Total MiB        :        9524       10240
+            IOs total        :     2438390     2621440
+            CPU util %       :          85          84
+            IO latency       : [ min=3us avg=73us max=28.0ms ]
+---
+
+READ        Elapsed time     :     24.396s     24.402s
+            IOPS             :      107432      107423
+            Throughput MiB/s :         419         419
+            Total MiB        :       10238       10240
+            IOs total        :     2621021     2621440
+            CPU util %       :          26          26
+            IO latency       : [ min=109us avg=297us max=40.2ms ]
+---
+
+ISO DATE: 2025-07-31T21:34:13-0400
+LABEL: 0010_RAN_[10G]Size_[4K]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0010_RAN_[10G]Size_[4K]Block_[32]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=4K" "--size=10G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0010_RAN_20250731213413097947.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      5.487s      5.855s
+            IOPS             :      444469      447697
+            Throughput MiB/s :        1736        1748
+            Total MiB        :        9528       10240
+            IOs total        :     2439182     2621440
+            CPU util %       :          85          84
+            IO latency       : [ min=2us avg=69us max=31.9ms ]
+---
+
+READ        Elapsed time     :   1m57.772s   1m57.876s
+            IOPS             :       22217       22238
+            Throughput MiB/s :          86          86
+            Total MiB        :       10221       10240
+            IOs total        :     2616652     2621440
+            CPU util %       :          13          13
+            IO latency       : [ min=103us avg=1.44ms max=69.1ms ]
+---
+
+ISO DATE: 2025-07-31T21:36:18-0400
+LABEL: 0011_SEQ_[10G]Size_[4K]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0011_SEQ_[10G]Size_[4K]Block_[1]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=4K" "--size=10G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0011_SEQ_20250731213618251403.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      8.912s      8.912s
+            IOPS             :      294118      294118
+            Throughput MiB/s :        1148        1148
+            Total MiB        :       10240       10240
+            IOs total        :     2621440     2621440
+            CPU util %       :          13          13
+            IO latency       : [ min=3us avg=3us max=235us ]
+---
+
+READ        Elapsed time     :    5m0.002s    5m0.002s
+            IOPS             :        3323        3323
+            Throughput MiB/s :          12          12
+            Total MiB        :        3894        3894
+            IOs total        :      997028      997028
+            CPU util %       :           6           6
+            IO latency       : [ min=101us avg=300us max=38.8ms ]
+---
+
+ISO DATE: 2025-07-31T21:41:29-0400
+LABEL: 0012_RAN_[10G]Size_[4K]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0012_RAN_[10G]Size_[4K]Block_[1]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=4K" "--size=10G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0012_RAN_20250731214129410780.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      9.276s      9.276s
+            IOPS             :      282574      282574
+            Throughput MiB/s :        1103        1103
+            Total MiB        :       10240       10240
+            IOs total        :     2621440     2621440
+            CPU util %       :          11          11
+            IO latency       : [ min=2us avg=3us max=186ms ]
+---
+
+READ        Elapsed time     :    5m0.002s    5m0.002s
+            IOPS             :        2690        2690
+            Throughput MiB/s :          10          10
+            Total MiB        :        3152        3152
+            IOs total        :      807038      807038
+            CPU util %       :           6           6
+            IO latency       : [ min=91us avg=371us max=205ms ]
+---
+
+ISO DATE: 2025-07-31T21:46:40-0400
+LABEL: 0013_SEQ_[5G]Size_[1M]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0013_SEQ_[5G]Size_[1M]Block_[32]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=1M" "--size=5G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0013_SEQ_20250731214640161841.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       538ms       670ms
+            IOPS             :        7732        7636
+            Throughput MiB/s :        7732        7636
+            Total MiB        :        4165        5120
+            IOs total        :        4165        5120
+            CPU util %       :          85          82
+            IO latency       : [ min=383us avg=3.82ms max=33.5ms ]
+---
+
+READ        Elapsed time     :       301ms       323ms
+            IOPS             :       15787       15849
+            Throughput MiB/s :       15787       15849
+            Total MiB        :        4766        5120
+            IOs total        :        4766        5120
+            CPU util %       :          90          90
+            IO latency       : [ min=229us avg=1.99ms max=5.35ms ]
+---
+
+ISO DATE: 2025-07-31T21:47:28-0400
+LABEL: 0014_RAN_[5G]Size_[1M]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0014_RAN_[5G]Size_[1M]Block_[32]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=1M" "--size=5G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0014_RAN_20250731214728031523.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       472ms       581ms
+            IOPS             :        8588        8811
+            Throughput MiB/s :        8588        8811
+            Total MiB        :        4055        5120
+            IOs total        :        4055        5120
+            CPU util %       :          83          82
+            IO latency       : [ min=350us avg=3.41ms max=28.7ms ]
+---
+
+READ        Elapsed time     :      9.584s     11.027s
+            IOPS             :         425         464
+            Throughput MiB/s :         425         464
+            Total MiB        :        4075        5120
+            IOs total        :        4075        5120
+            CPU util %       :          12          12
+            IO latency       : [ min=228us avg=66.8ms max=265ms ]
+---
+
+ISO DATE: 2025-07-31T21:48:09-0400
+LABEL: 0015_SEQ_[5G]Size_[1M]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0015_SEQ_[5G]Size_[1M]Block_[1]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=1M" "--size=5G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0015_SEQ_20250731214809604525.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      2.056s      2.056s
+            IOPS             :        2489        2489
+            Throughput MiB/s :        2489        2489
+            Total MiB        :        5120        5120
+            IOs total        :        5120        5120
+            CPU util %       :          18          18
+            IO latency       : [ min=355us avg=401us max=648us ]
+---
+
+READ        Elapsed time     :      1.383s      1.383s
+            IOPS             :        3700        3700
+            Throughput MiB/s :        3700        3700
+            Total MiB        :        5120        5120
+            IOs total        :        5120        5120
+            CPU util %       :          12          12
+            IO latency       : [ min=168us avg=269us max=3.64ms ]
+---
+
+ISO DATE: 2025-07-31T21:48:59-0400
+LABEL: 0016_RAN_[5G]Size_[1M]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0016_RAN_[5G]Size_[1M]Block_[1]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=1M" "--size=5G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0016_RAN_20250731214859946905.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      1.968s      1.968s
+            IOPS             :        2601        2601
+            Throughput MiB/s :        2601        2601
+            Total MiB        :        5120        5120
+            IOs total        :        5120        5120
+            CPU util %       :          18          18
+            IO latency       : [ min=331us avg=383us max=513us ]
+---
+
+READ        Elapsed time     :     13.867s     13.867s
+            IOPS             :         369         369
+            Throughput MiB/s :         369         369
+            Total MiB        :        5120        5120
+            IOs total        :        5120        5120
+            CPU util %       :          12          12
+            IO latency       : [ min=174us avg=2.71ms max=15.4ms ]
+---
+
+ISO DATE: 2025-07-31T21:49:45-0400
+LABEL: 0017_SEQ_[5G]Size_[64K]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0017_SEQ_[5G]Size_[64K]Block_[32]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=64K" "--size=5G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0017_SEQ_20250731214945601492.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       605ms       739ms
+            IOPS             :      110115      110715
+            Throughput MiB/s :        6882        6919
+            Total MiB        :        4164        5120
+            IOs total        :       66639       81920
+            CPU util %       :          85          83
+            IO latency       : [ min=25us avg=269us max=30.9ms ]
+---
+
+READ        Elapsed time     :       785ms       787ms
+            IOPS             :      104110      104028
+            Throughput MiB/s :        6506        6501
+            Total MiB        :        5111        5120
+            IOs total        :       81784       81920
+            CPU util %       :          35          35
+            IO latency       : [ min=112us avg=306us max=3.03ms ]
+---
+
+ISO DATE: 2025-07-31T21:50:34-0400
+LABEL: 0018_RAN_[5G]Size_[64K]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0018_RAN_[5G]Size_[64K]Block_[32]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=64K" "--size=5G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0018_RAN_20250731215034121639.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       567ms       688ms
+            IOPS             :      117579      119054
+            Throughput MiB/s :        7348        7440
+            Total MiB        :        4169        5120
+            IOs total        :       66717       81920
+            CPU util %       :          84          82
+            IO latency       : [ min=22us avg=249us max=25.8ms ]
+---
+
+READ        Elapsed time     :     11.769s     11.849s
+            IOPS             :        6877        6913
+            Throughput MiB/s :         429         432
+            Total MiB        :        5058        5120
+            IOs total        :       80941       81920
+            CPU util %       :          14          14
+            IO latency       : [ min=152us avg=4.62ms max=18.9ms ]
+---
+
+ISO DATE: 2025-07-31T21:51:16-0400
+LABEL: 0019_SEQ_[5G]Size_[64K]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0019_SEQ_[5G]Size_[64K]Block_[1]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=64K" "--size=5G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0019_SEQ_20250731215116574531.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      2.166s      2.166s
+            IOPS             :       37803       37803
+            Throughput MiB/s :        2362        2362
+            Total MiB        :        5120        5120
+            IOs total        :       81920       81920
+            CPU util %       :          18          18
+            IO latency       : [ min=24us avg=25us max=120us ]
+---
+
+READ        Elapsed time     :     17.004s     17.004s
+            IOPS             :        4817        4817
+            Throughput MiB/s :         301         301
+            Total MiB        :        5120        5120
+            IOs total        :       81920       81920
+            CPU util %       :          11          11
+            IO latency       : [ min=110us avg=206us max=3.97ms ]
+---
+
+ISO DATE: 2025-07-31T21:52:22-0400
+LABEL: 0020_RAN_[5G]Size_[64K]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0020_RAN_[5G]Size_[64K]Block_[1]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=64K" "--size=5G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0020_RAN_20250731215222677949.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      2.160s      2.160s
+            IOPS             :       37913       37913
+            Throughput MiB/s :        2369        2369
+            Total MiB        :        5120        5120
+            IOs total        :       81920       81920
+            CPU util %       :          18          18
+            IO latency       : [ min=20us avg=25us max=129us ]
+---
+
+READ        Elapsed time     :   1m16.867s   1m16.867s
+            IOPS             :        1065        1065
+            Throughput MiB/s :          66          66
+            Total MiB        :        5120        5120
+            IOs total        :       81920       81920
+            CPU util %       :          14          14
+            IO latency       : [ min=108us avg=937us max=204ms ]
+---
+
+ISO DATE: 2025-07-31T21:53:42-0400
+LABEL: 0021_SEQ_[5G]Size_[4K]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0021_SEQ_[5G]Size_[4K]Block_[32]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=4K" "--size=5G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0021_SEQ_20250731215342209762.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      2.741s      3.110s
+            IOPS             :      420801      421418
+            Throughput MiB/s :        1643        1646
+            Total MiB        :        4505        5120
+            IOs total        :     1153461     1310720
+            CPU util %       :          85          84
+            IO latency       : [ min=3us avg=73us max=25.0ms ]
+---
+
+READ        Elapsed time     :     11.307s     11.314s
+            IOPS             :      115867      115847
+            Throughput MiB/s :         452         452
+            Total MiB        :        5117        5120
+            IOs total        :     1310125     1310720
+            CPU util %       :          30          30
+            IO latency       : [ min=106us avg=275us max=2.83ms ]
+---
+
+ISO DATE: 2025-07-31T21:54:44-0400
+LABEL: 0022_RAN_[5G]Size_[4K]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0022_RAN_[5G]Size_[4K]Block_[32]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=4K" "--size=5G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0022_RAN_20250731215443992922.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      2.589s      2.966s
+            IOPS             :      433226      441880
+            Throughput MiB/s :        1692        1726
+            Total MiB        :        4382        5120
+            IOs total        :     1121903     1310720
+            CPU util %       :          85          85
+            IO latency       : [ min=2us avg=69us max=27.5ms ]
+---
+
+READ        Elapsed time     :     30.371s     36.161s
+            IOPS             :       43024       36246
+            Throughput MiB/s :         168         141
+            Total MiB        :        5104        5120
+            IOs total        :     1306734     1310720
+            CPU util %       :          24          23
+            IO latency       : [ min=136us avg=785us max=53.4ms ]
+---
+
+ISO DATE: 2025-07-31T21:55:48-0400
+LABEL: 0023_SEQ_[5G]Size_[4K]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0023_SEQ_[5G]Size_[4K]Block_[1]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=4K" "--size=5G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0023_SEQ_20250731215548011157.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      4.472s      4.472s
+            IOPS             :      293033      293033
+            Throughput MiB/s :        1144        1144
+            Total MiB        :        5120        5120
+            IOs total        :     1310720     1310720
+            CPU util %       :          17          17
+            IO latency       : [ min=3us avg=3us max=237us ]
+---
+
+READ        Elapsed time     :    5m0.001s    5m0.001s
+            IOPS             :        4096        4096
+            Throughput MiB/s :          16          16
+            Total MiB        :        4800        4800
+            IOs total        :     1228942     1228942
+            CPU util %       :          11          11
+            IO latency       : [ min=100us avg=243us max=43.5ms ]
+---
+
+ISO DATE: 2025-07-31T22:00:53-0400
+LABEL: 0024_RAN_[5G]Size_[4K]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0024_RAN_[5G]Size_[4K]Block_[1]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=4K" "--size=5G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0024_RAN_20250731220053911028.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      4.396s      4.396s
+            IOPS             :      298120      298120
+            Throughput MiB/s :        1164        1164
+            Total MiB        :        5120        5120
+            IOs total        :     1310720     1310720
+            CPU util %       :          18          18
+            IO latency       : [ min=2us avg=2us max=237us ]
+---
+
+READ        Elapsed time     :    5m0.001s    5m0.001s
+            IOPS             :        3068        3068
+            Throughput MiB/s :          11          11
+            Total MiB        :        3595        3595
+            IOs total        :      920525      920525
+            CPU util %       :          11          11
+            IO latency       : [ min=93us avg=325us max=208ms ]
+---
+
+ISO DATE: 2025-07-31T22:05:59-0400
+LABEL: 0025_SEQ_[1G]Size_[1M]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0025_SEQ_[1G]Size_[1M]Block_[32]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=1M" "--size=1G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0025_SEQ_20250731220559311608.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        81ms       137ms
+            IOPS             :        7450        7457
+            Throughput MiB/s :        7450        7457
+            Total MiB        :         608        1024
+            IOs total        :         608        1024
+            CPU util %       :          83          79
+            IO latency       : [ min=374us avg=3.67ms max=18.2ms ]
+---
+
+READ        Elapsed time     :        63ms        72ms
+            IOPS             :       13965       14218
+            Throughput MiB/s :       13965       14218
+            Total MiB        :         882        1024
+            IOs total        :         882        1024
+            CPU util %       :          93          92
+            IO latency       : [ min=184us avg=2.17ms max=5.87ms ]
+---
+
+ISO DATE: 2025-07-31T22:06:09-0400
+LABEL: 0026_RAN_[1G]Size_[1M]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0026_RAN_[1G]Size_[1M]Block_[32]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=1M" "--size=1G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0026_RAN_20250731220609199413.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        48ms       120ms
+            IOPS             :        8060        8477
+            Throughput MiB/s :        8060        8477
+            Total MiB        :         394        1024
+            IOs total        :         394        1024
+            CPU util %       :          85          80
+            IO latency       : [ min=335us avg=2.94ms max=24.0ms ]
+---
+
+READ        Elapsed time     :      1.661s      2.203s
+            IOPS             :         432         464
+            Throughput MiB/s :         432         464
+            Total MiB        :         719        1024
+            IOs total        :         719        1024
+            CPU util %       :          13          13
+            IO latency       : [ min=277us avg=62.8ms max=265ms ]
+---
+
+ISO DATE: 2025-07-31T22:06:18-0400
+LABEL: 0027_SEQ_[1G]Size_[1M]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0027_SEQ_[1G]Size_[1M]Block_[1]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=1M" "--size=1G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0027_SEQ_20250731220618002779.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       412ms       412ms
+            IOPS             :        2482        2482
+            Throughput MiB/s :        2482        2482
+            Total MiB        :        1024        1024
+            IOs total        :        1024        1024
+            CPU util %       :          17          17
+            IO latency       : [ min=363us avg=402us max=715us ]
+---
+
+READ        Elapsed time     :       297ms       297ms
+            IOPS             :        3447        3447
+            Throughput MiB/s :        3447        3447
+            Total MiB        :        1024        1024
+            IOs total        :        1024        1024
+            CPU util %       :          12          12
+            IO latency       : [ min=199us avg=289us max=642us ]
+---
+
+ISO DATE: 2025-07-31T22:06:28-0400
+LABEL: 0028_RAN_[1G]Size_[1M]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0028_RAN_[1G]Size_[1M]Block_[1]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=1M" "--size=1G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0028_RAN_20250731220628382211.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       398ms       398ms
+            IOPS             :        2570        2570
+            Throughput MiB/s :        2570        2570
+            Total MiB        :        1024        1024
+            IOs total        :        1024        1024
+            CPU util %       :          17          17
+            IO latency       : [ min=321us avg=388us max=539us ]
+---
+
+READ        Elapsed time     :      2.739s      2.739s
+            IOPS             :         373         373
+            Throughput MiB/s :         373         373
+            Total MiB        :        1024        1024
+            IOs total        :        1024        1024
+            CPU util %       :          10          10
+            IO latency       : [ min=186us avg=2.67ms max=13.9ms ]
+---
+
+ISO DATE: 2025-07-31T22:06:37-0400
+LABEL: 0029_SEQ_[1G]Size_[64K]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0029_SEQ_[1G]Size_[64K]Block_[32]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=64K" "--size=1G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0029_SEQ_20250731220637697354.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       101ms       152ms
+            IOPS             :      105974      107756
+            Throughput MiB/s :        6623        6734
+            Total MiB        :         674        1024
+            IOs total        :       10790       16384
+            CPU util %       :          84          83
+            IO latency       : [ min=25us avg=269us max=18.7ms ]
+---
+
+READ        Elapsed time     :       305ms       306ms
+            IOPS             :       53465       53521
+            Throughput MiB/s :        3341        3345
+            Total MiB        :        1020        1024
+            IOs total        :       16322       16384
+            CPU util %       :          21          21
+            IO latency       : [ min=156us avg=596us max=3.61ms ]
+---
+
+ISO DATE: 2025-07-31T22:06:47-0400
+LABEL: 0030_RAN_[1G]Size_[64K]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0030_RAN_[1G]Size_[64K]Block_[32]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=64K" "--size=1G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0030_RAN_20250731220647835433.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :        80ms       134ms
+            IOPS             :      112721      121780
+            Throughput MiB/s :        7045        7611
+            Total MiB        :         565        1024
+            IOs total        :        9054       16384
+            CPU util %       :          88          79
+            IO latency       : [ min=21us avg=217us max=20.0ms ]
+---
+
+READ        Elapsed time     :      2.278s      2.325s
+            IOPS             :        6987        7044
+            Throughput MiB/s :         436         440
+            Total MiB        :         994        1024
+            IOs total        :       15917       16384
+            CPU util %       :          13          13
+            IO latency       : [ min=191us avg=4.51ms max=16.3ms ]
+---
+
+ISO DATE: 2025-07-31T22:06:56-0400
+LABEL: 0031_SEQ_[1G]Size_[64K]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0031_SEQ_[1G]Size_[64K]Block_[1]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=64K" "--size=1G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0031_SEQ_20250731220656588890.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       442ms       442ms
+            IOPS             :       37018       37018
+            Throughput MiB/s :        2313        2313
+            Total MiB        :        1024        1024
+            IOs total        :       16384       16384
+            CPU util %       :          18          18
+            IO latency       : [ min=24us avg=26us max=78us ]
+---
+
+READ        Elapsed time     :      3.530s      3.530s
+            IOPS             :        4640        4640
+            Throughput MiB/s :         290         290
+            Total MiB        :        1024        1024
+            IOs total        :       16384       16384
+            CPU util %       :          10          10
+            IO latency       : [ min=118us avg=214us max=1.86ms ]
+---
+
+ISO DATE: 2025-07-31T22:07:10-0400
+LABEL: 0032_RAN_[1G]Size_[64K]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0032_RAN_[1G]Size_[64K]Block_[1]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=64K" "--size=1G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0032_RAN_20250731220710254785.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       427ms       427ms
+            IOPS             :       38310       38310
+            Throughput MiB/s :        2394        2394
+            Total MiB        :        1024        1024
+            IOs total        :       16384       16384
+            CPU util %       :          18          18
+            IO latency       : [ min=20us avg=25us max=60us ]
+---
+
+READ        Elapsed time     :      9.571s      9.571s
+            IOPS             :        1711        1711
+            Throughput MiB/s :         106         106
+            Total MiB        :        1024        1024
+            IOs total        :       16384       16384
+            CPU util %       :          11          11
+            IO latency       : [ min=110us avg=583us max=21.7ms ]
+---
+
+ISO DATE: 2025-07-31T22:07:26-0400
+LABEL: 0033_SEQ_[1G]Size_[4K]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0033_SEQ_[1G]Size_[4K]Block_[32]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=4K" "--size=1G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0033_SEQ_20250731220726549166.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       535ms       629ms
+            IOPS             :      414225      416537
+            Throughput MiB/s :        1618        1627
+            Total MiB        :         867        1024
+            IOs total        :      221988      262144
+            CPU util %       :          85          83
+            IO latency       : [ min=3us avg=72us max=24.0ms ]
+---
+
+READ        Elapsed time     :      2.266s      2.268s
+            IOPS             :      115604      115564
+            Throughput MiB/s :         451         451
+            Total MiB        :        1023        1024
+            IOs total        :      261967      262144
+            CPU util %       :          30          30
+            IO latency       : [ min=126us avg=276us max=1.59ms ]
+---
+
+ISO DATE: 2025-07-31T22:07:39-0400
+LABEL: 0034_RAN_[1G]Size_[4K]Block_[32]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0034_RAN_[1G]Size_[4K]Block_[32]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=32" "--block=4K" "--size=1G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0034_RAN_20250731220739292146.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       447ms       569ms
+            IOPS             :      447184      460418
+            Throughput MiB/s :        1746        1798
+            Total MiB        :         782        1024
+            IOs total        :      200256      262144
+            CPU util %       :          85          84
+            IO latency       : [ min=2us avg=65us max=22.2ms ]
+---
+
+READ        Elapsed time     :      6.012s      6.043s
+            IOPS             :       43326       43373
+            Throughput MiB/s :         169         169
+            Total MiB        :        1017        1024
+            IOs total        :      260498      262144
+            CPU util %       :          24          24
+            IO latency       : [ min=110us avg=735us max=6.53ms ]
+---
+
+ISO DATE: 2025-07-31T22:07:52-0400
+LABEL: 0035_SEQ_[1G]Size_[4K]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0035_SEQ_[1G]Size_[4K]Block_[1]Thread_[1]Depth" "--write" "--read" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=4K" "--size=1G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0035_SEQ_20250731220752394408.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       915ms       915ms
+            IOPS             :      286275      286275
+            Throughput MiB/s :        1118        1118
+            Total MiB        :        1024        1024
+            IOs total        :      262144      262144
+            CPU util %       :          18          18
+            IO latency       : [ min=3us avg=3us max=240us ]
+---
+
+READ        Elapsed time     :    1m3.912s    1m3.912s
+            IOPS             :        4101        4101
+            Throughput MiB/s :          16          16
+            Total MiB        :        1024        1024
+            IOs total        :      262144      262144
+            CPU util %       :          11          11
+            IO latency       : [ min=107us avg=243us max=42.7ms ]
+---
+
+ISO DATE: 2025-07-31T22:08:58-0400
+LABEL: 0036_RAN_[1G]Size_[4K]Block_[1]Thread_[1]Depth
+COMMAND LINE: "/usr/bin/elbencho" "--label" "0036_RAN_[1G]Size_[4K]Block_[1]Thread_[1]Depth" "--write" "--read" "--rand" "--randalgo" "fast" "--cpu" "--lat" "--iodepth=1" "--threads=1" "--block=4K" "--size=1G" "--timelimit" "300" "--log" "1" "--live1n" "--liveint" "1000" "--livecsvex" "--livecsv" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD-c_live.csv" "--csvfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_b_plain.csv" "--resfile" "/home/spillman/pyprojects/elcrapo4/result-logs/20250731/MS_NFS3_HDD/MS_NFS3_HDD_a_result.log" "/mnt/Drives/ms_02000a/benchmark_tests/hdd/data_testing/tn-0036_RAN_20250731220858032712.zBINz" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       865ms       865ms
+            IOPS             :      302828      302828
+            Throughput MiB/s :        1182        1182
+            Total MiB        :        1024        1024
+            IOs total        :      262144      262144
+            CPU util %       :          17          17
+            IO latency       : [ min=2us avg=2us max=236us ]
+---
+
+READ        Elapsed time     :   1m16.931s   1m16.931s
+            IOPS             :        3407        3407
+            Throughput MiB/s :          13          13
+            Total MiB        :        1024        1024
+            IOs total        :      262144      262144
+            CPU util %       :           7           7
+            IO latency       : [ min=98us avg=292us max=90.2ms ]
+---
+

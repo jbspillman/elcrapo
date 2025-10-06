@@ -1,0 +1,67 @@
+[
+    {
+        "target_name": "FNAS-2.4",
+        "test_mode": "Random",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 1,
+        "file_size": 2147483648,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 5543.0,
+        "mibs": 21.0,
+        "lat": 179.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "test_mode": "Random",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 2,
+        "file_size": 1073741824,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 13592.0,
+        "mibs": 53.0,
+        "lat": 146.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "test_mode": "Random",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 4,
+        "file_size": 536870912,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 23059.0,
+        "mibs": 90.0,
+        "lat": 172.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "test_mode": "Random",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 8,
+        "file_size": 268435456,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 43874.0,
+        "mibs": 171.0,
+        "lat": 181.0
+    },
+    {
+        "target_name": "FNAS-2.4",
+        "test_mode": "Random",
+        "operation": "Read",
+        "test_type": "Directory",
+        "threads": 16,
+        "file_size": 134217728,
+        "block_size": 4096,
+        "io_depth": 1,
+        "iops": 65436.0,
+        "mibs": 255.0,
+        "lat": 243.0
+    }
+]

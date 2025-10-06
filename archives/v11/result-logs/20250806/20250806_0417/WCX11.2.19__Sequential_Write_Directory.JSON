@@ -1,0 +1,67 @@
+[
+    {
+        "target_name": "WCX11.2.19",
+        "test_mode": "Sequential",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 1,
+        "file_size": 21474836480,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 1156.0,
+        "mibs": 1156.0,
+        "lat": 864.0
+    },
+    {
+        "target_name": "WCX11.2.19",
+        "test_mode": "Sequential",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 2,
+        "file_size": 10737418240,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 2304.0,
+        "mibs": 2304.0,
+        "lat": 866.0
+    },
+    {
+        "target_name": "WCX11.2.19",
+        "test_mode": "Sequential",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 4,
+        "file_size": 5368709120,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 4335.0,
+        "mibs": 4335.0,
+        "lat": 909.0
+    },
+    {
+        "target_name": "WCX11.2.19",
+        "test_mode": "Sequential",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 8,
+        "file_size": 2684354560,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 6265.0,
+        "mibs": 6265.0,
+        "lat": 1095.0
+    },
+    {
+        "target_name": "WCX11.2.19",
+        "test_mode": "Sequential",
+        "operation": "Write",
+        "test_type": "Directory",
+        "threads": 16,
+        "file_size": 1342177280,
+        "block_size": 1048576,
+        "io_depth": 1,
+        "iops": 7235.0,
+        "mibs": 7235.0,
+        "lat": 1614.0
+    }
+]

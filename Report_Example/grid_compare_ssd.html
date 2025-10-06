@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Comparison</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 10px;
+            border: 1px solid #334155;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .test-section {
+            margin-bottom: 40px;
+        }
+
+        .test-section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #e2e8f0;
+            text-align: center;
+            padding: 15px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 10px;
+            border: 1px solid #334155;
+        }
+
+        .charts-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .chart-container {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .chart-title {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #e2e8f0;
+        }
+
+        canvas {
+            max-height: 250px;
+        }
+
+        @media (max-width: 768px) {
+            .charts-row {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Product Performance Comparison</h1>
+        <p class="subtitle">product_one vs product_two</p>
+    </header>
+
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #3b82f6;"></div>
+            <span>product_one</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #10b981;"></div>
+            <span>product_two</span>
+        </div>
+    </div>
+
+    <div id="chartsContainer"></div>
+</div>
+
+<script>
+    const data = [
+        {
+            "product_key": "Western Digital SN770 NVMe 731130WD",
+            "test_name": "Sequential Write 4K",
+            "block_size": "4K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [26491, 78463, 104305, 90047, 84955, 88923],
+            "mibs": [103, 306, 407, 351, 331, 347],
+            "lats": [37, 50, 73, 176, 373, 705]
+        }, {
+            "product_key": "Western Digital SN770 NVMe 731130WD",
+            "test_name": "Sequential Write 32K",
+            "block_size": "32K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [17258, 59838, 83666, 87875, 84919, 82203],
+            "mibs": [539, 1869, 2614, 2746, 2653, 2568],
+            "lats": [57, 65, 92, 178, 359, 689]
+        }, {
+            "product_key": "Western Digital SN770 NVMe 731130WD",
+            "test_name": "Sequential Write 64K",
+            "block_size": "64K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [11959, 42144, 46536, 47171, 30529, 45841],
+            "mibs": [747, 2634, 2908, 2948, 1908, 2865],
+            "lats": [82, 93, 169, 332, 1014, 1275]
+        }, {
+            "product_key": "Western Digital SN770 NVMe 731130WD",
+            "test_name": "Sequential Read 4K",
+            "block_size": "4K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [33690, 42965, 65131, 101556, 132406, 454527],
+            "mibs": [131, 167, 254, 396, 517, 1775],
+            "lats": [29, 91, 121, 154, 238, 136]
+        }, {
+            "product_key": "Western Digital SN770 NVMe 731130WD",
+            "test_name": "Sequential Read 32K",
+            "block_size": "32K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [24025, 27981, 49144, 63992, 92929, 95479],
+            "mibs": [750, 874, 1535, 1999, 2904, 2983],
+            "lats": [40, 140, 160, 243, 325, 634]
+        }, {
+            "product_key": "Western Digital SN770 NVMe 731130WD",
+            "test_name": "Sequential Read 64K",
+            "block_size": "64K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [19339, 26929, 36276, 47156, 47470, 48414],
+            "mibs": [1208, 1683, 2267, 2947, 2966, 3025],
+            "lats": [50, 145, 215, 334, 631, 1216]
+        }, {
+            "product_key": "Western Digital SN770 NVMe 731130WD",
+            "test_name": "Random Write 4K",
+            "block_size": "4K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [26610, 95876, 152347, 186318, 265001, 313894],
+            "mibs": [103, 374, 595, 727, 1035, 1226],
+            "lats": [36, 40, 49, 84, 117, 193]
+        }, {
+            "product_key": "Western Digital SN770 NVMe 731130WD",
+            "test_name": "Random Write 32K",
+            "block_size": "32K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [12137, 43450, 60507, 60595, 59707, 57936],
+            "mibs": [379, 1357, 1890, 1893, 1865, 1810],
+            "lats": [81, 90, 130, 260, 523, 1039]
+        }, {
+            "product_key": "Western Digital SN770 NVMe 731130WD",
+            "test_name": "Random Write 64K",
+            "block_size": "64K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [9399, 33292, 41031, 39834, 40598, 39415],
+            "mibs": [587, 2080, 2564, 2489, 2537, 2463],
+            "lats": [105, 118, 192, 395, 757, 1507]
+        }, {
+            "product_key": "Western Digital SN770 NVMe 731130WD",
+            "test_name": "Random Read 4K",
+            "block_size": "4K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [11015, 47369, 76173, 136910, 230030, 447317],
+            "mibs": [43, 185, 297, 534, 898, 1747],
+            "lats": [89, 83, 102, 115, 137, 137]
+        }, {
+            "product_key": "Western Digital SN770 NVMe 731130WD",
+            "test_name": "Random Read 32K",
+            "block_size": "32K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [9850, 38443, 63596, 93896, 96939, 62608],
+            "mibs": [307, 1201, 1987, 2934, 3029, 1956],
+            "lats": [100, 102, 122, 167, 319, 993]
+        }, {
+            "product_key": "Western Digital SN770 NVMe 731130WD",
+            "test_name": "Random Read 64K",
+            "block_size": "64K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [9492, 33475, 48082, 49367, 48477, 48566],
+            "mibs": [593, 2092, 3005, 3085, 3029, 3035],
+            "lats": [104, 116, 161, 318, 637, 1241]
+        }, {
+            "product_key": "Samsung 980 PRO SSD 1.0",
+            "test_name": "Sequential Write 4K",
+            "block_size": "4K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [25755, 82348, 102641, 91044, 89063, 90080],
+            "mibs": [100, 321, 400, 355, 347, 351],
+            "lats": [38, 47, 75, 174, 355, 694]
+        }, {
+            "product_key": "Samsung 980 PRO SSD 1.0",
+            "test_name": "Sequential Write 32K",
+            "block_size": "32K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [21041, 55800, 58445, 62071, 55268, 52326],
+            "mibs": [657, 1743, 1826, 1939, 1727, 1635],
+            "lats": [46, 68, 120, 190, 256, 52]
+        }, {
+            "product_key": "Samsung 980 PRO SSD 1.0",
+            "test_name": "Sequential Write 64K",
+            "block_size": "64K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [13889, 28801, 30748, 32161, 28344, 30338],
+            "mibs": [868, 1800, 1921, 2010, 1771, 1896],
+            "lats": [71, 137, 257, 491, 1100, 1960]
+        }, {
+            "product_key": "Samsung 980 PRO SSD 1.0",
+            "test_name": "Sequential Read 4K",
+            "block_size": "4K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [15048, 65523, 144057, 266592, 406158, 526050],
+            "mibs": [58, 255, 562, 1041, 1586, 2054],
+            "lats": [65, 59, 52, 58, 76, 117]
+        }, {
+            "product_key": "Samsung 980 PRO SSD 1.0",
+            "test_name": "Sequential Read 32K",
+            "block_size": "32K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [9281, 31066, 49914, 79809, 111437, 134862],
+            "mibs": [290, 970, 1559, 2494, 3482, 4214],
+            "lats": [106, 126, 155, 192, 274, 443]
+        }, {
+            "product_key": "Samsung 980 PRO SSD 1.0",
+            "test_name": "Sequential Read 64K",
+            "block_size": "64K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [8366, 28702, 42608, 57827, 64625, 67707],
+            "mibs": [522, 1793, 2663, 3614, 4039, 4231],
+            "lats": [118, 135, 178, 259, 448, 825]
+        }, {
+            "product_key": "Samsung 980 PRO SSD 1.0",
+            "test_name": "Random Write 4K",
+            "block_size": "4K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [33073, 125071, 230190, 355863, 418655, 394565],
+            "mibs": [129, 488, 899, 1390, 1635, 1541],
+            "lats": [29, 30, 32, 38, 49, 47]
+        }, {
+            "product_key": "Samsung 980 PRO SSD 1.0",
+            "test_name": "Random Write 32K",
+            "block_size": "32K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [22022, 76579, 125209, 133305, 117590, 80853],
+            "mibs": [688, 2393, 3912, 4165, 3674, 2526],
+            "lats": [44, 49, 52, 71, 58, 53]
+        }, {
+            "product_key": "Samsung 980 PRO SSD 1.0",
+            "test_name": "Random Write 64K",
+            "block_size": "64K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [8675, 31060, 40086, 36415, 38767, 38241],
+            "mibs": [542, 1941, 2505, 2275, 2422, 2390],
+            "lats": [114, 126, 197, 433, 789, 1528]
+        }, {
+            "product_key": "Samsung 980 PRO SSD 1.0",
+            "test_name": "Random Read 4K",
+            "block_size": "4K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [17268, 72468, 137307, 263032, 448115, 632733],
+            "mibs": [67, 283, 536, 1027, 1750, 2471],
+            "lats": [57, 54, 56, 59, 69, 97]
+        }, {
+            "product_key": "Samsung 980 PRO SSD 1.0",
+            "test_name": "Random Read 32K",
+            "block_size": "32K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [10552, 35192, 70016, 111361, 131786, 142737],
+            "mibs": [329, 1099, 2188, 3480, 4118, 4460],
+            "lats": [93, 111, 109, 136, 233, 416]
+        }, {
+            "product_key": "Samsung 980 PRO SSD 1.0",
+            "test_name": "Random Read 64K",
+            "block_size": "64K",
+            "threads": [1, 4, 8, 16, 32, 64],
+            "iops": [9523, 35331, 54284, 71608, 77975, 80671],
+            "mibs": [595, 2208, 3392, 4475, 4873, 5041],
+            "lats": [103, 110, 141, 212, 382, 739]
+        }
+    ];
+
+    // Extract unique products dynamically
+    const products = [...new Set(data.map(d => d.product_key))];
+
+    // Create display names (shortened versions)
+    const productNames = products.map(key => {
+        // if (key.includes('Western Digital')) return 'WD SN770';
+        // if (key.includes('Samsung')) return 'Samsung 980 PRO';
+        return key; // fallback to full name
+    });
+
+    const testNames = [...new Set(data.map(d => d.test_name))];
+    console.log(testNames);
+    const metrics = [
+        { key: 'iops', label: 'IOPS' },
+        { key: 'mibs', label: 'MiB/s' },
+        { key: 'lats', label: 'Latency (μs)' }
+    ];
+
+    const colors = [
+        { line: '#3b82f6', bg: 'rgba(59, 130, 246, 0.1)' },
+        { line: '#10b981', bg: 'rgba(16, 185, 129, 0.1)' },
+        { line: '#f59e0b', bg: 'rgba(245, 158, 11, 0.1)' },
+        { line: '#ef4444', bg: 'rgba(239, 68, 68, 0.1)' },
+        { line: '#8b5cf6', bg: 'rgba(139, 92, 246, 0.1)' }
+    ];
+
+    // Update page title and legend dynamically
+    document.querySelector('.subtitle').textContent = productNames.join(' vs ');
+
+    const legendContainer = document.querySelector('.legend');
+    legendContainer.innerHTML = '';
+    productNames.forEach((name, idx) => {
+        const legendItem = document.createElement('div');
+        legendItem.className = 'legend-item';
+        legendItem.innerHTML = `
+            <div class="legend-color" style="background-color: ${colors[idx].line};"></div>
+            <span>${name}</span>
+        `;
+        legendContainer.appendChild(legendItem);
+    });
+
+    function createChart(testName, metric, container) {
+        const datasets = products.map((productKey, idx) => {
+            const productData = data.find(d => d.test_name === testName && d.product_key === productKey);
+            return {
+                label: productNames[idx],
+                data: productData[metric.key],
+                borderColor: colors[idx].line,
+                backgroundColor: colors[idx].bg,
+                borderWidth: 3,
+                pointRadius: 4,
+                pointHoverRadius: 6,
+                tension: 0.3
+            };
+        });
+
+        const threads = data.find(d => d.test_name === testName).threads;
+
+        const chartDiv = document.createElement('div');
+        chartDiv.className = 'chart-container';
+
+        const title = document.createElement('div');
+        title.className = 'chart-title';
+        title.textContent = metric.label;
+
+        const canvas = document.createElement('canvas');
+
+        chartDiv.appendChild(title);
+        chartDiv.appendChild(canvas);
+        container.appendChild(chartDiv);
+
+        new Chart(canvas, {
+            type: 'line',
+            data: {
+                labels: threads,
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                        borderColor: '#334155',
+                        borderWidth: 1,
+                        padding: 10,
+                        titleColor: '#e2e8f0',
+                        bodyColor: '#e2e8f0',
+                        titleFont: { size: 12 },
+                        bodyFont: { size: 11 }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Threads',
+                            color: '#94a3b8',
+                            font: { size: 11 }
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: { size: 10 }
+                        },
+                        grid: {
+                            color: '#334155'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: { size: 10 }
+                        },
+                        grid: {
+                            color: '#334155'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Create all charts organized by test name
+    const container = document.getElementById('chartsContainer');
+    testNames.forEach(testName => {
+        const section = document.createElement('div');
+        section.className = 'test-section';
+
+        const sectionTitle = document.createElement('div');
+        sectionTitle.className = 'test-section-title';
+        sectionTitle.textContent = testName;
+        section.appendChild(sectionTitle);
+
+        const row = document.createElement('div');
+        row.className = 'charts-row';
+        section.appendChild(row);
+
+        metrics.forEach(metric => {
+            createChart(testName, metric, row);
+        });
+
+        container.appendChild(section);
+    });
+</script>
+</body>
+</html>

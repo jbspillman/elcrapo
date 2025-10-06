@@ -1,0 +1,14 @@
+ISO DATE: 2025-08-03T15:46:36-0400
+LABEL: 004_RAN_READ_SF_128M_4K_1T_1IOD
+COMMAND LINE: "/elbencho/elbencho" "--label" "004_RAN_READ_SF_128M_4K_1T_1IOD" "--read" "--rand" "--trunctosize" "--iodepth=1" "--threads=1" "--block=4K" "--size=128M" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250803\20250803_1543\onp-9.1.43_004_RAN_READ_SF_128M_4K_1T_1IOD.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250803\20250803_1543\onp-9.1.43_004_RAN_READ_SF_128M_4K_1T_1IOD.txt" "--cpu" "--lat" "--log" "0" "--timelimit" "300" "--no0usecerr" "\\beastserver.beastmode.local.net\spillman\benchmark_tests\data_testing\onp-9.1.43\20250803154628295389_RAN_WRITE_SF_128M_4K_1T_1IOD.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+READ        Elapsed time     :      4.392s      4.392s
+            IOPS             :        7460        7460
+            Throughput MiB/s :          29          29
+            Total MiB        :         128         128
+            CPU util %       :           4           4
+            IO latency       : [ min=2us avg=133us max=11.2ms ]
+---
+

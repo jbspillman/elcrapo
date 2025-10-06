@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Storage Test Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { color: #2c3e50; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        img { max-width: 100%; height: auto; margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+    <h1>Storage Performance Test Report</h1>
+
+    <h2>IOPS Comparison</h2>
+    <img src="iops_comparison.png" alt="IOPS Comparison Chart">
+
+    <h2>Latency Comparison</h2>
+    <img src="latency_comparison.png" alt="Latency Comparison Chart">
+
+    <h2>Best-Performing Tests</h2>
+    <h3>Highest IOPS</h3>
+    <table class="dataframe table table-striped">
+  <thead>
+    <tr style="text-align: right;">
+      <th>label</th>
+      <th>type</th>
+      <th>iops</th>
+      <th>latency</th>
+      <th>mib</th>
+      <th>size</th>
+      <th>block</th>
+      <th>pattern</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0021_SEQ_[5G]Size_[4K]Block_[32]Thread_[1]Depth</td>
+      <td>read</td>
+      <td>5823972</td>
+      <td>3</td>
+      <td>22749</td>
+      <td>4K]Block</td>
+      <td>1]Depth</td>
+      <td>SEQ</td>
+    </tr>
+    <tr>
+      <td>0034_RAN_[1G]Size_[4K]Block_[32]Thread_[1]Depth</td>
+      <td>write</td>
+      <td>362478</td>
+      <td>83</td>
+      <td>1415</td>
+      <td>4K]Block</td>
+      <td>1]Depth</td>
+      <td>RAN</td>
+    </tr>
+  </tbody>
+</table>
+    <h3>Lowest Latency</h3>
+    <table class="dataframe table table-striped">
+  <thead>
+    <tr style="text-align: right;">
+      <th>label</th>
+      <th>type</th>
+      <th>iops</th>
+      <th>latency</th>
+      <th>mib</th>
+      <th>size</th>
+      <th>block</th>
+      <th>pattern</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0011_SEQ_[10G]Size_[4K]Block_[1]Thread_[1]Depth</td>
+      <td>read</td>
+      <td>1320528</td>
+      <td>0</td>
+      <td>5158</td>
+      <td>4K]Block</td>
+      <td>1]Depth</td>
+      <td>SEQ</td>
+    </tr>
+    <tr>
+      <td>0011_SEQ_[10G]Size_[4K]Block_[1]Thread_[1]Depth</td>
+      <td>write</td>
+      <td>272692</td>
+      <td>3</td>
+      <td>1065</td>
+      <td>4K]Block</td>
+      <td>1]Depth</td>
+      <td>SEQ</td>
+    </tr>
+  </tbody>
+</table>
+
+    <h2>Average by Block Size</h2>
+    <table class="dataframe table table-striped">
+  <thead>
+    <tr style="text-align: right;">
+      <th>block</th>
+      <th>type</th>
+      <th>iops</th>
+      <th>latency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1]Depth</td>
+      <td>read</td>
+      <td>969541.805556</td>
+      <td>226.722222</td>
+    </tr>
+    <tr>
+      <td>1]Depth</td>
+      <td>write</td>
+      <td>108379.111111</td>
+      <td>3050.166667</td>
+    </tr>
+  </tbody>
+</table>
+
+    <h2>Average by Test Size</h2>
+    <table class="dataframe table table-striped">
+  <thead>
+    <tr style="text-align: right;">
+      <th>size</th>
+      <th>type</th>
+      <th>iops</th>
+      <th>latency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1M]Block</td>
+      <td>read</td>
+      <td>1.310883e+04</td>
+      <td>644.583333</td>
+    </tr>
+    <tr>
+      <td>1M]Block</td>
+      <td>write</td>
+      <td>1.630083e+03</td>
+      <td>8562.000000</td>
+    </tr>
+    <tr>
+      <td>4K]Block</td>
+      <td>read</td>
+      <td>2.673903e+06</td>
+      <td>2.000000</td>
+    </tr>
+    <tr>
+      <td>4K]Block</td>
+      <td>write</td>
+      <td>2.979922e+05</td>
+      <td>46.833333</td>
+    </tr>
+    <tr>
+      <td>64K]Block</td>
+      <td>read</td>
+      <td>2.216140e+05</td>
+      <td>33.583333</td>
+    </tr>
+    <tr>
+      <td>64K]Block</td>
+      <td>write</td>
+      <td>2.551508e+04</td>
+      <td>541.666667</td>
+    </tr>
+  </tbody>
+</table>
+
+    <h2>Average by Access Pattern (SEQ vs RAN)</h2>
+    <table class="dataframe table table-striped">
+  <thead>
+    <tr style="text-align: right;">
+      <th>pattern</th>
+      <th>type</th>
+      <th>iops</th>
+      <th>latency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RAN</td>
+      <td>read</td>
+      <td>7.037782e+05</td>
+      <td>261.388889</td>
+    </tr>
+    <tr>
+      <td>RAN</td>
+      <td>write</td>
+      <td>1.052913e+05</td>
+      <td>2700.333333</td>
+    </tr>
+    <tr>
+      <td>SEQ</td>
+      <td>read</td>
+      <td>1.235305e+06</td>
+      <td>192.055556</td>
+    </tr>
+    <tr>
+      <td>SEQ</td>
+      <td>write</td>
+      <td>1.114669e+05</td>
+      <td>3400.000000</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

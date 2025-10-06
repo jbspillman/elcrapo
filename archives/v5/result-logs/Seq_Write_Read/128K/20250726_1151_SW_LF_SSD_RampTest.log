@@ -1,0 +1,14 @@
+ISO DATE: 2025-07-26T11:51:42-0400
+LABEL: SW_LF_HOSTS[4]_THREADS[1]_BLOCKSIZE[128K]_FILESIZE[1G]_IODEPTH[1]
+COMMAND LINE: "/usr/bin/elbencho" "--hosts" "centos01.beastmode.local.net,centos02.beastmode.local.net,centos03.beastmode.local.net,centos04.beastmode.local.net" "--label" "SW_LF_HOSTS[4]_THREADS[1]_BLOCKSIZE[128K]_FILESIZE[1G]_IODEPTH[1]" "--write" "--iodepth=1" "--threads=1" "--block=128K" "--size=1G" "--timelimit" "300" "--live1" "--livecsvex" "--livecsv" "/home/spillman/elcrapo/result-logs/20250726_1151/20250726_1151_SW_LF_SSD_RampTest-live.csv" "--csvfile" "/home/spillman/elcrapo/result-logs/20250726_1151/20250726_1151_SW_LF_SSD_RampTest.csv" "--resfile" "/home/spillman/elcrapo/result-logs/20250726_1151/20250726_1151_SW_LF_SSD_RampTest.log" "--log" "0" "--cpu" "--lat" "--direct" "/mnt/elcrapo_ssd/20250726_1151_DE7405E4-CB4D-480D-8753-D9197E0B94D8.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      4.649s     48.280s
+            IOPS             :         551         169
+            Throughput MiB/s :          68          21
+            Total MiB        :         320        1024
+            CPU util %       :           7           7
+            IO latency       : [ min=1.79ms avg=15.7ms max=637ms ]
+---
+

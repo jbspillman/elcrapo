@@ -1,0 +1,125 @@
+Block device & large shared file testing.
+
+Usage: ./elbencho [OPTIONS] PATH [MORE_PATHS]
+
+Basic Options:
+  -w [ --write ]        Write to given block device(s) or file(s).
+  -r [ --read ]         Read from given block device(s) or file(s).
+  -s [ --size ] arg     Block device or file size to use. (Default: 0)
+  -b [ --block ] arg    Number of bytes to read/write in a single operation. (Default: 1M)
+  -t [ --threads ] arg  Number of I/O worker threads. (Default: 1)
+
+Frequently Used Options:
+  --direct              Use direct IO to avoid buffering/caching.
+  --iodepth arg         Depth of I/O queue per thread for asynchronous read/write. Setting this to 2 or higher turns on async I/O. (Default: 1)
+  --rand                Read/write at random offsets.
+  --randamount arg      Number of bytes to write/read when using random offsets. (Default: Set to aggregate file size)
+  --norandalign         Do not align offsets to block size for random IO.
+  --lat                 Show minimum, average and maximum latency for read/write operations.
+
+Miscellaneous Options:
+  --zones arg           Comma-separated list of NUMA zones to bind this process to. If multiple zones are given, then worker threads are bound round-robin to the zones. (Hint: See 'lscpu'
+                        for available NUMA zones.)
+  --latpercent          Show latency percentiles.
+  --lathisto            Show latency histogram.
+  --allelapsed          Show elapsed time to completion of each I/O worker thread.
+
+Examples:
+  Sequentially write 4 large files and test random read IOPS for max 20 seconds:
+    $ elbencho -w -b 4M -t 16 --direct -s 20g "/mnt/myfs/file[1-4]"
+    $ elbencho -r -b 4k -t 16 --iodepth 16 --direct --rand --timelimit 20 \
+        "/mnt/myfs/file[1-4]"
+
+  Test 4KiB multi-threaded write IOPS of devices /dev/nvme0n1 & /dev/nvme1n1:
+    $ elbencho -w -b 4K -t 16 --iodepth 16 --direct --rand \
+        /dev/nvme0n1 /dev/nvme1n1
+
+  Test 4KiB block random read latency of device /dev/nvme0n1:
+    $ elbencho -r -b 4K --lat --direct --rand /dev/nvme0n1
+
+
+Multi-file / multi-directory testing.
+
+Usage: ./elbencho [OPTIONS] DIRECTORY [MORE_DIRECTORIES]
+
+Basic Options:
+  -d [ --mkdirs ]       Create directories. (Already existing dirs are not treated as error.)
+  -w [ --write ]        Write files. Create them if they don't exist.
+  -r [ --read ]         Read files.
+  --stat                Read file status attributes (file size, owner etc).
+  -F [ --delfiles ]     Delete files.
+  -D [ --deldirs ]      Delete directories.
+  -t [ --threads ] arg  Number of I/O worker threads. (Default: 1)
+  -n [ --dirs ] arg     Number of directories per I/O worker thread. This can be 0 to disable creation of any subdirs, in which case all workers share the given dir. (Default: 1)
+  -N [ --files ] arg    Number of files per thread per directory. (Default: 1) Example: "-t2 -n3 -N4" will use 2x3x4=24 files.
+  -s [ --size ] arg     File size. (Default: 0)
+  -b [ --block ] arg    Number of bytes to read/write in a single operation. (Default: 1M)
+
+Frequently Used Options:
+  --direct              Use direct IO.
+  --iodepth arg         Depth of I/O queue per thread for asynchronous read/write. Setting this to 2 or higher turns on async I/O. (Default: 1)
+  --lat                 Show minimum, average and maximum latency for read/write operations and entries. In read and write phases, entry latency includes file open, read/write and close.
+
+Miscellaneous Options:
+  --zones arg           Comma-separated list of NUMA zones to bind this process to. If multiple zones are given, then worker threads are bound round-robin to the zones. (Hint: See 'lscpu'
+                        for available NUMA zones.)
+  --latpercent          Show latency percentiles.
+  --lathisto            Show latency histogram.
+  --nodelerr            Ignore not existing files/dirs in deletion phase instead of treating this as error.
+
+Examples:
+  Test 2 threads, each creating 3 directories with 4 1MiB files inside:
+    $ elbencho -w -d -t 2 -n 3 -N 4 -s 1m -b 1m /data/testdir
+
+  Same as above with long option names:
+    $ elbencho --write --mkdirs --threads 2 --dirs 3 --files 4 --size 1m \
+        --block 1m /data/testdir
+
+  Test 2 threads, each reading 4 1MB files from 3 directories in 128KiB blocks:
+    $ elbencho -r -t 2 -n 3 -N 4 -s 1m -b 128k /data/testdir
+
+  Delete files and directories created by example above:
+    $ elbencho -F -D -t 2 -n 3 -N 4 /data/testdir
+
+
+Distributed benchmarking with multiple clients.
+
+Usage:
+  First, start elbencho in service mode on multiple hosts:
+  $ elbencho --service [OPTIONS]
+
+  Then run master anywhere on the network to start benchmarks on service hosts:
+  $ elbencho --hosts HOST_1,...,HOST_N [OPTIONS] PATH [MORE_PATHS]
+
+  When you're done, quit all services:
+  $ elbencho --hosts HOST_1,...,HOST_N --quit
+
+Basic Options:
+  --hosts arg           List of hosts in service mode (separated by comma, space, or newline) for coordinated benchmark. When this argument is used, this program instance runs in master
+                        mode to coordinate the given service mode hosts. The given number of threads, dirs and files is per-service then. (Format: hostname[:port])
+  --service             Run as service for distributed mode, waiting for requests from master.
+  --quit                Quit services on given service mode hosts.
+
+Frequently Used Options:
+  --zones arg           Comma-separated list of NUMA zones to bind this service to. If multiple zones are given, then worker threads are bound round-robin to the zones. (Hint: See 'lscpu'
+                        for available NUMA zones.)
+  --port arg            TCP communication port of service. (Default: 1611) Different ports can be  used to run multiple service instances on different NUMA zones of a host.
+
+Miscellaneous Options:
+  --nosvcshare          Benchmark paths are not shared between service hosts. Thus, each service host willwork on the full given dataset instead of its own fraction of the data set.
+  --svcelapsed          Show elapsed time to completion of each service instance ordered by slowest thread.
+  --interrupt           Interrupt current benchmark phase on given service mode hosts.
+  --foreground          When running as service, stay in foreground and connected to console instead of detaching from console and daemonizing into background.
+
+Examples:
+  Start services on hosts node001 and node002:
+    $ ssh node001 elbencho --service
+    $ ssh node002 elbencho --service
+
+  Run distributed test on node001 and node002, using 4 threads per service
+  instance and creating 8 dirs per thread, each containing 16 1MiB files:
+    $ elbencho --hosts "node00[1-2]" \
+        -t 4 -d -n 8 -w -N 16 -s 1M /data/testdir
+
+  Quit services on host IPs 192.168.0.1 and 192.168.0.3:
+    $ elbencho --hosts "192.168.0.[1,3]" --quit

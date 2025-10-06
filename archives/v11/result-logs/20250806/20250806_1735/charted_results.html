@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Version Comparison Charts</title>
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    
+<style>
+   body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 40px;
+    background-color: #f9f9f9;
+    color: #333;
+    }
+
+    h3 {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 30px;
+        color: #2c3e50;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 30px 20px;
+        table-layout: auto;
+    }
+
+    th {
+        background-color: #34495e;
+        color: #fff;
+        padding: 15px;
+        font-size: 18px;
+        text-align: center;
+        border-radius: 6px;
+    }
+
+    td {
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 10px;
+        vertical-align: top;
+        width: 33.33%;
+    }
+ 
+    .chart-box {
+        height: 240px;
+        width: 100%;
+    }
+   
+   
+    @media screen and (max-width: 1024px) {
+    table {
+        display: block;
+    }
+
+    tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    td {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+</style>    
+</head>
+<body>
+
+    <h3>
+    Versions: ""FNAS-1.3", "FNAS-4.6", "FNAS-2.4""
+    </h3>
+    <hr>
+    <table border="0">
+        <tr>
+            <th colspan="9">Sequential Writes</th>
+        </tr>
+        <tr>
+            <td><div id="chartContainer_iops_sw" class="chart-box"></div></td>
+            <td><div id="chartContainer_mibs_sw" class="chart-box"></div></td>
+            <td><div id="chartContainer_lat_sw" class="chart-box"></div></td>
+        </tr>
+
+        <tr>
+            <th colspan="9">Sequential Reads</th>
+        </tr>
+        <tr>
+            <td><div id="chartContainer_iops_sr" class="chart-box"></div></td>
+            <td><div id="chartContainer_mibs_sr" class="chart-box"></div></td>
+            <td><div id="chartContainer_lat_sr" class="chart-box"></div></td>
+        </tr>
+
+        <tr>
+            <th colspan="9">Random Writes</th>
+        </tr>
+        <tr>
+            <td><div id="chartContainer_iops_rw" class="chart-box"></div></td>
+            <td><div id="chartContainer_mibs_rw" class="chart-box"></div></td>
+            <td><div id="chartContainer_lat_rw" class="chart-box"></div></td>
+        </tr>
+
+        <tr>
+            <th colspan="9">Random Reads</th>
+        </tr>
+        <tr>
+            <td><div id="chartContainer_iops_rr" class="chart-box"></div></td>
+            <td><div id="chartContainer_mibs_rr" class="chart-box"></div></td>
+            <td><div id="chartContainer_lat_rr" class="chart-box"></div></td>
+        </tr>
+
+    </table>
+
+    <script>
+        // Grouped data for charts,
+
+        // Sequential Writes....
+        const groupedData_sw = {'1': {'FNAS-4.6': {'iops': 106.0, 'mibs': 106.0, 'lat': 401.0}, 'FNAS-2.4': {'iops': 106.0, 'mibs': 106.0, 'lat': 404.0}, 'FNAS-1.3': {'iops': 106.0, 'mibs': 106.0, 'lat': 402.0}}, '2': {'FNAS-4.6': {'iops': 108.0, 'mibs': 108.0, 'lat': 412.0}, 'FNAS-2.4': {'iops': 108.0, 'mibs': 108.0, 'lat': 409.0}, 'FNAS-1.3': {'iops': 108.0, 'mibs': 108.0, 'lat': 407.0}}, '4': {'FNAS-4.6': {'iops': 109.0, 'mibs': 109.0, 'lat': 434.0}, 'FNAS-2.4': {'iops': 109.0, 'mibs': 109.0, 'lat': 435.0}, 'FNAS-1.3': {'iops': 109.0, 'mibs': 109.0, 'lat': 437.0}}, '8': {'FNAS-4.6': {'iops': 110.0, 'mibs': 110.0, 'lat': 654.0}, 'FNAS-2.4': {'iops': 110.0, 'mibs': 110.0, 'lat': 757.0}, 'FNAS-1.3': {'iops': 109.0, 'mibs': 109.0, 'lat': 746.0}}, '16': {'FNAS-4.6': {'iops': 110.0, 'mibs': 110.0, 'lat': 1329.0}, 'FNAS-2.4': {'iops': 110.0, 'mibs': 110.0, 'lat': 1292.0}, 'FNAS-1.3': {'iops': 110.0, 'mibs': 110.0, 'lat': 1228.0}}};
+
+        // Sequential Reads....
+        const groupedData_sr = {'1': {'FNAS-1.3': {'iops': 3423.0, 'mibs': 3423.0, 'lat': 287.0}, 'FNAS-4.6': {'iops': 3667.0, 'mibs': 3667.0, 'lat': 267.0}, 'FNAS-2.4': {'iops': 3507.0, 'mibs': 3507.0, 'lat': 279.0}}, '2': {'FNAS-1.3': {'iops': 7985.0, 'mibs': 7985.0, 'lat': 242.0}, 'FNAS-4.6': {'iops': 211.0, 'mibs': 211.0, 'lat': 7791.0}, 'FNAS-2.4': {'iops': 211.0, 'mibs': 211.0, 'lat': 7792.0}}, '4': {'FNAS-1.3': {'iops': 219.0, 'mibs': 219.0, 'lat': 14822.0}, 'FNAS-4.6': {'iops': 148.0, 'mibs': 148.0, 'lat': 25507.0}, 'FNAS-2.4': {'iops': 219.0, 'mibs': 219.0, 'lat': 15038.0}}, '8': {'FNAS-1.3': {'iops': 19149.0, 'mibs': 19149.0, 'lat': 347.0}, 'FNAS-4.6': {'iops': 821.0, 'mibs': 821.0, 'lat': 6266.0}, 'FNAS-2.4': {'iops': 435.0, 'mibs': 435.0, 'lat': 13990.0}}, '16': {'FNAS-1.3': {'iops': 873.0, 'mibs': 873.0, 'lat': 13891.0}, 'FNAS-4.6': {'iops': 443.0, 'mibs': 443.0, 'lat': 29567.0}, 'FNAS-2.4': {'iops': 442.0, 'mibs': 442.0, 'lat': 30994.0}}};
+
+        // Random Writes....
+        const groupedData_rw = {'1': {'FNAS-2.4': {'iops': 25534.0, 'mibs': 99.0, 'lat': 3.0}, 'FNAS-4.6': {'iops': 25508.0, 'mibs': 99.0, 'lat': 3.0}, 'FNAS-1.3': {'iops': 25514.0, 'mibs': 99.0, 'lat': 3.0}}, '2': {'FNAS-2.4': {'iops': 26887.0, 'mibs': 105.0, 'lat': 3.0}, 'FNAS-4.6': {'iops': 26872.0, 'mibs': 104.0, 'lat': 3.0}, 'FNAS-1.3': {'iops': 26895.0, 'mibs': 105.0, 'lat': 3.0}}, '4': {'FNAS-2.4': {'iops': 27602.0, 'mibs': 107.0, 'lat': 3.0}, 'FNAS-4.6': {'iops': 27595.0, 'mibs': 107.0, 'lat': 3.0}, 'FNAS-1.3': {'iops': 27629.0, 'mibs': 107.0, 'lat': 3.0}}, '8': {'FNAS-2.4': {'iops': 27972.0, 'mibs': 109.0, 'lat': 3.0}, 'FNAS-4.6': {'iops': 27961.0, 'mibs': 109.0, 'lat': 3.0}, 'FNAS-1.3': {'iops': 27967.0, 'mibs': 109.0, 'lat': 3.0}}, '16': {'FNAS-2.4': {'iops': 28134.0, 'mibs': 109.0, 'lat': 5.0}, 'FNAS-4.6': {'iops': 28144.0, 'mibs': 109.0, 'lat': 5.0}, 'FNAS-1.3': {'iops': 28154.0, 'mibs': 109.0, 'lat': 5.0}}};
+
+        // Random Reads ....
+        const groupedData_rr = {'1': {'FNAS-4.6': {'iops': 5306.0, 'mibs': 20.0, 'lat': 187.0}, 'FNAS-1.3': {'iops': 5156.0, 'mibs': 20.0, 'lat': 193.0}, 'FNAS-2.4': {'iops': 5065.0, 'mibs': 19.0, 'lat': 196.0}}, '2': {'FNAS-4.6': {'iops': 13882.0, 'mibs': 54.0, 'lat': 143.0}, 'FNAS-1.3': {'iops': 13336.0, 'mibs': 52.0, 'lat': 149.0}, 'FNAS-2.4': {'iops': 12746.0, 'mibs': 49.0, 'lat': 156.0}}, '4': {'FNAS-4.6': {'iops': 24562.0, 'mibs': 95.0, 'lat': 161.0}, 'FNAS-1.3': {'iops': 26915.0, 'mibs': 105.0, 'lat': 147.0}, 'FNAS-2.4': {'iops': 26071.0, 'mibs': 101.0, 'lat': 152.0}}, '8': {'FNAS-4.6': {'iops': 46214.0, 'mibs': 180.0, 'lat': 172.0}, 'FNAS-1.3': {'iops': 46493.0, 'mibs': 181.0, 'lat': 171.0}, 'FNAS-2.4': {'iops': 47342.0, 'mibs': 184.0, 'lat': 167.0}}, '16': {'FNAS-4.6': {'iops': 74297.0, 'mibs': 290.0, 'lat': 213.0}, 'FNAS-1.3': {'iops': 81275.0, 'mibs': 317.0, 'lat': 195.0}, 'FNAS-2.4': {'iops': 73133.0, 'mibs': 285.0, 'lat': 217.0}}}
+
+        // Extract unique target names per test groups.
+        const targets_sw = [...new Set(Object.values(groupedData_sw).flatMap(d => Object.keys(d)))];
+        const targets_sr = [...new Set(Object.values(groupedData_sr).flatMap(d => Object.keys(d)))];
+        const targets_rw = [...new Set(Object.values(groupedData_rw).flatMap(d => Object.keys(d)))];
+        const targets_rr = [...new Set(Object.values(groupedData_rr).flatMap(d => Object.keys(d)))];
+
+        // Create series for each target and metric
+
+        // ---------------------------------------------------------------------------------------
+
+        const dataSeries_iops_sw = targets_sw.map(target => ({
+            type: "column",
+            indexLabel: "{y}",
+            indexLabelFontFamily: "tahoma",
+            indexLabelPadding: 2,
+            indexLabelFontSize: 8,
+            indexLabelPlacement: "outside",
+            indexLabelOrientation: "horizontal",           
+            name: target,
+            showInLegend: true,
+            dataPoints: Object.entries(groupedData_sw).map(([threads, targetsData]) => ({
+                label: `${threads} Threads`,
+                y: targetsData[target]?.iops || 0
+            }))
+        }));
+
+        const dataSeries_mibs_sw = targets_sw.map(target => ({
+            type: "column",
+            indexLabel: "{y}",
+            indexLabelFontFamily: "tahoma",
+            indexLabelPadding: 2,
+            indexLabelFontSize: 8,
+            indexLabelPlacement: "outside",
+            indexLabelOrientation: "horizontal",
+            name: target,
+            showInLegend: true,
+            dataPoints: Object.entries(groupedData_sw).map(([threads, targetsData]) => ({
+                label: `${threads} Threads`,
+                y: targetsData[target]?.mibs || 0
+            }))
+        }));
+
+        const dataSeries_lat_sw = targets_sw.map(target => ({
+            type: "column",
+            indexLabel: "{y}",
+            indexLabelFontFamily: "tahoma",
+            indexLabelPadding: 2,
+            indexLabelFontSize: 8,
+            indexLabelPlacement: "outside",
+            indexLabelOrientation: "horizontal",
+            name: target,
+            showInLegend: true,
+            dataPoints: Object.entries(groupedData_sw).map(([threads, targetsData]) => ({
+                label: `${threads} Threads`,
+                y: targetsData[target]?.lat || 0
+            }))
+        }));
+
+        // ---------------------------------------------------------------------------------------
+
+        const dataSeries_iops_sr = targets_sr.map(target => ({
+            type: "column",
+            indexLabel: "{y}",
+            indexLabelFontFamily: "tahoma",
+            indexLabelPadding: 2,
+            indexLabelFontSize: 8,
+            indexLabelPlacement: "outside",
+            indexLabelOrientation: "horizontal",
+            name: target,
+            showInLegend: true,
+            dataPoints: Object.entries(groupedData_sr).map(([threads, targetsData]) => ({
+                label: `${threads} Threads`,
+                y: targetsData[target]?.iops || 0
+            }))
+        }));
+
+        const dataSeries_mibs_sr = targets_sr.map(target => ({
+            type: "column",
+            indexLabel: "{y}",
+            indexLabelFontFamily: "tahoma",
+            indexLabelPadding: 2,
+            indexLabelFontSize: 8,
+            indexLabelPlacement: "outside",
+            indexLabelOrientation: "horizontal",
+            name: target,
+            showInLegend: true,
+            dataPoints: Object.entries(groupedData_sr).map(([threads, targetsData]) => ({
+                label: `${threads} Threads`,
+                y: targetsData[target]?.mibs || 0
+            }))
+        }));
+
+        const dataSeries_lat_sr = targets_sr.map(target => ({
+            type: "column",
+            indexLabel: "{y}",
+            indexLabelFontFamily: "tahoma",
+            indexLabelPadding: 2,
+            indexLabelFontSize: 8,
+            indexLabelPlacement: "outside",
+            indexLabelOrientation: "horizontal",
+            name: target,
+            showInLegend: true,
+            dataPoints: Object.entries(groupedData_sr).map(([threads, targetsData]) => ({
+                label: `${threads} Threads`,
+                y: targetsData[target]?.lat || 0
+            }))
+        }));
+
+        // ---------------------------------------------------------------------------------------
+
+        const dataSeries_iops_rw = targets_rw.map(target => ({
+            type: "column",
+            indexLabel: "{y}",
+            indexLabelFontFamily: "tahoma",
+            indexLabelPadding: 2,
+            indexLabelFontSize: 8,
+            indexLabelPlacement: "outside",
+            indexLabelOrientation: "horizontal",
+            name: target,
+            showInLegend: true,
+            dataPoints: Object.entries(groupedData_rw).map(([threads, targetsData]) => ({
+                label: `${threads} Threads`,
+                y: targetsData[target]?.iops || 0
+            }))
+        }));
+
+        const dataSeries_mibs_rw = targets_rw.map(target => ({
+            type: "column",
+            indexLabel: "{y}",
+            indexLabelFontFamily: "tahoma",
+            indexLabelPadding: 2,
+            indexLabelFontSize: 8,
+            indexLabelPlacement: "outside",
+            indexLabelOrientation: "horizontal",
+            name: target,
+            showInLegend: true,
+            dataPoints: Object.entries(groupedData_rw).map(([threads, targetsData]) => ({
+                label: `${threads} Threads`,
+                y: targetsData[target]?.mibs || 0
+            }))
+        }));
+
+        const dataSeries_lat_rw = targets_rw.map(target => ({
+            type: "column",
+            indexLabel: "{y}",
+            indexLabelFontFamily: "tahoma",
+            indexLabelPadding: 2,
+            indexLabelFontSize: 8,
+            indexLabelPlacement: "outside",
+            indexLabelOrientation: "horizontal",
+            name: target,
+            showInLegend: true,
+            dataPoints: Object.entries(groupedData_rw).map(([threads, targetsData]) => ({
+                label: `${threads} Threads`,
+                y: targetsData[target]?.lat || 0
+            }))
+        }));
+
+        // ---------------------------------------------------------------------------------------
+
+        const dataSeries_iops_rr = targets_rr.map(target => ({
+            type: "column",
+            indexLabel: "{y}",
+            indexLabelFontFamily: "tahoma",
+            indexLabelPadding: 2,
+            indexLabelFontSize: 8,
+            indexLabelPlacement: "outside",
+            indexLabelOrientation: "horizontal",
+            name: target,
+            showInLegend: true,
+            dataPoints: Object.entries(groupedData_rr).map(([threads, targetsData]) => ({
+                label: `${threads} Threads`,
+                y: targetsData[target]?.iops || 0
+            }))
+        }));
+
+        const dataSeries_mibs_rr = targets_rr.map(target => ({
+            type: "column",
+            indexLabel: "{y}",
+            indexLabelFontFamily: "tahoma",
+            indexLabelPadding: 2,
+            indexLabelFontSize: 8,
+            indexLabelPlacement: "outside",
+            indexLabelOrientation: "horizontal",
+            name: target,
+            showInLegend: true,
+            dataPoints: Object.entries(groupedData_rr).map(([threads, targetsData]) => ({
+                label: `${threads} Threads`,
+                y: targetsData[target]?.mibs || 0
+            }))
+        }));
+
+        const dataSeries_lat_rr = targets_rr.map(target => ({
+            type: "column",
+            indexLabel: "{y}",
+            indexLabelFontFamily: "tahoma",
+            indexLabelPadding: 2,
+            indexLabelFontSize: 8,
+            indexLabelPlacement: "outside",
+            indexLabelOrientation: "horizontal",
+            name: target,
+            showInLegend: true,
+            dataPoints: Object.entries(groupedData_rr).map(([threads, targetsData]) => ({
+                label: `${threads} Threads`,
+                y: targetsData[target]?.lat || 0
+            }))
+        }));
+
+        // ---------------------------------------------------------------------------------------
+        // CHARTS
+        // ---------------------------------------------------------------------------------------
+
+        const chart_iops_sw = new CanvasJS.Chart("chartContainer_iops_sw", {
+            animationEnabled: true,
+            // title: {
+               //  text: ""
+            // },
+            subtitles: [
+                {
+                    text: "IOPS",
+                    fontSize: 14,
+                    verticalAlign: "top",
+                    fontColor: "rgba(0,0,0,0.5)"
+                }
+            ],
+            axisY: {
+                title: "IOPS"
+            },
+            axisX: {
+                title: "Threads"
+            },
+            legend: {
+                cursor: "pointer"
+            },
+            toolTip: {
+                shared: true
+            },
+            data: dataSeries_iops_sw
+        });
+        chart_iops_sw.render();
+
+        const chart_mibs_sw = new CanvasJS.Chart("chartContainer_mibs_sw", {
+            animationEnabled: true,
+            // title: {
+               //  text: ""
+            // },
+            subtitles: [
+                {
+                    text: "MiB's",
+                    fontSize: 14,
+                    verticalAlign: "top",
+                    fontColor: "rgba(0,0,0,0.5)"
+                }
+            ],
+            axisY: {
+                title: "MiB's"
+            },
+            axisX: {
+                title: "Threads"
+            },
+            legend: {
+                cursor: "pointer"
+            },
+            toolTip: {
+                shared: true
+            },
+            data: dataSeries_mibs_sw
+        });
+        chart_mibs_sw.render();
+
+        const chart_lat_sw = new CanvasJS.Chart("chartContainer_lat_sw", {
+            animationEnabled: true,
+            // title: {
+               //  text: ""
+            // },
+            subtitles: [
+                {
+                    text: "Latency [us] Average",
+                    fontSize: 14,
+                    verticalAlign: "top",
+                    fontColor: "rgba(0,0,0,0.5)"
+                }
+            ],
+            axisY: {
+                title: "us"
+            },
+            axisX: {
+                title: "Threads"
+            },
+            legend: {
+                cursor: "pointer"
+            },
+            toolTip: {
+                shared: true
+            },
+            data: dataSeries_lat_sw
+        });
+        chart_lat_sw.render();
+
+        // ---------------------------------------------------------------------------------------
+
+        const chart_iops_sr = new CanvasJS.Chart("chartContainer_iops_sr", {
+            animationEnabled: true,
+            // title: {
+               //  text: ""
+            // },
+            subtitles: [
+                {
+                    text: "IOPS",
+                    fontSize: 14,
+                    verticalAlign: "top",
+                    fontColor: "rgba(0,0,0,0.5)"
+                }
+            ],
+            axisY: {
+                title: "IOPS"
+            },
+            axisX: {
+                title: "Threads"
+            },
+            legend: {
+                cursor: "pointer"
+            },
+            toolTip: {
+                shared: true
+            },
+            data: dataSeries_iops_sr
+        });
+        chart_iops_sr.render();
+
+        const chart_mibs_sr = new CanvasJS.Chart("chartContainer_mibs_sr", {
+            animationEnabled: true,
+            // title: {
+               //  text: ""
+            // },
+            subtitles: [
+                {
+                    text: "MiB's",
+                    fontSize: 14,
+                    verticalAlign: "top",
+                    fontColor: "rgba(0,0,0,0.5)"
+                }
+            ],
+            axisY: {
+                title: "MiB's"
+            },
+            axisX: {
+                title: "Threads"
+            },
+            legend: {
+                cursor: "pointer"
+            },
+            toolTip: {
+                shared: true
+            },
+            data: dataSeries_mibs_sr
+        });
+        chart_mibs_sr.render();
+
+        const chart_lat_sr = new CanvasJS.Chart("chartContainer_lat_sr", {
+            animationEnabled: true,
+            // title: {
+               //  text: ""
+            // },
+            subtitles: [
+                {
+                    text: "Latency [us] Average",
+                    fontSize: 14,
+                    verticalAlign: "top",
+                    fontColor: "rgba(0,0,0,0.5)"
+                }
+            ],
+            axisY: {
+                title: "us"
+            },
+            axisX: {
+                title: "Threads"
+            },
+            legend: {
+                cursor: "pointer"
+            },
+            toolTip: {
+                shared: true
+            },
+            data: dataSeries_lat_sr
+        });
+        chart_lat_sr.render();
+
+        // ---------------------------------------------------------------------------------------
+
+        const chart_iops_rw = new CanvasJS.Chart("chartContainer_iops_rw", {
+            animationEnabled: true,
+            // title: {
+               //  text: ""
+            // },
+            subtitles: [
+                {
+                    text: "IOPS",
+                    fontSize: 14,
+                    verticalAlign: "top",
+                    fontColor: "rgba(0,0,0,0.5)"
+                }
+            ],
+            axisY: {
+                title: "IOPS"
+            },
+            axisX: {
+                title: "Threads"
+            },
+            legend: {
+                cursor: "pointer"
+            },
+            toolTip: {
+                shared: true
+            },
+            data: dataSeries_iops_rw
+        });
+        chart_iops_rw.render();
+
+        const chart_mibs_rw = new CanvasJS.Chart("chartContainer_mibs_rw", {
+            animationEnabled: true,
+            // title: {
+               //  text: ""
+            // },
+            subtitles: [
+                {
+                    text: "MiB's",
+                    fontSize: 14,
+                    verticalAlign: "top",
+                    fontColor: "rgba(0,0,0,0.5)"
+                }
+            ],
+            axisY: {
+                title: "MiB's"
+            },
+            axisX: {
+                title: "Threads"
+            },
+            legend: {
+                cursor: "pointer"
+            },
+            toolTip: {
+                shared: true
+            },
+            data: dataSeries_mibs_rw
+        });
+        chart_mibs_rw.render();
+
+        const chart_lat_rw = new CanvasJS.Chart("chartContainer_lat_rw", {
+            animationEnabled: true,
+            // title: {
+               //  text: ""
+            // },
+            subtitles: [
+                {
+                    text: "Latency [us] Average",
+                    fontSize: 14,
+                    verticalAlign: "top",
+                    fontColor: "rgba(0,0,0,0.5)"
+                }
+            ],
+            axisY: {
+                title: "us"
+            },
+            axisX: {
+                title: "Threads"
+            },
+            legend: {
+                cursor: "pointer"
+            },
+            toolTip: {
+                shared: true
+            },
+            data: dataSeries_lat_rw
+        });
+        chart_lat_rw.render();
+
+        // ---------------------------------------------------------------------------------------
+
+        const chart_iops_rr = new CanvasJS.Chart("chartContainer_iops_rr", {
+            animationEnabled: true,
+            // title: {
+               //  text: ""
+            // },
+            subtitles: [
+                {
+                    text: "IOPS",
+                    fontSize: 14,
+                    verticalAlign: "top",
+                    fontColor: "rgba(0,0,0,0.5)"
+                }
+            ],
+            axisY: {
+                title: "IOPS"
+            },
+            axisX: {
+                title: "Threads"
+            },
+            legend: {
+                cursor: "pointer"
+            },
+            toolTip: {
+                shared: true
+            },
+            data: dataSeries_iops_rr
+        });
+        chart_iops_rr.render();
+
+        const chart_mibs_rr = new CanvasJS.Chart("chartContainer_mibs_rr", {
+            animationEnabled: true,
+            // title: {
+               //  text: ""
+            // },
+            subtitles: [
+                {
+                    text: "MiB's",
+                    fontSize: 14,
+                    verticalAlign: "top",
+                    fontColor: "rgba(0,0,0,0.5)"
+                }
+            ],
+            axisY: {
+                title: "MiB's"
+            },
+            axisX: {
+                title: "Threads"
+            },
+            legend: {
+                cursor: "pointer"
+            },
+            toolTip: {
+                shared: true
+            },
+            data: dataSeries_mibs_rr
+        });
+        chart_mibs_rr.render();
+
+        const chart_lat_rr = new CanvasJS.Chart("chartContainer_lat_rr", {
+            animationEnabled: true,
+            // title: {
+               //  text: ""
+            // },
+            subtitles: [
+                {
+                    text: "Latency [us] Average",
+                    fontSize: 14,
+                    verticalAlign: "top",
+                    fontColor: "rgba(0,0,0,0.5)"
+                }
+            ],
+            axisY: {
+                title: "us"
+            },
+            axisX: {
+                title: "Threads"
+            },
+            legend: {
+                cursor: "pointer"
+            },
+            toolTip: {
+                shared: true
+            },
+            data: dataSeries_lat_rr
+        });
+        chart_lat_rr.render();
+
+        // ---------------------------------------------------------------------------------------
+
+    </script>
+</body>
+</html>

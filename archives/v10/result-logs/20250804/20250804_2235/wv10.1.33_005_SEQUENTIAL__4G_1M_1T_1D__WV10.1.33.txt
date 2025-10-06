@@ -1,0 +1,6 @@
+ISO DATE: 2025-08-04T22:35:21-0400
+LABEL: 005_SEQUENTIAL__4G_1M_1T_1D__WV10.1.33
+COMMAND LINE: "/elbencho/elbencho" "--label" "005_SEQUENTIAL__4G_1M_1T_1D__WV10.1.33" "--write" "--read" "--trunctosize" "--cpu" "--lat" "--log" "0" "--direct" "--timelimit" "300" "--no0usecerr" "--dirsharing" "--files" "1" "--dirs" "1" "--live1" "--livecsvex" "--liveint" "1000" "--iodepth=1" "--threads=1" "--block=1M" "--size=4G" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\result-logs\20250804\20250804_2235\wv10.1.33_005_SEQUENTIAL__4G_1M_1T_1D__WV10.1.33.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\result-logs\20250804\20250804_2235\wv10.1.33_005_SEQUENTIAL__4G_1M_1T_1D__WV10.1.33.txt" "--livecsv" "C:\Users\spillman\PythonProjects\elcrapo\result-logs\20250804\20250804_2235\wv10.1.33_005_SEQUENTIAL__4G_1M_1T_1D__WV10.1.33.live" "D:\DumbData\benchmark_tests\data_testing\wv10.1.33" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========

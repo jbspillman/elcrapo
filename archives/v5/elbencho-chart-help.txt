@@ -1,0 +1,57 @@
+Generate chart from elbencho csv result file via gnuplot.
+
+Usage: elbencho-chart [OPTIONS] <CSVFILE>
+
+Main Options:
+  CSVFILE            Path to elbencho results csv file.
+  -c                 List all available columns in csv file and exit.
+  -o                 List all available operations in csv file and exit.
+  -x COL             Csv file column to use for x-axis labels.
+                     This option can be used multiple times for combined labels.
+                     (Hint: Use "-c" to see avaiable columns.)
+  -y COL[:OP]        Csv file column to use for graph on left-hand y-axis. OP is
+                     the operation in case your csv file contains multiple ops,
+                     e.g. read and write results. (Hint: Use "-o" to see
+                     available operations in csv file.)
+                     This option can be used multiple times for multiple graphs.
+  -Y COL[:OP]        Csv file column to use for graph on right-hand y-axis.
+                     This option can be used multiple times for multiple graphs.
+
+Misc Options:
+  --bars             Generate bar chart. Default is line chart.
+  --chartsize W,H    Chart width and height in pixels.
+                     Exception: Size for pdf image file is in inches.
+  --fontsize NUM     Font size.
+  --imgfile PATH     Path to output image file. The extension of the filename
+                     determines the file type.
+                     Supported extensions are: ".svg" ".png" ".pdf"
+  --imgbg RGB        Image background color instead of transparent background.
+                     Example: "#ffffff" for white background.
+  --keypos STRING    Position of key with line descriptions within chart area.
+                     Default is "top center".
+  --linecolors LIST  Space-separated list of RGB color codes for chart lines
+                     in quotes to appear as single argument, e.g.:
+                     "#ff0000 #00ff00 #0000ff" (including quotes).
+  --linewidth NUM    Line width.
+  --title STRING     Set chart title.
+  --xrot NUM         Rotate x-axis tick labels by given number of degrees.
+  --xtitle STRING    Set title for x-axis.
+  --ytitle STRING    Set title for left-hand y-axis.
+  --Ytitle STRING    Set title for right-hand y-axis.
+
+Elbencho Example:
+  As the basis for a graph, you need to have multiple results in the csv file,
+  e.g. like this to generate results for different block sizes:
+    $ for block in 4k 64k 256k 1m; do \
+        elbencho -w -r -b $block -s10g --direct \
+          --csvfile elbencho-results.csv /data/testfile; \
+      done
+
+Usage Examples:
+  1) List available columns in csv file "elbencho-results.csv":
+     $ elbencho-chart -c elbencho-results.csv
+
+  2) Generate read throughput (left y-axis) and IOPS (right y-axis) graphs for
+     different blocks sizes from elbencho-results.csv:
+     $ elbencho-chart -x "block size" -y "MiB/s [last]:READ" \
+         -Y "IOPS [last]:READ" elbencho-results.csv

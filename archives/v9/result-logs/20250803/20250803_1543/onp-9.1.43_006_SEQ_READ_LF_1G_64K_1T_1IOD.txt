@@ -1,0 +1,14 @@
+ISO DATE: 2025-08-03T15:47:05-0400
+LABEL: 006_SEQ_READ_LF_1G_64K_1T_1IOD
+COMMAND LINE: "/elbencho/elbencho" "--label" "006_SEQ_READ_LF_1G_64K_1T_1IOD" "--read" "--trunctosize" "--iodepth=1" "--threads=1" "--block=64K" "--size=1G" "--csvfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250803\20250803_1543\onp-9.1.43_006_SEQ_READ_LF_1G_64K_1T_1IOD.csv" "--resfile" "C:\Users\spillman\PythonProjects\elcrapo\v9\result-logs\20250803\20250803_1543\onp-9.1.43_006_SEQ_READ_LF_1G_64K_1T_1IOD.txt" "--cpu" "--lat" "--log" "0" "--timelimit" "300" "--no0usecerr" "\\beastserver.beastmode.local.net\spillman\benchmark_tests\data_testing\onp-9.1.43\20250803154648630785_SEQ_WRITE_LF_1G_64K_1T_1IOD.BIN" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+READ        Elapsed time     :      9.467s      9.467s
+            IOPS             :        1730        1730
+            Throughput MiB/s :         108         108
+            Total MiB        :        1024        1024
+            CPU util %       :          10          10
+            IO latency       : [ min=4us avg=577us max=87.8ms ]
+---
+

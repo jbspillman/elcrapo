@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Comparison</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 10px;
+            border: 1px solid #334155;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .test-section {
+            margin-bottom: 40px;
+        }
+
+        .test-section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #e2e8f0;
+            text-align: center;
+            padding: 15px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 10px;
+            border: 1px solid #334155;
+        }
+
+        .charts-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .chart-container {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .chart-title {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #e2e8f0;
+        }
+
+        canvas {
+            max-height: 250px;
+        }
+
+        @media (max-width: 768px) {
+            .charts-row {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Product Performance Comparison</h1>
+        <p class="subtitle">product_one vs product_two</p>
+    </header>
+
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #3b82f6;"></div>
+            <span>product_one</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #10b981;"></div>
+            <span>product_two</span>
+        </div>
+    </div>
+
+    <div id="chartsContainer"></div>
+</div>
+
+<script>
+    const data = [{"product_key": "ASUS Ubuntu Server LTS NVMe 24.04", "test_name": "Sequential Write 4K", "block_size": "4K", "threads": [1, 4, 8, 16, 32, 64], "iops": [2869, 10953, 20078, 24086, 24970, 26494], "mibs": [11, 42, 78, 94, 97, 103], "lats": [347, 363, 395, 653, 1230, 2072]}, {"product_key": "ASUS Ubuntu Server LTS NVMe 24.04", "test_name": "Sequential Write 32K", "block_size": "32K", "threads": [1, 4, 8, 16, 32, 64], "iops": [1414, 3224, 3216, 3344, 3470, 3316], "mibs": [44, 100, 100, 104, 108, 103], "lats": [705, 1231, 2439, 4465, 7022, 5787]}, {"product_key": "ASUS Ubuntu Server LTS NVMe 24.04", "test_name": "Sequential Write 64K", "block_size": "64K", "threads": [1, 4, 8, 16, 32, 64], "iops": [830, 1629, 1726, 1748, 1787, 1780], "mibs": [51, 101, 107, 109, 111, 111], "lats": [1202, 2432, 4497, 8119, 9895, 6282]}, {"product_key": "ASUS Ubuntu Server LTS NVMe 24.04", "test_name": "Sequential Read 4K", "block_size": "4K", "threads": [1, 4, 8, 16, 32, 64], "iops": [3377, 11764, 21020, 25876, 26162, 26591], "mibs": [13, 45, 82, 101, 102, 103], "lats": [295, 337, 376, 604, 1163, 2100]}, {"product_key": "ASUS Ubuntu Server LTS NVMe 24.04", "test_name": "Sequential Read 32K", "block_size": "32K", "threads": [1, 4, 8, 16, 32, 64], "iops": [690, 3203, 3419, 3438, 3469, 3505], "mibs": [21, 100, 106, 107, 108, 109], "lats": [1445, 1221, 2302, 4455, 7882, 9380]}, {"product_key": "ASUS Ubuntu Server LTS NVMe 24.04", "test_name": "Sequential Read 64K", "block_size": "64K", "threads": [1, 4, 8, 16, 32, 64], "iops": [528, 1698, 1785, 1789, 1757, 1761], "mibs": [33, 106, 111, 111, 109, 110], "lats": [1889, 2337, 4380, 8287, 13595, 11372]}, {"product_key": "ASUS Ubuntu Server LTS NVMe 24.04", "test_name": "Random Write 4K", "block_size": "4K", "threads": [1, 4, 8, 16, 32, 64], "iops": [3347, 11785, 21519, 25177, 26400, 26731], "mibs": [13, 46, 84, 98, 103, 104], "lats": [297, 338, 368, 625, 1161, 2077]}, {"product_key": "ASUS Ubuntu Server LTS NVMe 24.04", "test_name": "Random Write 32K", "block_size": "32K", "threads": [1, 4, 8, 16, 32, 64], "iops": [1418, 3322, 3457, 3479, 3473, 3563], "mibs": [44, 103, 108, 108, 108, 111], "lats": [703, 1196, 2268, 4323, 7075, 5787]}, {"product_key": "ASUS Ubuntu Server LTS NVMe 24.04", "test_name": "Random Write 64K", "block_size": "64K", "threads": [1, 4, 8, 16, 32, 64], "iops": [895, 1720, 1739, 1758, 1753, 1783], "mibs": [55, 107, 108, 109, 109, 111], "lats": [1114, 2302, 4462, 8109, 10261, 6408]}, {"product_key": "ASUS Ubuntu Server LTS NVMe 24.04", "test_name": "Random Read 4K", "block_size": "4K", "threads": [1, 4, 8, 16, 32, 64], "iops": [3522, 12916, 22363, 25584, 26312, 26987], "mibs": [13, 50, 87, 99, 102, 105], "lats": [282, 308, 352, 611, 1155, 2110]}, {"product_key": "ASUS Ubuntu Server LTS NVMe 24.04", "test_name": "Random Read 32K", "block_size": "32K", "threads": [1, 4, 8, 16, 32, 64], "iops": [621, 3266, 3447, 3559, 3504, 3465], "mibs": [19, 102, 107, 111, 109, 108], "lats": [1607, 1212, 2283, 4299, 7857, 9927]}, {"product_key": "ASUS Ubuntu Server LTS NVMe 24.04", "test_name": "Random Read 64K", "block_size": "64K", "threads": [1, 4, 8, 16, 32, 64], "iops": [424, 1728, 1790, 1795, 1763, 1750], "mibs": [26, 108, 111, 112, 110, 109], "lats": [2355, 2296, 4367, 8268, 13878, 12249]}, {"product_key": "HP Ubuntu Server LTS NVMe 24.04", "test_name": "Sequential Write 4K", "block_size": "4K", "threads": [1, 4, 8, 16, 32, 64], "iops": [1289, 5156, 14776, 21619, 24064, 25704], "mibs": [5, 20, 57, 84, 94, 100], "lats": [774, 772, 536, 721, 1259, 2096]}, {"product_key": "HP Ubuntu Server LTS NVMe 24.04", "test_name": "Sequential Write 32K", "block_size": "32K", "threads": [1, 4, 8, 16, 32, 64], "iops": [711, 2917, 3204, 3444, 3348, 3429], "mibs": [22, 91, 100, 107, 104, 107], "lats": [1403, 1355, 2451, 4323, 7253, 5930]}, {"product_key": "HP Ubuntu Server LTS NVMe 24.04", "test_name": "Sequential Write 64K", "block_size": "64K", "threads": [1, 4, 8, 16, 32, 64], "iops": [602, 1596, 1736, 1786, 1790, 1764], "mibs": [37, 99, 108, 111, 111, 110], "lats": [1657, 2482, 4465, 7935, 10094, 6412]}, {"product_key": "HP Ubuntu Server LTS NVMe 24.04", "test_name": "Sequential Read 4K", "block_size": "4K", "threads": [1, 4, 8, 16, 32, 64], "iops": [1529, 6780, 10947, 19694, 24994, 25266], "mibs": [5, 26, 42, 76, 97, 98], "lats": [652, 587, 725, 794, 1212, 2207]}, {"product_key": "HP Ubuntu Server LTS NVMe 24.04", "test_name": "Sequential Read 32K", "block_size": "32K", "threads": [1, 4, 8, 16, 32, 64], "iops": [760, 3190, 3172, 3507, 3386, 3486], "mibs": [23, 99, 99, 109, 105, 108], "lats": [1313, 1242, 2475, 4348, 8066, 9373]}, {"product_key": "HP Ubuntu Server LTS NVMe 24.04", "test_name": "Sequential Read 64K", "block_size": "64K", "threads": [1, 4, 8, 16, 32, 64], "iops": [578, 1715, 1746, 1747, 1743, 1768], "mibs": [36, 107, 109, 109, 108, 110], "lats": [1726, 2309, 4478, 8505, 13738, 11622]}, {"product_key": "HP Ubuntu Server LTS NVMe 24.04", "test_name": "Random Write 4K", "block_size": "4K", "threads": [1, 4, 8, 16, 32, 64], "iops": [1355, 9662, 14569, 20883, 24694, 23877], "mibs": [5, 37, 56, 81, 96, 93], "lats": [736, 411, 544, 747, 1232, 2292]}, {"product_key": "HP Ubuntu Server LTS NVMe 24.04", "test_name": "Random Write 32K", "block_size": "32K", "threads": [1, 4, 8, 16, 32, 64], "iops": [752, 3154, 3305, 3406, 3406, 3430], "mibs": [23, 98, 103, 106, 106, 107], "lats": [1327, 1256, 2370, 4362, 7159, 5929]}, {"product_key": "HP Ubuntu Server LTS NVMe 24.04", "test_name": "Random Write 64K", "block_size": "64K", "threads": [1, 4, 8, 16, 32, 64], "iops": [577, 1656, 1752, 1732, 1748, 1758], "mibs": [36, 103, 109, 108, 109, 109], "lats": [1730, 2382, 4409, 8206, 10410, 6531]}, {"product_key": "HP Ubuntu Server LTS NVMe 24.04", "test_name": "Random Read 4K", "block_size": "4K", "threads": [1, 4, 8, 16, 32, 64], "iops": [1621, 7640, 10734, 19159, 24926, 24301], "mibs": [6, 29, 41, 74, 97, 94], "lats": [615, 512, 737, 818, 1221, 2218]}, {"product_key": "HP Ubuntu Server LTS NVMe 24.04", "test_name": "Random Read 32K", "block_size": "32K", "threads": [1, 4, 8, 16, 32, 64], "iops": [797, 3289, 3236, 3527, 3474, 3474], "mibs": [24, 102, 101, 110, 108, 108], "lats": [1251, 1207, 2428, 4337, 7919, 9690]}, {"product_key": "HP Ubuntu Server LTS NVMe 24.04", "test_name": "Random Read 64K", "block_size": "64K", "threads": [1, 4, 8, 16, 32, 64], "iops": [604, 1688, 1731, 1772, 1738, 1717], "mibs": [37, 105, 108, 110, 108, 107], "lats": [1652, 2348, 4513, 8414, 13962, 12780]}];
+
+    // Extract unique products dynamically
+    const products = [...new Set(data.map(d => d.product_key))];
+
+    // Create display names (shortened versions)
+    const productNames = products.map(key => {
+        // if (key.includes('Western Digital')) return 'WD SN770';
+        // if (key.includes('Samsung')) return 'Samsung 980 PRO';
+        return key; // fallback to full name
+    });
+
+    const testNames = [...new Set(data.map(d => d.test_name))];
+    console.log(testNames);
+    const metrics = [
+        { key: 'iops', label: 'IOPS' },
+        { key: 'mibs', label: 'MiB/s' },
+        { key: 'lats', label: 'Latency (μs)' }
+    ];
+
+    const colors = [
+        { line: '#3b82f6', bg: 'rgba(59, 130, 246, 0.1)' },
+        { line: '#10b981', bg: 'rgba(16, 185, 129, 0.1)' },
+        { line: '#f59e0b', bg: 'rgba(245, 158, 11, 0.1)' },
+        { line: '#ef4444', bg: 'rgba(239, 68, 68, 0.1)' },
+        { line: '#8b5cf6', bg: 'rgba(139, 92, 246, 0.1)' }
+    ];
+
+    // Update page title and legend dynamically
+    document.querySelector('.subtitle').textContent = productNames.join(' vs ');
+
+    const legendContainer = document.querySelector('.legend');
+    legendContainer.innerHTML = '';
+    productNames.forEach((name, idx) => {
+        const legendItem = document.createElement('div');
+        legendItem.className = 'legend-item';
+        legendItem.innerHTML = `
+            <div class="legend-color" style="background-color: ${colors[idx].line};"></div>
+            <span>${name}</span>
+        `;
+        legendContainer.appendChild(legendItem);
+    });
+
+    function createChart(testName, metric, container) {
+        const datasets = products.map((productKey, idx) => {
+            const productData = data.find(d => d.test_name === testName && d.product_key === productKey);
+            return {
+                label: productNames[idx],
+                data: productData[metric.key],
+                borderColor: colors[idx].line,
+                backgroundColor: colors[idx].bg,
+                borderWidth: 3,
+                pointRadius: 4,
+                pointHoverRadius: 6,
+                tension: 0.3
+            };
+        });
+
+        const threads = data.find(d => d.test_name === testName).threads;
+
+        const chartDiv = document.createElement('div');
+        chartDiv.className = 'chart-container';
+
+        const title = document.createElement('div');
+        title.className = 'chart-title';
+        title.textContent = metric.label;
+
+        const canvas = document.createElement('canvas');
+
+        chartDiv.appendChild(title);
+        chartDiv.appendChild(canvas);
+        container.appendChild(chartDiv);
+
+        new Chart(canvas, {
+            type: 'line',
+            data: {
+                labels: threads,
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                        borderColor: '#334155',
+                        borderWidth: 1,
+                        padding: 10,
+                        titleColor: '#e2e8f0',
+                        bodyColor: '#e2e8f0',
+                        titleFont: { size: 12 },
+                        bodyFont: { size: 11 }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Threads',
+                            color: '#94a3b8',
+                            font: { size: 11 }
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: { size: 10 }
+                        },
+                        grid: {
+                            color: '#334155'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: { size: 10 }
+                        },
+                        grid: {
+                            color: '#334155'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Create all charts organized by test name
+    const container = document.getElementById('chartsContainer');
+    testNames.forEach(testName => {
+        const section = document.createElement('div');
+        section.className = 'test-section';
+
+        const sectionTitle = document.createElement('div');
+        sectionTitle.className = 'test-section-title';
+        sectionTitle.textContent = testName;
+        section.appendChild(sectionTitle);
+
+        const row = document.createElement('div');
+        row.className = 'charts-row';
+        section.appendChild(row);
+
+        metrics.forEach(metric => {
+            createChart(testName, metric, row);
+        });
+
+        container.appendChild(section);
+    });
+</script>
+</body>
+</html>

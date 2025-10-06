@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    <script>
+        window.onload = function() {
+
+        var dataPoints = [];
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title: {
+                text: "MiB/s @ Block Size"
+            },
+            axisY: {
+                title: "MiB/s"
+            },
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                cursor: "pointer",
+                itemclick: toggleDataSeries
+            },
+            data: [] // Data will be populated from JSON
+        });
+
+        // Fetch data from JSON (replace with your actual data source)
+        fetch('MIBS_Grouped_BlockSize.json')
+            .then(response => response.json())
+            .then(data => {
+                var seriesData = {};
+                data.forEach(item => {
+                    for (let key in item) {
+                        if (key !== "category") { // Assuming "category" is the grouping key
+                            if (!seriesData[key]) {
+                                seriesData[key] = {
+                                    type: "column",
+                                    name: key,
+                                    showInLegend: true,
+                                    dataPoints: []
+                                };
+                            }
+                            seriesData[key].dataPoints.push({ label: item.category, y: item[key] });
+                        }
+                    }
+                });
+
+                for (let key in seriesData) {
+                    chart.options.data.push(seriesData[key]);
+                }
+                chart.render();
+            })
+            .catch(error => console.error('Error fetching data:', error));
+
+
+        function toggleDataSeries(e) {
+            if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            }
+            else {
+                e.dataSeries.visible = true;
+            }
+            chart.render();
+        }
+
+        }
+    </script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+</body>
+</html>

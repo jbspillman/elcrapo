@@ -1,0 +1,96 @@
+ISO DATE: 2025-07-26T14:10:06-0400
+LABEL: Chart_Sample_Data_00
+COMMAND LINE: "/usr/bin/elbencho" "--label" "Chart_Sample_Data_00" "--write" "--read" "--iodepth=1" "--threads=1" "--block=4K" "--size=1g" "--timelimit" "900" "--live1" "--livecsvex" "--livecsv" "/home/spillman/elcrapo/result-logs/Chart_Sample_Data_00/20250726_1410_Chart_Sample_Data_00-live.csv" "--csvfile" "/home/spillman/elcrapo/result-logs/Chart_Sample_Data_00/20250726_1410_Chart_Sample_Data_00.csv" "--resfile" "/home/spillman/elcrapo/result-logs/Chart_Sample_Data_00/20250726_1410_Chart_Sample_Data_00.log" "--log" "1" "--cpu" "--lat" "--direct" "/benchmark_tests/ssd/Chart_Sample_Data_00.bin" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      6.431s      6.431s
+            IOPS             :       40759       40759
+            Throughput MiB/s :         159         159
+            Total MiB        :        1024        1024
+            IOs total        :      262144      262144
+            CPU util %       :          20          20
+            IO latency       : [ min=21us avg=23us max=2.72ms ]
+---
+
+READ        Elapsed time     :      4.354s      4.354s
+            IOPS             :       60195       60195
+            Throughput MiB/s :         235         235
+            Total MiB        :        1024        1024
+            IOs total        :      262144      262144
+            CPU util %       :          12          12
+            IO latency       : [ min=12us avg=16us max=970us ]
+---
+
+ISO DATE: 2025-07-26T14:10:17-0400
+LABEL: Chart_Sample_Data_00
+COMMAND LINE: "/usr/bin/elbencho" "--label" "Chart_Sample_Data_00" "--write" "--read" "--iodepth=1" "--threads=1" "--block=64K" "--size=1g" "--timelimit" "900" "--live1" "--livecsvex" "--livecsv" "/home/spillman/elcrapo/result-logs/Chart_Sample_Data_00/20250726_1410_Chart_Sample_Data_00-live.csv" "--csvfile" "/home/spillman/elcrapo/result-logs/Chart_Sample_Data_00/20250726_1410_Chart_Sample_Data_00.csv" "--resfile" "/home/spillman/elcrapo/result-logs/Chart_Sample_Data_00/20250726_1410_Chart_Sample_Data_00.log" "--log" "1" "--cpu" "--lat" "--direct" "/benchmark_tests/ssd/Chart_Sample_Data_00.bin" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :      1.001s      1.001s
+            IOPS             :       16355       16355
+            Throughput MiB/s :        1022        1022
+            Total MiB        :        1024        1024
+            IOs total        :       16384       16384
+            CPU util %       :          16          16
+            IO latency       : [ min=54us avg=60us max=1.91ms ]
+---
+
+READ        Elapsed time     :      1.077s      1.077s
+            IOPS             :       15203       15203
+            Throughput MiB/s :         950         950
+            Total MiB        :        1024        1024
+            IOs total        :       16384       16384
+            CPU util %       :          10          10
+            IO latency       : [ min=43us avg=65us max=284us ]
+---
+
+ISO DATE: 2025-07-26T14:10:19-0400
+LABEL: Chart_Sample_Data_00
+COMMAND LINE: "/usr/bin/elbencho" "--label" "Chart_Sample_Data_00" "--write" "--read" "--iodepth=1" "--threads=1" "--block=256K" "--size=1g" "--timelimit" "900" "--live1" "--livecsvex" "--livecsv" "/home/spillman/elcrapo/result-logs/Chart_Sample_Data_00/20250726_1410_Chart_Sample_Data_00-live.csv" "--csvfile" "/home/spillman/elcrapo/result-logs/Chart_Sample_Data_00/20250726_1410_Chart_Sample_Data_00.csv" "--resfile" "/home/spillman/elcrapo/result-logs/Chart_Sample_Data_00/20250726_1410_Chart_Sample_Data_00.log" "--log" "1" "--cpu" "--lat" "--direct" "/benchmark_tests/ssd/Chart_Sample_Data_00.bin" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       770ms       770ms
+            IOPS             :        5315        5315
+            Throughput MiB/s :        1328        1328
+            Total MiB        :        1024        1024
+            IOs total        :        4096        4096
+            CPU util %       :          15          15
+            IO latency       : [ min=173us avg=187us max=3.22ms ]
+---
+
+READ        Elapsed time     :       714ms       714ms
+            IOPS             :        5733        5733
+            Throughput MiB/s :        1433        1433
+            Total MiB        :        1024        1024
+            IOs total        :        4096        4096
+            CPU util %       :           9           9
+            IO latency       : [ min=148us avg=173us max=368us ]
+---
+
+ISO DATE: 2025-07-26T14:10:20-0400
+LABEL: Chart_Sample_Data_00
+COMMAND LINE: "/usr/bin/elbencho" "--label" "Chart_Sample_Data_00" "--write" "--read" "--iodepth=1" "--threads=1" "--block=1M" "--size=1g" "--timelimit" "900" "--live1" "--livecsvex" "--livecsv" "/home/spillman/elcrapo/result-logs/Chart_Sample_Data_00/20250726_1410_Chart_Sample_Data_00-live.csv" "--csvfile" "/home/spillman/elcrapo/result-logs/Chart_Sample_Data_00/20250726_1410_Chart_Sample_Data_00.csv" "--resfile" "/home/spillman/elcrapo/result-logs/Chart_Sample_Data_00/20250726_1410_Chart_Sample_Data_00.log" "--log" "1" "--cpu" "--lat" "--direct" "/benchmark_tests/ssd/Chart_Sample_Data_00.bin" 
+
+OPERATION   RESULT TYPE         FIRST DONE   LAST DONE
+=========== ================    ==========   =========
+WRITE       Elapsed time     :       712ms       712ms
+            IOPS             :        1436        1436
+            Throughput MiB/s :        1436        1436
+            Total MiB        :        1024        1024
+            IOs total        :        1024        1024
+            CPU util %       :          14          14
+            IO latency       : [ min=639us avg=695us max=6.44ms ]
+---
+
+READ        Elapsed time     :       461ms       461ms
+            IOPS             :        2218        2218
+            Throughput MiB/s :        2218        2218
+            Total MiB        :        1024        1024
+            IOs total        :        1024        1024
+            CPU util %       :           9           9
+            IO latency       : [ min=425us avg=450us max=803us ]
+---
+

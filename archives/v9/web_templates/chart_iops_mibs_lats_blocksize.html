@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+  <script>
+    window.onload = function()
+    {
+      var dataPoints = [];
+      // CHART_IOPS START ---------------------------------------------------------------------------------------------
+      var chart_IOPS = new CanvasJS.Chart("chart_IOPS_Container", {
+          animationEnabled: true,
+          title: {
+              text: "IOPS @ Block Size"
+          },
+          axisY: {
+              title: "IOP/s"
+          },
+          toolTip: {
+              shared: true
+          },
+          legend: {
+              cursor: "pointer",
+              itemclick: toggleDataSeries_IOPS
+          },
+          data: [] // Data will be populated from JSON
+      });
+
+      // Fetch data from JSON (replace with your actual data source)
+      fetch('IOPS_Grouped_BlockSize.json')
+          .then(response => response.json())
+          .then(data => {
+              var seriesData = {};
+              data.forEach(item => {
+                  for (let key in item) {
+                      if (key !== "category") { // Assuming "category" is the grouping key
+                          if (!seriesData[key]) {
+                              seriesData[key] = {
+                                  type: "column",
+                                  name: key,
+                                  showInLegend: true,
+                                  dataPoints: []
+                              };
+                          }
+                          seriesData[key].dataPoints.push({ label: item.category, y: item[key] });
+                      }
+                  }
+              });
+
+              for (let key in seriesData) {
+                  chart_IOPS.options.data.push(seriesData[key]);
+              }
+              chart_IOPS.render();
+          })
+          .catch(error => console.error('Error fetching data:', error));
+
+      function toggleDataSeries_IOPS(e) {
+          if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+              e.dataSeries.visible = false;
+          }
+          else {
+              e.dataSeries.visible = true;
+          }
+          chart_IOPS.render();
+      }
+      // CHART_IOPS FINISH ---------------------------------------------------------------------------------------------
+
+      // CHART_MIBS START ---------------------------------------------------------------------------------------------
+      var chart_MIBS = new CanvasJS.Chart("chart_MIBS_Container", {
+          animationEnabled: true,
+          title: {
+              text: "MiB/s @ Block Size"
+          },
+          axisY: {
+              title: "MiB/s"
+          },
+          toolTip: {
+              shared: true
+          },
+          legend: {
+              cursor: "pointer",
+              itemclick: toggleDataSeries_MIBS
+          },
+          data: [] // Data will be populated from JSON
+      });
+
+      // Fetch data from JSON (replace with your actual data source)
+      fetch('MIBS_Grouped_BlockSize.json')
+          .then(response => response.json())
+          .then(data => {
+              var seriesData = {};
+              data.forEach(item => {
+                  for (let key in item) {
+                      if (key !== "category") { // Assuming "category" is the grouping key
+                          if (!seriesData[key]) {
+                              seriesData[key] = {
+                                  type: "column",
+                                  name: key,
+                                  showInLegend: true,
+                                  dataPoints: []
+                              };
+                          }
+                          seriesData[key].dataPoints.push({ label: item.category, y: item[key] });
+                      }
+                  }
+              });
+
+              for (let key in seriesData) {
+                  chart_MIBS.options.data.push(seriesData[key]);
+              }
+              chart_MIBS.render();
+          })
+          .catch(error => console.error('Error fetching data:', error));
+
+      function toggleDataSeries_MIBS(e) {
+          if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+              e.dataSeries.visible = false;
+          }
+          else {
+              e.dataSeries.visible = true;
+          }
+          chart_MIBS.render();
+      }
+      // CHART_MIBS FINISH ---------------------------------------------------------------------------------------------
+
+    // CHART_LATS START ------------------------------------------------------------------------------------------------
+      var chart_LATS = new CanvasJS.Chart("chart_LATS_Container", {
+          animationEnabled: true,
+          title: {
+              text: "Latency Average [us] @ Block Size"
+          },
+          axisY: {
+              title: "us"
+          },
+          toolTip: {
+              shared: true
+          },
+          legend: {
+              cursor: "pointer",
+              itemclick: toggleDataSeries_LATS
+          },
+          data: [] // Data will be populated from JSON
+      });
+
+      // Fetch data from JSON (replace with your actual data source)
+      fetch('LATS_Grouped_BlockSize.json')
+          .then(response => response.json())
+          .then(data => {
+              var seriesData = {};
+              data.forEach(item => {
+                  for (let key in item) {
+                      if (key !== "category") { // Assuming "category" is the grouping key
+                          if (!seriesData[key]) {
+                              seriesData[key] = {
+                                  type: "column",
+                                  name: key,
+                                  showInLegend: true,
+                                  dataPoints: []
+                              };
+                          }
+                          seriesData[key].dataPoints.push({ label: item.category, y: item[key] });
+                      }
+                  }
+              });
+
+              for (let key in seriesData) {
+                  chart_LATS.options.data.push(seriesData[key]);
+              }
+              chart_LATS.render();
+          })
+          .catch(error => console.error('Error fetching data:', error));
+
+      function toggleDataSeries_LATS(e) {
+          if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+              e.dataSeries.visible = false;
+          }
+          else {
+              e.dataSeries.visible = true;
+          }
+          chart_LATS.render();
+      }
+      // CHART_LATS FINISH ---------------------------------------------------------------------------------------------
+
+
+  }
+  </script>
+</head>
+<body>
+
+<table>
+  <tr>
+    <th>IOPS</th>
+    <td><div id="chart_IOPS_Container" style="height: 230px; width: 1200px;"></div></td>
+  </tr>
+  <tr>
+    <th>MIBS</th>
+    <td><div id="chart_MIBS_Container" style="height: 230px; width: 1200px;"></div></td>
+  </tr>
+  <tr>
+    <th>Latency</th>
+    <td><div id="chart_LATS_Container" style="height: 230px; width: 1200px;"></div></td>
+  </tr>
+</table>
+
+</body>
+</html>
